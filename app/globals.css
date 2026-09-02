@@ -1,26 +1,411 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Design System: FCAI E-Club ─── */
+
+/* ── Section ── */
+.ds-section {
+  @apply px-6 py-16 md:px-12 lg:px-24;
+}
+
+/* ── Cards ── */
+.ds-card {
+  @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm;
+}
+
+.ds-card-elevated {
+  @apply rounded-2xl border border-white/10 bg-[#111c2e] p-6;
+}
+
+.ds-card-accent {
+  @apply rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6;
+}
+
+.ds-card-stat {
+  @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center;
+}
+
+/* ── Section Header ── */
+.ds-section-label {
+  @apply mb-3 flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-cyan-400;
+}
+
+.ds-section-label::before {
+  content: "";
+  @apply h-px w-8 bg-cyan-500;
+}
+
+.ds-section-title {
+  @apply text-4xl font-bold tracking-tight text-white md:text-5xl;
+}
+
+.ds-section-title span {
+  @apply text-cyan-400;
+}
+
+.ds-section-subtitle {
+  @apply mt-4 max-w-2xl text-lg text-slate-400;
+}
+
+/* ── Buttons ── */
+.ds-btn {
+  @apply inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25;
+}
+
+.ds-btn-outline {
+  @apply inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-cyan-500/50 hover:text-cyan-400;
+}
+
+.ds-btn-ghost {
+  @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-400 transition-colors hover:text-white;
+}
+
+.ds-btn-sm {
+  @apply rounded-md px-4 py-2 text-xs;
+}
+
+/* ── Badges / Pills ── */
+.ds-badge {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-400;
+}
+
+.ds-badge-outline {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-400;
+}
+
+.ds-tag {
+  @apply inline-block rounded-md bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-300;
+}
+
+.ds-status-open {
+  @apply inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400;
+}
+
+.ds-status-closed {
+  @apply inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500;
+}
+
+/* ── Filter Tabs ── */
+.ds-tabs {
+  @apply inline-flex gap-1 rounded-xl border border-white/10 bg-white/[0.03] p-1;
+}
+
+.ds-tab {
+  @apply rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-all hover:text-white;
+}
+
+.ds-tab-active {
+  @apply rounded-lg bg-cyan-500/15 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-400;
+}
+
+.ds-tab-underline {
+  @apply border-b-2 border-transparent px-4 py-3 text-sm font-medium text-slate-400 transition-all hover:text-white;
+}
+
+.ds-tab-underline-active {
+  @apply border-b-2 border-cyan-500 px-4 py-3 text-sm font-medium text-white;
+}
+
+/* ── Stats ── */
+.ds-stat-number {
+  @apply text-5xl font-bold text-white;
+}
+
+.ds-stat-label {
+  @apply mt-2 text-xs font-bold uppercase tracking-widest text-slate-400;
+}
+
+.ds-stat-card {
+  @apply flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center;
+}
+
+.ds-stat-inline {
+  @apply flex flex-col;
+}
+
+.ds-stat-inline .ds-stat-number {
+  @apply text-3xl;
+}
+
+/* ── Timeline ── */
+.ds-timeline {
+  @apply relative border-l-2 border-white/10 pl-8;
+}
+
+.ds-timeline-dot {
+  @apply absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-cyan-500 bg-[#0b1120];
+}
+
+.ds-timeline-dot-filled {
+  @apply absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-cyan-500 bg-cyan-500;
+}
+
+.ds-timeline-date {
+  @apply mb-1 text-xs font-bold uppercase tracking-widest text-cyan-400;
+}
+
+.ds-timeline-title {
+  @apply text-lg font-bold text-white;
+}
+
+.ds-timeline-desc {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.ds-timeline-item {
+  @apply relative mb-10;
+}
+
+/* ── Forms ── */
+.ds-input {
+  @apply w-full border-b border-white/15 bg-transparent pb-3 pt-2 text-sm text-white placeholder-slate-500 outline-none transition-colors focus:border-cyan-500;
+}
+
+.ds-input-label {
+  @apply mb-1 block text-[10px] font-bold uppercase tracking-widest text-slate-400;
+}
+
+.ds-select {
+  @apply w-full appearance-none border-b border-white/15 bg-transparent pb-3 pt-2 text-sm text-slate-500 outline-none;
+}
+
+/* ── Avatar ── */
+.ds-avatar {
+  @apply h-20 w-20 rounded-full border-2 border-white/10 object-cover;
+}
+
+.ds-avatar-sm {
+  @apply h-10 w-10 rounded-full border border-white/10 object-cover;
+}
+
+.ds-avatar-lg {
+  @apply h-32 w-32 rounded-2xl border-2 border-white/10 object-cover;
+}
+
+/* ── Quote / Testimonial ── */
+.ds-quote-mark {
+  @apply mb-3 text-4xl font-bold leading-none text-cyan-400;
+}
+
+.ds-quote-text {
+  @apply mb-6 text-sm leading-relaxed text-slate-300 italic;
+}
+
+.ds-quote-author {
+  @apply flex items-center gap-3;
+}
+
+.ds-quote-name {
+  @apply text-sm font-semibold text-white;
+}
+
+.ds-quote-role {
+  @apply text-xs text-slate-400;
+}
+
+/* ── Divider ── */
+.ds-divider {
+  @apply my-16 h-px w-full bg-white/5;
+}
+
+/* ── Grid Layouts ── */
+.ds-grid-2 {
+  @apply grid gap-6 md:grid-cols-2;
+}
+
+.ds-grid-3 {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.ds-grid-4 {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-4;
+}
+
+/* ── Partner Logos ── */
+.ds-partner-logo {
+  @apply flex h-24 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-6 text-lg font-bold text-white/40 transition-colors hover:text-white/70;
+}
+
+/* ── Nav ── */
+.ds-nav {
+  @apply flex items-center gap-8 text-sm font-medium text-slate-300;
+}
+
+.ds-nav a {
+  @apply transition-colors hover:text-white;
+}
+
+.ds-nav-active {
+  @apply text-white;
+}
+
+/* ── Footer ── */
+.ds-footer {
+  @apply border-t border-white/5 bg-[#080d18] px-6 py-12 md:px-12 lg:px-24;
+}
+
+.ds-footer-heading {
+  @apply mb-4 text-[10px] font-bold uppercase tracking-widest text-slate-400;
+}
+
+.ds-footer-link {
+  @apply block py-1 text-sm text-slate-500 transition-colors hover:text-white;
+}
+
+.ds-footer-copy {
+  @apply border-t border-white/5 py-6 text-center text-xs text-slate-600;
+}
+
+/* ── Text Utilities ── */
+.ds-text-gradient {
+  @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+}
+
+.ds-text-muted {
+  @apply text-slate-400;
+}
+
+.ds-text-accent {
+  @apply text-cyan-400;
+}
+
+.ds-text-label {
+  @apply text-[10px] font-bold uppercase tracking-widest text-slate-400;
+}
+
+/* ── Hover Glow ── */
+.ds-glow {
+  @apply transition-all hover:shadow-lg hover:shadow-cyan-500/10;
+}
+
+.ds-glow-accent {
+  @apply transition-all hover:shadow-lg hover:shadow-cyan-500/20;
 }

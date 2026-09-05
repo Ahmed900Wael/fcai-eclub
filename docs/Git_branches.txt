@@ -1,0 +1,207 @@
+Feature Blocks
+
+Block 0: Supabase Client Library
+
+Branch: feature/supabase-client
+Depends on: Nothing
+
+Deliverables:
+- lib/supabase/client.ts — browser client
+- lib/supabase/server.ts — server client for Server Components
+- lib/supabase/middleware.ts — session refresh middleware
+- middleware.ts — root middleware that wraps Supabase session refresh
+
+Why first: Every data-driven feature needs this. 30 minutes of work that unblocks everything else.
+
+Block 1: Global Layout (Navbar + Footer)
+
+Branch: feature/global-layout
+Depends on: Block 0
+
+Deliverables:
+- components/navbar.tsx — responsive nav with mobile hamburger
+- components/footer.tsx — 3-column footer
+- app/layout.tsx updated to wrap children with navbar + footer
+- Routes: /about, /partnerships, /team, /events wired up
+
+Why separate: Every page depends on these. Build once, use everywhere.
+
+Block 2: Landing Page
+
+Branch: feature/landing-page
+Depends on: Block 1
+
+Deliverables:
+- app/page.tsx — full landing page
+- Hero section with Ethnocentric font
+- 4-card stats grid (fetches from metrics table)
+- About snippet
+- Upcoming events (fetches from events table)
+- Testimonials (fetches from testimonials table)
+- Partner logos (fetches from partners table)
+
+Why separate: Self-contained, high-visibility page. Good first deliverable to show progress.
+
+Block 3: About Page
+
+Branch: feature/about-page
+Depends on: Block 1
+
+Deliverables:
+- app/about/page.tsx
+- Mission + Vision sections (static content)
+- Operation Log timeline (fetches from timeline_events table)
+
+Why separate: Simple data-fetching from one table. Quick win.
+
+Block 4: Team Page
+
+Branch: feature/team-page
+Depends on: Block 1
+
+Deliverables:
+- app/team/page.tsx
+- Committees section (fetches from committees table)
+- Filterable member grid (fetches from profiles table)
+- Filter tabs (All, Technical, Marketing, Logistics)
+- Load more pagination
+
+Why separate: Self-contained page with one table query + client-side filtering.
+
+Block 5: Partnerships Page
+
+Branch: feature/partnerships-page
+Depends on: Block 1
+
+Deliverables:
+- app/partnerships/page.tsx
+- Partner logos grid (fetches from partners table)
+- "Join Our Network" section
+- Proposal form with validation (zod)
+- Server Action to insert into partner_proposals table
+
+Why separate: First form interaction. Tests Server Actions + validation.
+
+Block 6: Events Catalog
+
+Branch: feature/events-catalog
+Depends on: Block 1
+
+Deliverables:
+- app/events/page.tsx
+- Filter tabs (All Tracks, Technical, Soft Skills, Business)
+- Event cards grid (fetches from events table)
+- Status badges, date formatting, track tags
+
+Why separate: Depends only on global layout. Pairs with Block 7.
+
+Block 7: Event Detail + Registration
+
+Branch: feature/event-detail
+Depends on: Block 6 (same page structure), Block 0
+
+Deliverables:
+- app/events/[slug]/page.tsx — dynamic event page
+- About section, instructor card, curriculum timeline
+- Sidebar with date/time/location/capacity
+- Multi-step registration form (3 steps)
+- Zod validation for each step
+- CV upload to Supabase Storage
+- Server Action to insert into registrations table
+
+Why separate: Most complex form in the app. File upload + multi-step + validation.
+
+Block 8: Auth System
+
+Branch: feature/auth
+Depends on: Block 0
+
+Deliverables:
+- app/login/page.tsx
+- app/signup/page.tsx
+- Server Actions: signIn, signUp, signOut
+- Middleware protecting /dashboard and /admin routes
+- Auth state in navbar (show login/logout)
+
+Why separate: Foundation for all user-specific features. Clean boundary.
+
+Block 9: Member Dashboard
+
+Branch: feature/member-dashboard
+Depends on: Block 8
+
+Deliverables:
+- app/dashboard/page.tsx
+- Registered events list
+- Uploaded resume management
+- Contributions log
+- Profile editing (name, bio, avatar, social links)
+
+Why separate: User-specific, depends on auth. Independent from admin.
+
+Block 10: Admin Panel
+
+Branch: feature/admin
+Depends on: Block 8
+
+Deliverables:
+- app/admin/layout.tsx — sidebar layout
+- app/admin/events/page.tsx — CRUD events
+- app/admin/members/page.tsx — manage profiles
+- app/admin/registrations/page.tsx — review applications + CVs
+- app/admin/content/page.tsx — metrics, partners, testimonials
+- Admin role check in middleware
+
+Why separate: Largest block. Only works for admin users. Can be built last.
+
+Dependency Graph
+
+Block 0: Supabase Client
+    │
+    ├── Block 1: Global Layout
+    │       │
+    │       ├── Block 2: Landing Page
+    │       ├── Block 3: About Page
+    │       ├── Block 4: Team Page
+    │       ├── Block 5: Partnerships Page
+    │       └── Block 6: Events Catalog
+    │               │
+    │               └── Block 7: Event Detail + Registration
+    │
+    └── Block 8: Auth System
+            │
+            ├── Block 9: Member Dashboard
+            └── Block 10: Admin Panel
+
+Recommended Build Order
+
+Order	Block
+1	Supabase Client
+2	Global Layout
+3	Landing Page
+4	About Page
+5	Team Page
+6	Partnerships Page
+7	Events Catalog
+8	Event Detail + Registration
+9	Auth System
+10	Member Dashboard
+11	Admin Panel
+
+Git Branches
+
+main
+  └── develop
+        ├── feature/supabase-client
+        ├── feature/global-layout
+        ├── feature/landing-page
+        ├── feature/about-page
+        ├── feature/team-page
+        ├── feature/partnerships-page
+        ├── feature/events-catalog
+        ├── feature/event-detail
+        ├── feature/auth
+        ├── feature/member-dashboard
+        └── feature/admin
+
+Each branch merges into develop via PR. develop merges into main when ready for production.

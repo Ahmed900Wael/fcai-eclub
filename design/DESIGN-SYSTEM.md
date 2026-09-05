@@ -6,21 +6,21 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Section Layout
 
-| Class | Usage |
-|---|---|
+| Class        | Usage                                                       |
+| ------------ | ----------------------------------------------------------- |
 | `ds-section` | Responsive section wrapper (`px-6 py-16 md:px-12 lg:px-24`) |
-| `ds-divider` | Subtle horizontal rule between sections |
+| `ds-divider` | Subtle horizontal rule between sections                     |
 
 ---
 
 ## Cards
 
-| Class | Usage |
-|---|---|
-| `ds-card` | Default glassmorphism card with backdrop blur |
-| `ds-card-elevated` | Solid dark background card |
-| `ds-card-accent` | Card with cyan border and glow |
-| `ds-card-stat` | Centered stat/metric card |
+| Class              | Usage                                         |
+| ------------------ | --------------------------------------------- |
+| `ds-card`          | Default glassmorphism card with backdrop blur |
+| `ds-card-elevated` | Solid dark background card                    |
+| `ds-card-accent`   | Card with cyan border and glow                |
+| `ds-card-stat`     | Centered stat/metric card                     |
 
 ```html
 <div class="ds-card">
@@ -32,11 +32,11 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Section Headers
 
-| Class | Usage |
-|---|---|
-| `ds-section-label` | Uppercase cyan label with horizontal line |
-| `ds-section-title` | Large bold heading. Wrap highlighted word in `<span>` for cyan |
-| `ds-section-subtitle` | Muted description below title |
+| Class                 | Usage                                                          |
+| --------------------- | -------------------------------------------------------------- |
+| `ds-section-label`    | Uppercase cyan label with horizontal line                      |
+| `ds-section-title`    | Large bold heading. Wrap highlighted word in `<span>` for cyan |
+| `ds-section-subtitle` | Muted description below title                                  |
 
 ```html
 <h2 class="ds-section-label">About Us</h2>
@@ -48,12 +48,12 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Buttons
 
-| Class | Usage |
-|---|---|
-| `ds-btn` | Solid cyan primary button |
-| `ds-btn-outline` | Bordered secondary button |
-| `ds-btn-ghost` | Text-only button |
-| `ds-btn-sm` | Small size (combine with any above) |
+| Class            | Usage                               |
+| ---------------- | ----------------------------------- |
+| `ds-btn`         | Solid cyan primary button           |
+| `ds-btn-outline` | Bordered secondary button           |
+| `ds-btn-ghost`   | Text-only button                    |
+| `ds-btn-sm`      | Small size (combine with any above) |
 
 ```html
 <button class="ds-btn">Join the team</button>
@@ -65,12 +65,12 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Badges & Tags
 
-| Class | Usage |
-|---|---|
-| `ds-badge` | Cyan pill badge |
-| `ds-badge-outline` | Muted pill badge |
-| `ds-tag` | Small inline tag |
-| `ds-status-open` | Green "open" status indicator |
+| Class              | Usage                          |
+| ------------------ | ------------------------------ |
+| `ds-badge`         | Cyan pill badge                |
+| `ds-badge-outline` | Muted pill badge               |
+| `ds-tag`           | Small inline tag               |
+| `ds-status-open`   | Green "open" status indicator  |
 | `ds-status-closed` | Gray "closed" status indicator |
 
 ```html
@@ -86,18 +86,18 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ### Pill-style
 
-| Class | Usage |
-|---|---|
-| `ds-tabs` | Tab container |
-| `ds-tab` | Inactive tab |
+| Class           | Usage                       |
+| --------------- | --------------------------- |
+| `ds-tabs`       | Tab container               |
+| `ds-tab`        | Inactive tab                |
 | `ds-tab-active` | Active tab (cyan highlight) |
 
 ### Underline-style
 
-| Class | Usage |
-|---|---|
-| `ds-tab-underline` | Inactive underline tab |
-| `ds-tab-underline-active` | Active underline tab |
+| Class                     | Usage                  |
+| ------------------------- | ---------------------- |
+| `ds-tab-underline`        | Inactive underline tab |
+| `ds-tab-underline-active` | Active underline tab   |
 
 ```html
 <div class="ds-tabs">
@@ -111,11 +111,11 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Stats
 
-| Class | Usage |
-|---|---|
-| `ds-stat-number` | Large bold number |
-| `ds-stat-label` | Uppercase muted label below number |
-| `ds-stat-card` | Stat wrapped in a card |
+| Class            | Usage                              |
+| ---------------- | ---------------------------------- |
+| `ds-stat-number` | Large bold number                  |
+| `ds-stat-label`  | Uppercase muted label below number |
+| `ds-stat-card`   | Stat wrapped in a card             |
 
 ```html
 <div class="ds-stat-card">
@@ -128,15 +128,15 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Timeline
 
-| Class | Usage |
-|---|---|
-| `ds-timeline` | Vertical timeline container |
-| `ds-timeline-item` | Single timeline entry |
-| `ds-timeline-dot` | Hollow circle on the line |
-| `ds-timeline-dot-filled` | Filled circle on the line |
-| `ds-timeline-date` | Cyan uppercase date |
-| `ds-timeline-title` | Bold event title |
-| `ds-timeline-desc` | Muted description |
+| Class                    | Usage                       |
+| ------------------------ | --------------------------- |
+| `ds-timeline`            | Vertical timeline container |
+| `ds-timeline-item`       | Single timeline entry       |
+| `ds-timeline-dot`        | Hollow circle on the line   |
+| `ds-timeline-dot-filled` | Filled circle on the line   |
+| `ds-timeline-date`       | Cyan uppercase date         |
+| `ds-timeline-title`      | Bold event title            |
+| `ds-timeline-desc`       | Muted description           |
 
 ```html
 <div class="ds-timeline">
@@ -153,11 +153,11 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Forms
 
-| Class | Usage |
-|---|---|
-| `ds-input` | Bottom-border text input |
+| Class            | Usage                       |
+| ---------------- | --------------------------- |
+| `ds-input`       | Bottom-border text input    |
 | `ds-input-label` | Uppercase label above input |
-| `ds-select` | Styled select dropdown |
+| `ds-select`      | Styled select dropdown      |
 
 ```html
 <label class="ds-input-label">Company Name</label>
@@ -173,10 +173,10 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Avatars
 
-| Class | Usage |
-|---|---|
-| `ds-avatar-sm` | 40px circle |
-| `ds-avatar` | 80px circle |
+| Class          | Usage                |
+| -------------- | -------------------- |
+| `ds-avatar-sm` | 40px circle          |
+| `ds-avatar`    | 80px circle          |
 | `ds-avatar-lg` | 128px rounded square |
 
 ```html
@@ -188,13 +188,13 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Testimonials
 
-| Class | Usage |
-|---|---|
-| `ds-quote-mark` | Cyan opening quote mark |
-| `ds-quote-text` | Italic quote body |
+| Class             | Usage                      |
+| ----------------- | -------------------------- |
+| `ds-quote-mark`   | Cyan opening quote mark    |
+| `ds-quote-text`   | Italic quote body          |
 | `ds-quote-author` | Author row (avatar + text) |
-| `ds-quote-name` | Author name |
-| `ds-quote-role` | Author role |
+| `ds-quote-name`   | Author name                |
+| `ds-quote-role`   | Author role                |
 
 ```html
 <div class="ds-card">
@@ -214,9 +214,9 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Grids
 
-| Class | Usage |
-|---|---|
-| `ds-grid-2` | 1 col mobile, 2 col desktop |
+| Class       | Usage                                     |
+| ----------- | ----------------------------------------- |
+| `ds-grid-2` | 1 col mobile, 2 col desktop               |
 | `ds-grid-3` | 1 col mobile, 2 col tablet, 3 col desktop |
 | `ds-grid-4` | 1 col mobile, 2 col tablet, 4 col desktop |
 
@@ -224,14 +224,14 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Navigation & Footer
 
-| Class | Usage |
-|---|---|
-| `ds-nav` | Nav link container |
-| `ds-nav-active` | Active nav link |
-| `ds-footer` | Footer wrapper |
+| Class               | Usage                 |
+| ------------------- | --------------------- |
+| `ds-nav`            | Nav link container    |
+| `ds-nav-active`     | Active nav link       |
+| `ds-footer`         | Footer wrapper        |
 | `ds-footer-heading` | Footer column heading |
-| `ds-footer-link` | Footer link |
-| `ds-footer-copy` | Copyright bar |
+| `ds-footer-link`    | Footer link           |
+| `ds-footer-copy`    | Copyright bar         |
 
 ```html
 <footer class="ds-footer">
@@ -245,26 +245,26 @@ Reusable CSS classes for building pages that match the FCAI E-Club design. All c
 
 ## Text Utilities
 
-| Class | Usage |
-|---|---|
+| Class              | Usage                      |
+| ------------------ | -------------------------- |
 | `ds-text-gradient` | Cyan-to-blue gradient text |
-| `ds-text-muted` | Muted slate text |
-| `ds-text-accent` | Cyan accent text |
-| `ds-text-label` | Small uppercase label |
+| `ds-text-muted`    | Muted slate text           |
+| `ds-text-accent`   | Cyan accent text           |
+| `ds-text-label`    | Small uppercase label      |
 
 ---
 
 ## Hover Effects
 
-| Class | Usage |
-|---|---|
-| `ds-glow` | Subtle cyan glow on hover |
+| Class            | Usage                       |
+| ---------------- | --------------------------- |
+| `ds-glow`        | Subtle cyan glow on hover   |
 | `ds-glow-accent` | Stronger cyan glow on hover |
 
 ---
 
 ## Other
 
-| Class | Usage |
-|---|---|
+| Class             | Usage                  |
+| ----------------- | ---------------------- |
 | `ds-partner-logo` | Partner logo grid cell |

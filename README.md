@@ -15,14 +15,14 @@ The platform serves as the central nervous system for the E-Club, providing:
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | [Next.js](https://nextjs.org) 16 (React 19) |
-| Styling | [Tailwind CSS](https://tailwindcss.com) 4 + shadcn/ui |
-| Language | [TypeScript](https://www.typescriptlang.org) 5 |
-| Package Manager | [pnpm](https://pnpm.io) |
-| Icons | [Lucide React](https://lucide.dev) |
-| Utilities | clsx, tailwind-merge, class-variance-authority |
+| Layer           | Technology                                            |
+| --------------- | ----------------------------------------------------- |
+| Frontend        | [Next.js](https://nextjs.org) 16 (React 19)           |
+| Styling         | [Tailwind CSS](https://tailwindcss.com) 4 + shadcn/ui |
+| Language        | [TypeScript](https://www.typescriptlang.org) 5        |
+| Package Manager | [pnpm](https://pnpm.io)                               |
+| Icons           | [Lucide React](https://lucide.dev)                    |
+| Utilities       | clsx, tailwind-merge, class-variance-authority        |
 
 ## Getting Started
 
@@ -102,35 +102,35 @@ Full reference: [`design/DESIGN-SYSTEM.md`](design/DESIGN-SYSTEM.md)
 
 ## Pages
 
-| Page | Description |
-|---|---|
-| Landing (`/`) | Hero, impact stats, upcoming events, testimonials, partners |
-| About (`/about`) | Mission, vision, operation log timeline |
-| Team (`/team`) | Committees, filterable member directory |
-| Partnerships (`/partnerships`) | Partner logos, proposal submission form |
-| Events (`/events`) | Workshop & bootcamp catalog with filters |
-| Event Detail (`/events/[slug]`) | Workshop details, curriculum timeline, registration |
+| Page                            | Description                                                 |
+| ------------------------------- | ----------------------------------------------------------- |
+| Landing (`/`)                   | Hero, impact stats, upcoming events, testimonials, partners |
+| About (`/about`)                | Mission, vision, operation log timeline                     |
+| Team (`/team`)                  | Committees, filterable member directory                     |
+| Partnerships (`/partnerships`)  | Partner logos, proposal submission form                     |
+| Events (`/events`)              | Workshop & bootcamp catalog with filters                    |
+| Event Detail (`/events/[slug]`) | Workshop details, curriculum timeline, registration         |
 
 ## Roadmap
 
-| Phase | Description | Timeline |
-|---|---|---|
-| 1 | Discovery, Architecture & Design System | Weeks 1–2 |
-| 2 | Core Frontend & Public Portal | Weeks 3–6 |
-| 3 | Events Catalog & Registration Engine | Weeks 7–10 |
-| 4 | Authentication & Member Dashboards | Weeks 11–12 |
-| 5 | Admin Panel & Content Management | Weeks 13–14 |
-| 6 | QA, Security Audits & Deployment | Week 15 |
-| 7 | Stakeholder Handover & Documentation | Week 16 |
+| Phase | Description                             | Timeline    |
+| ----- | --------------------------------------- | ----------- |
+| 1     | Discovery, Architecture & Design System | Weeks 1–2   |
+| 2     | Core Frontend & Public Portal           | Weeks 3–6   |
+| 3     | Events Catalog & Registration Engine    | Weeks 7–10  |
+| 4     | Authentication & Member Dashboards      | Weeks 11–12 |
+| 5     | Admin Panel & Content Management        | Weeks 13–14 |
+| 6     | QA, Security Audits & Deployment        | Week 15     |
+| 7     | Stakeholder Handover & Documentation    | Week 16     |
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Production build |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
+| Command      | Description              |
+| ------------ | ------------------------ |
+| `pnpm dev`   | Start development server |
+| `pnpm build` | Production build         |
+| `pnpm start` | Start production server  |
+| `pnpm lint`  | Run ESLint               |
 
 ## License
 

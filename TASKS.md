@@ -65,16 +65,16 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Global Components
 
-- [ ] Build responsive Navigation Bar
-  - [ ] Logo (left-aligned)
-  - [ ] Nav links: About, Partnerships, Team, Events
-  - [ ] CTA button: "Join the team"
-  - [ ] Mobile hamburger menu
-- [ ] Build Footer
-  - [ ] Column 1: Logo + "Engineering the Future" slogan
-  - [ ] Column 2: Quick links (Privacy, Terms, Contact, FAQ)
-  - [ ] Column 3: Social links (LinkedIn, GitHub, Instagram, Discord)
-  - [ ] Bottom bar: Copyright notice
+- [x] Build responsive Navigation Bar
+  - [x] Logo (left-aligned)
+  - [x] Nav links: About, Partnerships, Team, Events
+  - [x] CTA button: "Join the team"
+  - [x] Mobile hamburger menu
+- [x] Build Footer
+  - [x] Column 1: Logo + "Engineering the Future" slogan
+  - [x] Column 2: Quick links (Privacy, Terms, Contact, FAQ)
+  - [x] Column 3: Social links (LinkedIn, GitHub, Instagram, Discord)
+  - [x] Bottom bar: Copyright notice
 
 ### Landing Page (`/`)
 

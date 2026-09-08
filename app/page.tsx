@@ -1,3 +1,3 @@
 export default function Home() {
-    return <></>;
+    return <main className="min-h-screen bg-[#09141E]"></main>;
 }

@@ -10,6 +10,9 @@
     --font-sans: var(--font-sans);
     --font-mono: var(--font-geist-mono);
     --font-heading: var(--font-heading);
+    --font-montserrat: var(--font-montserrat), sans-serif;
+    --font-hanken: var(--font-hanken-grotesk), sans-serif;
+    --font-mono: var(--font-jetbrains-mono), monospace;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -182,16 +185,34 @@
 @layer base {
     * {
         @apply border-border outline-ring/50;
+        scrollbar-color: var(--primary-container) #000000; /* thumb color | track color */
     }
+
     body {
         @apply bg-background text-foreground;
+        font-family: var(--font-montserrat);
     }
+
     html {
         @apply font-sans;
     }
 }
 
 /* ─── Design System: FCAI E-Club (Nebula Forge) ─── */
+
+/* ── Container ── */
+.ds-container {
+    @apply mx-auto w-full max-w-360;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+@media (min-width: 768px) {
+    .ds-container {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
 
 /* ── Section ── */
 .ds-section {
@@ -250,15 +271,13 @@
 .ds-section-subtitle {
     @apply mt-4 max-w-2xl text-lg;
     color: var(--on-surface-variant);
-    font-family: "Hanken Grotesk", sans-serif;
 }
 
 /* ── Buttons ── */
 .ds-btn {
-    @apply inline-flex items-center gap-2 rounded px-6 py-3 text-sm font-semibold transition-all;
+    @apply inline-flex items-center gap-2 rounded p-6 text-sm font-semibold transition-all;
     background: var(--primary-container);
     color: var(--on-primary);
-    font-family: "Hanken Grotesk", sans-serif;
 }
 
 .ds-btn:hover {
@@ -537,40 +556,53 @@
 
 /* ── Nav ── */
 .ds-nav {
-    @apply flex items-center gap-8 text-sm font-medium;
-    color: var(--on-surface-variant);
+    @apply flex w-full items-center justify-between text-sm font-medium;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-.ds-nav a {
+@media (min-width: 768px) {
+    .ds-nav {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+.ds-nav-items {
+    @apply flex items-center gap-8;
+    font-family: var(--font-mono);
+}
+
+.ds-nav-items a {
     @apply transition-colors;
     color: var(--on-surface-variant);
 }
 
-.ds-nav a:hover {
-    color: var(--on-surface);
-}
-
+.ds-nav-items a:hover,
 .ds-nav-active {
-    color: var(--on-surface) !important;
+    color: var(--primary) !important;
 }
 
 /* ── Footer ── */
 .ds-footer {
-    @apply px-6 py-12 md:px-12 lg:px-24;
+    @apply px-6 pt-12 md:px-12 lg:px-24;
     border-top: 1px solid var(--outline-variant);
-    background: var(--surface-container-lowest);
+    background: #141f2f;
 }
 
 .ds-footer-heading {
-    @apply mb-4 text-[10px] font-bold uppercase tracking-widest;
+    @apply mb-4 text-lg font-bold uppercase tracking-widest;
     font-family: "JetBrains Mono", monospace;
     color: var(--on-surface-variant);
 }
 
 .ds-footer-link {
-    @apply block py-1 text-sm transition-colors;
+    @apply block py-1 text-sm transition-colors tracking-widest;
     color: var(--outline);
-    font-family: "Hanken Grotesk", sans-serif;
+    font-family: var(--font-mono), monospace;
 }
 
 .ds-footer-link:hover {
@@ -579,6 +611,7 @@
 
 .ds-footer-copy {
     @apply py-6 text-center text-xs;
+    font-family: var(--font-hanken), sans-serif;
     border-top: 1px solid var(--outline-variant);
     color: var(--outline);
 }

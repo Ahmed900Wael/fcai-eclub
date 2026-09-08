@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Montserrat, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+// Layout
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+
 const montserrat = Montserrat({
     variable: "--font-montserrat",
     subsets: ["latin"],
@@ -15,7 +19,7 @@ const hanken_grotesk = Hanken_Grotesk({
 });
 
 const jetBrainsMono = JetBrains_Mono({
-    variable: "--font-hanken-grotesk",
+    variable: "--font-jetbrains-mono",
     subsets: ["latin"],
     weight: ["300", "400", "600", "700", "800"],
 });
@@ -32,7 +36,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             lang="en"
             className={`${montserrat.variable} ${hanken_grotesk.variable} ${jetBrainsMono.variable} antialiased`}
         >
-            <body>{children}</body>
+            <body className="min-h-screen">
+                <Navbar />
+
+                {children}
+
+                <Footer />
+            </body>
         </html>
     );
 }

@@ -92,15 +92,15 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### About Page (`/about`)
 
-- [ ] Hero section: "Engineering the Future"
-- [ ] Mission section with text + image
-- [ ] Vision section with text + visualization
-- [ ] Operation Log timeline (interactive vertical timeline)
-  - [ ] Q1 2021 — System Initialization
-  - [ ] Q2 2022 — Bootcamp Alpha
-  - [ ] Q3 2023 — System Initialization
-  - [ ] Q4 2024 — Bootcamp Alpha
-  - [ ] Present — Ecosystem Expansion
+- [x] Hero section: "Engineering the Future"
+- [x] Mission section with text + image
+- [x] Vision section with text + visualization
+- [x] Operation Log timeline (interactive vertical timeline)
+  - [x] Q1 2021 — System Initialization
+  - [x] Q2 2022 — Bootcamp Alpha
+  - [x] Q3 2023 — System Initialization
+  - [x] Q4 2024 — Bootcamp Alpha
+  - [x] Present — Ecosystem Expansion
 
 ### Team Page (`/team`)
 

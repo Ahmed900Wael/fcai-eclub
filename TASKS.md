@@ -78,17 +78,17 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Landing Page (`/`)
 
-- [ ] Hero section with "Where tech meets innovation" tagline in Ethnocentric font
-- [ ] Primary CTAs: "Join the team", "Explore Events"
-- [ ] Impact statistics grid (4 cards):
-  - [ ] 500+ Active Members
-  - [ ] 50+ Events Hosted
-  - [ ] 20+ Industry Partners
-  - [ ] 15+ Shipped Projects
-- [ ] About Us snippet with "Read full story" link
-- [ ] Upcoming Signals section (scrollable event list)
-- [ ] Testimonials section with alumni feedback cards
-- [ ] "Backed by Industry Leaders" partner logos row
+- [x] Hero section with "Where tech meets innovation" tagline in Ethnocentric font
+- [x] Primary CTAs: "Join the team", "Explore Events"
+- [x] Impact statistics grid (4 cards):
+  - [x] 500+ Active Members
+  - [x] 50+ Events Hosted
+  - [x] 20+ Industry Partners
+  - [x] 15+ Shipped Projects
+- [x] About Us snippet with "Read full story" link
+- [x] Upcoming Signals section (scrollable event list)
+- [x] Testimonials section with alumni feedback cards
+- [x] "Backed by Industry Leaders" partner logos row
 
 ### About Page (`/about`)
 

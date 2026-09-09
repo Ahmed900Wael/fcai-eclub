@@ -59,7 +59,7 @@ const About = () => {
                             and ground-breaking start-ups. We envision a network
                             where every member is equipped with the exact
                             technical stack and leadership skills to dominate
-                            tomorrow's tech landscape.
+                            tomorrow&apos;s tech landscape.
                         </p>
                     </div>
                 </div>

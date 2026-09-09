@@ -14,7 +14,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="relative border-b border-border bg-[#09141E]">
+        <header className="fixed z-50 w-full backdrop-blur-xs">
             <nav className="ds-nav min-h-24">
                 {/* Logo */}
                 <Link
@@ -24,8 +24,8 @@ const Navbar = () => {
                 >
                     <Image
                         src={"/logo.png"}
-                        width={64}
-                        height={64}
+                        width={80}
+                        height={80}
                         alt="Logo"
                         loading="eager"
                     />
@@ -37,7 +37,7 @@ const Navbar = () => {
                         const isActive = pathname === path;
 
                         return (
-                            <li className="ds-nav-items">
+                            <li className="ds-nav-items" key={title}>
                                 <Link
                                     href={path}
                                     className={cn(isActive && "ds-nav-active")}
@@ -66,14 +66,14 @@ const Navbar = () => {
             </nav>
             {/* Mobile navigation */}
             {isOpen && (
-                <div className="absolute w-full border-t border-border px-6 py-4 md:hidden">
+                <div className="absolute w-full border-t border-border px-6 py-4 md:hidden bg-[#09141E] opacity-85">
                     <div className="flex flex-col gap-6">
                         <ul className="flex flex-col md:hidden gap-6">
                             {NAVLINKS.map(({ title, path }) => {
                                 const isActive = pathname === path;
 
                                 return (
-                                    <li className="ds-nav-items">
+                                    <li className="ds-nav-items" key={title}>
                                         <Link
                                             href={path}
                                             className={cn(

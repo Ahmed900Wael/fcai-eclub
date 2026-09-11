@@ -104,14 +104,14 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Team Page (`/team`)
 
-- [ ] Hero section: "Meet the Visionaries"
-- [ ] Committees section (3 cards):
-  - [ ] Technical — member count, description
-  - [ ] Marketing — member count, description
-  - [ ] Logistics — member count, description
-- [ ] All Members section with filterable tabs (All, Technical, Marketing, Logistics)
-- [ ] Member cards: profile photo, name, title, committee
-- [ ] "Load More" pagination
+- [x] Hero section: "Meet the Visionaries"
+- [x] Committees section (3 cards):
+  - [x] Technical — member count, description
+  - [x] Marketing — member count, description
+  - [x] Logistics — member count, description
+- [x] All Members section with filterable tabs (All, Technical, Marketing, Logistics)
+- [x] Member cards: profile photo, name, title, committee
+- [x] "Load More" pagination
 
 ### Partnerships Page (`/partnerships`)
 

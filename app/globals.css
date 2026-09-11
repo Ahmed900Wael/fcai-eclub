@@ -233,7 +233,7 @@
 }
 
 .ds-card-about::before {
-    content: '';
+    content: "";
     @apply absolute top-0 right-0 w-48 h-48 rounded-3xl bg-primary-container opacity-10 blur-2xl;
 }
 
@@ -325,9 +325,9 @@
 .ds-badge {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest;
     font-family: var(--font-mono);
-    border: 1px solid rgba(44, 194, 255, 0.3);
-    background: rgba(44, 194, 255, 0.1);
-    color: var(--primary-fixed-dim);
+    border: 1px solid hsla(210, 100%, 80%, 0.2);
+    background: hsla(210, 100%, 80%, 0.05);
+    color: #98cbff;
 }
 
 .ds-badge-outline {
@@ -364,13 +364,15 @@
 }
 
 .ds-tab {
-    @apply rounded px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all;
-    font-family: "JetBrains Mono", monospace;
+    @apply rounded-full px-8 py-2 text-xs font-semibold uppercase tracking-wider transition-all border;
+    font-family: var(--font-mono);
     color: var(--on-surface-variant);
 }
 
 .ds-tab:hover {
     color: var(--on-surface);
+    border-color: var(--on-surface);
+    cursor: pointer;
 }
 
 .ds-tab-active {

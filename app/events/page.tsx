@@ -1,7 +1,5 @@
-import React from "react";
-
 const Events = () => {
-    return <div>Events</div>;
+    return <main className="min-h-screen">Events</main>;
 };
 
 export default Events;

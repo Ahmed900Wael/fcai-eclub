@@ -1,7 +1,7 @@
-import React from "react";
+
 
 const Partnerships = () => {
-    return <div>Partnerships</div>;
+    return <main className="min-h-screen">Partnerships</main>;
 };
 
 export default Partnerships;

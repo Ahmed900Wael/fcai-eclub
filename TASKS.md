@@ -130,16 +130,16 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Events Catalog (`/events`)
 
-- [ ] Hero section: "Workshops & Bootcamps"
-- [ ] Filter tabs: All Tracks, Technical, Soft Skills, Business
-- [ ] Upcoming Signals section with featured event cards
-- [ ] Event cards with:
-  - [ ] Status badge (Open / Closed)
-  - [ ] Date (MMM DD, YYYY)
-  - [ ] Title
-  - [ ] Description
-  - [ ] Track tag (Technical, Business, Soft Skills)
-  - [ ] "Read More" CTA
+- [x] Hero section: "Workshops & Bootcamps"
+- [x] Filter tabs: All Tracks, Technical, Soft Skills, Business
+- [x] Upcoming Signals section with featured event cards
+- [x] Event cards with:
+  - [x] Status badge (Open / Closed)
+  - [x] Date (MMM DD, YYYY)
+  - [x] Title
+  - [x] Description
+  - [x] Track tag (Technical, Business, Soft Skills)
+  - [x] "Read More" CTA
 
 ### Event Detail Page (`/events/[slug]`)
 

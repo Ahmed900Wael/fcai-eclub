@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Building, CheckCircle, Send, User } from "lucide-react";
+import { CheckCircle, Send, User } from "lucide-react";
 
 const Partnerships = () => {
     return (
@@ -23,8 +23,8 @@ const Partnerships = () => {
 
             <section className="container py-24 mx-auto">
                 <div className="grid grid-cols-4 gap-6">
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((p) => (
-                        <div className="ds-card min-h-50 grid place-content-center">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => (
+                        <div key={i} className="ds-card min-h-50 grid place-content-center">
                             <User size={64} />
                         </div>
                     ))}

@@ -143,15 +143,15 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Event Detail Page (`/events/[slug]`)
 
-- [ ] Hero with event title, description, and "Upcoming Workshop" tag
-- [ ] About section with detailed description
-- [ ] Instructor profile card (photo, name, title)
-- [ ] Curriculum timeline (vertical list with times and topics)
-- [ ] Sidebar details:
-  - [ ] Date
-  - [ ] Time
-  - [ ] Location (with virtual link note)
-  - [ ] Capacity remaining (spots left)
+- [x] Hero with event title, description, and "Upcoming Workshop" tag
+- [x] About section with detailed description
+- [x] Instructor profile card (photo, name, title)
+- [x] Curriculum timeline (vertical list with times and topics)
+- [x] Sidebar details:
+  - [x] Date
+  - [x] Time
+  - [x] Location (with virtual link note)
+  - [x] Capacity remaining (spots left)
 
 ### Registration & Application Pipeline
 

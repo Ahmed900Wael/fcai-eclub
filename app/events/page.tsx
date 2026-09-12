@@ -50,7 +50,7 @@ const Events = () => {
                             </span>
                         </div>
                         <h4 className="font-montserrat font-semibold text-[32px] mb-2 leading-10">
-                            Future Compute Hackathon '24
+                            Future Compute Hackathon &apos;24
                         </h4>
                         <p className="font-hanken text-[16px] leading-6 font-light text-[#BDC8D1] max-w-138 mb-8">
                             A 48-hour intensive building session focused on

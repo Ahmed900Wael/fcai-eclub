@@ -1,0 +1,22 @@
+.row {
+    position: relative;
+    padding-inline-start: 32px;
+}
+
+.row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -7.5px;
+    width: 15px;
+    aspect-ratio: 1 / 1;
+    background-color: black;
+    border: 2px solid;
+    border-radius: 100%;
+    border-color: gray;
+}
+
+.row-active::before {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(44, 194, 255, 0.4);
+}

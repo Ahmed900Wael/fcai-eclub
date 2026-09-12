@@ -17,7 +17,7 @@ const Team = () => {
                     Meet the <span className="text-primary">Visionaries</span>
                 </h1>
                 <p className="text-lg text-[#BEC7D4] leading-7 font-hanken max-w-160">
-                    The architects of tomorrow's solutions. A collective of
+                    The architects of tomorrow&apos;s solutions. A collective of
                     engineers, designers, and strategists building the ecosystem
                     of innovation at FCAI.
                 </p>

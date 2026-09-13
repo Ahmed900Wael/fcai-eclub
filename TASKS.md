@@ -65,64 +65,64 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Global Components
 
-- [ ] Build responsive Navigation Bar
-  - [ ] Logo (left-aligned)
-  - [ ] Nav links: About, Partnerships, Team, Events
-  - [ ] CTA button: "Join the team"
-  - [ ] Mobile hamburger menu
-- [ ] Build Footer
-  - [ ] Column 1: Logo + "Engineering the Future" slogan
-  - [ ] Column 2: Quick links (Privacy, Terms, Contact, FAQ)
-  - [ ] Column 3: Social links (LinkedIn, GitHub, Instagram, Discord)
-  - [ ] Bottom bar: Copyright notice
+- [x] Build responsive Navigation Bar
+  - [x] Logo (left-aligned)
+  - [x] Nav links: About, Partnerships, Team, Events
+  - [x] CTA button: "Join the team"
+  - [x] Mobile hamburger menu
+- [x] Build Footer
+  - [x] Column 1: Logo + "Engineering the Future" slogan
+  - [x] Column 2: Quick links (Privacy, Terms, Contact, FAQ)
+  - [x] Column 3: Social links (LinkedIn, GitHub, Instagram, Discord)
+  - [x] Bottom bar: Copyright notice
 
 ### Landing Page (`/`)
 
-- [ ] Hero section with "Where tech meets innovation" tagline in Ethnocentric font
-- [ ] Primary CTAs: "Join the team", "Explore Events"
-- [ ] Impact statistics grid (4 cards):
-  - [ ] 500+ Active Members
-  - [ ] 50+ Events Hosted
-  - [ ] 20+ Industry Partners
-  - [ ] 15+ Shipped Projects
-- [ ] About Us snippet with "Read full story" link
-- [ ] Upcoming Signals section (scrollable event list)
-- [ ] Testimonials section with alumni feedback cards
-- [ ] "Backed by Industry Leaders" partner logos row
+- [x] Hero section with "Where tech meets innovation" tagline in Ethnocentric font
+- [x] Primary CTAs: "Join the team", "Explore Events"
+- [x] Impact statistics grid (4 cards):
+  - [x] 500+ Active Members
+  - [x] 50+ Events Hosted
+  - [x] 20+ Industry Partners
+  - [x] 15+ Shipped Projects
+- [x] About Us snippet with "Read full story" link
+- [x] Upcoming Signals section (scrollable event list)
+- [x] Testimonials section with alumni feedback cards
+- [x] "Backed by Industry Leaders" partner logos row
 
 ### About Page (`/about`)
 
-- [ ] Hero section: "Engineering the Future"
-- [ ] Mission section with text + image
-- [ ] Vision section with text + visualization
-- [ ] Operation Log timeline (interactive vertical timeline)
-  - [ ] Q1 2021 — System Initialization
-  - [ ] Q2 2022 — Bootcamp Alpha
-  - [ ] Q3 2023 — System Initialization
-  - [ ] Q4 2024 — Bootcamp Alpha
-  - [ ] Present — Ecosystem Expansion
+- [x] Hero section: "Engineering the Future"
+- [x] Mission section with text + image
+- [x] Vision section with text + visualization
+- [x] Operation Log timeline (interactive vertical timeline)
+  - [x] Q1 2021 — System Initialization
+  - [x] Q2 2022 — Bootcamp Alpha
+  - [x] Q3 2023 — System Initialization
+  - [x] Q4 2024 — Bootcamp Alpha
+  - [x] Present — Ecosystem Expansion
 
 ### Team Page (`/team`)
 
-- [ ] Hero section: "Meet the Visionaries"
-- [ ] Committees section (3 cards):
-  - [ ] Technical — member count, description
-  - [ ] Marketing — member count, description
-  - [ ] Logistics — member count, description
-- [ ] All Members section with filterable tabs (All, Technical, Marketing, Logistics)
-- [ ] Member cards: profile photo, name, title, committee
-- [ ] "Load More" pagination
+- [x] Hero section: "Meet the Visionaries"
+- [x] Committees section (3 cards):
+  - [x] Technical — member count, description
+  - [x] Marketing — member count, description
+  - [x] Logistics — member count, description
+- [x] All Members section with filterable tabs (All, Technical, Marketing, Logistics)
+- [x] Member cards: profile photo, name, title, committee
+- [x] "Load More" pagination
 
 ### Partnerships Page (`/partnerships`)
 
-- [ ] Hero section: "Our Success Partners"
-- [ ] Partner logos grid
-- [ ] "Join Our Network" section with benefits list
-- [ ] Contact/partnership proposal form:
-  - [ ] Company Name input
-  - [ ] Contact Email input
-  - [ ] Partnership Interest dropdown (Sponsorship, Mentorship, Recruitment)
-  - [ ] Submit Proposal button
+- [x] Hero section: "Our Success Partners"
+- [x] Partner logos grid
+- [x] "Join Our Network" section with benefits list
+- [x] Contact/partnership proposal form:
+  - [x] Company Name input
+  - [x] Contact Email input
+  - [x] Partnership Interest dropdown (Sponsorship, Mentorship, Recruitment)
+  - [x] Submit Proposal button
 
 ---
 
@@ -130,28 +130,28 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Events Catalog (`/events`)
 
-- [ ] Hero section: "Workshops & Bootcamps"
-- [ ] Filter tabs: All Tracks, Technical, Soft Skills, Business
-- [ ] Upcoming Signals section with featured event cards
-- [ ] Event cards with:
-  - [ ] Status badge (Open / Closed)
-  - [ ] Date (MMM DD, YYYY)
-  - [ ] Title
-  - [ ] Description
-  - [ ] Track tag (Technical, Business, Soft Skills)
-  - [ ] "Read More" CTA
+- [x] Hero section: "Workshops & Bootcamps"
+- [x] Filter tabs: All Tracks, Technical, Soft Skills, Business
+- [x] Upcoming Signals section with featured event cards
+- [x] Event cards with:
+  - [x] Status badge (Open / Closed)
+  - [x] Date (MMM DD, YYYY)
+  - [x] Title
+  - [x] Description
+  - [x] Track tag (Technical, Business, Soft Skills)
+  - [x] "Read More" CTA
 
 ### Event Detail Page (`/events/[slug]`)
 
-- [ ] Hero with event title, description, and "Upcoming Workshop" tag
-- [ ] About section with detailed description
-- [ ] Instructor profile card (photo, name, title)
-- [ ] Curriculum timeline (vertical list with times and topics)
-- [ ] Sidebar details:
-  - [ ] Date
-  - [ ] Time
-  - [ ] Location (with virtual link note)
-  - [ ] Capacity remaining (spots left)
+- [x] Hero with event title, description, and "Upcoming Workshop" tag
+- [x] About section with detailed description
+- [x] Instructor profile card (photo, name, title)
+- [x] Curriculum timeline (vertical list with times and topics)
+- [x] Sidebar details:
+  - [x] Date
+  - [x] Time
+  - [x] Location (with virtual link note)
+  - [x] Capacity remaining (spots left)
 
 ### Registration & Application Pipeline
 

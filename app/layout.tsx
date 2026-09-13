@@ -8,6 +8,10 @@ import {
 import localFont from "next/font/local";
 import "./globals.css";
 
+// Layout
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+
 const montserrat = Montserrat({
     variable: "--font-montserrat",
     subsets: ["latin"],
@@ -51,11 +55,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             className={`${montserrat.variable} ${hanken_grotesk.variable} ${jetBrainsMono.variable} ${ethnocentric.variable} ${space_grotesk.variable} antialiased`}
         >
             <body className="min-h-screen">
-                {/* <Navbar /> */}
+                <Navbar />
 
                 {children}
 
-                {/* <Footer /> */}
+                <Footer />
             </body>
         </html>
     );

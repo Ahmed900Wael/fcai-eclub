@@ -476,7 +476,7 @@
 }
 
 .ds-input::placeholder {
-    color: var(--on-surface-variant);
+    @apply font-mono font-extralight text-[16px];
 }
 
 .ds-input:focus {
@@ -484,9 +484,9 @@
 }
 
 .ds-input-label {
-    @apply mb-1 block text-[10px] font-bold uppercase tracking-widest;
-    font-family: "JetBrains Mono", monospace;
-    color: var(--on-surface-variant);
+    @apply mb-4 block text-[12px] uppercase tracking-widest leading-3 text-[#6B7280];
+    font-family: var(--font-mono);
+    color: var(--color-primary);
 }
 
 .ds-select {

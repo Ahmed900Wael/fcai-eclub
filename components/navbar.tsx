@@ -8,8 +8,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
+import { signOut } from "@/actions/auth";
 
-const Navbar = () => {
+interface NavbarProps {
+    user: { email?: string } | null;
+}
+
+const Navbar = ({ user }: NavbarProps) => {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -49,10 +54,32 @@ const Navbar = () => {
                     })}
                 </ul>
 
-                {/* CTA Button */}
-                <Button className="hidden! md:flex! ds-btn font-mono">
-                    Join the team
-                </Button>
+                {/* Auth CTA - Desktop */}
+                <div className="hidden md:flex items-center gap-3">
+                    {user ? (
+                        <form action={signOut}>
+                            <Button
+                                type="submit"
+                                className="ds-btn-outline font-mono"
+                            >
+                                Logout
+                            </Button>
+                        </form>
+                    ) : (
+                        <>
+                            <Link href="/login">
+                                <Button className="ds-btn-outline font-mono">
+                                    Login
+                                </Button>
+                            </Link>
+                            <Link href="/signup">
+                                <Button className="ds-btn font-mono">
+                                    Join the team
+                                </Button>
+                            </Link>
+                        </>
+                    )}
+                </div>
 
                 {/* Mobile menu button */}
                 <Button
@@ -79,6 +106,7 @@ const Navbar = () => {
                                             className={cn(
                                                 isActive && "ds-nav-active",
                                             )}
+                                            onClick={() => setIsOpen(false)}
                                         >
                                             {title}
                                         </Link>
@@ -87,12 +115,29 @@ const Navbar = () => {
                             })}
                         </ul>
 
-                        <Button
-                            className="ds-btn w-full text-center font-mono"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Join the team
-                        </Button>
+                        {user ? (
+                            <form action={signOut}>
+                                <Button
+                                    type="submit"
+                                    className="ds-btn-outline w-full text-center font-mono"
+                                >
+                                    Logout
+                                </Button>
+                            </form>
+                        ) : (
+                            <>
+                                <Link href="/login" onClick={() => setIsOpen(false)}>
+                                    <Button className="ds-btn-outline w-full text-center font-mono">
+                                        Login
+                                    </Button>
+                                </Link>
+                                <Link href="/signup" onClick={() => setIsOpen(false)}>
+                                    <Button className="ds-btn w-full text-center font-mono">
+                                        Join the team
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             )}

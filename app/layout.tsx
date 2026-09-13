@@ -6,6 +6,7 @@ import {
     JetBrains_Mono,
 } from "next/font/google";
 import localFont from "next/font/local";
+import { createClient } from "@/lib/supabase/server";
 import "./globals.css";
 
 // Layout
@@ -48,14 +49,17 @@ export const metadata: Metadata = {
         "Empowering student entrepreneurs and tech innovators at the FCAI-CU to build the next generation of scalable solutions.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
     return (
         <html
             lang="en"
             className={`${montserrat.variable} ${hanken_grotesk.variable} ${jetBrainsMono.variable} ${ethnocentric.variable} ${space_grotesk.variable} antialiased`}
         >
             <body className="min-h-screen">
-                <Navbar />
+                <Navbar user={user ? { email: user.email } : null} />
 
                 {children}
 

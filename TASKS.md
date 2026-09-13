@@ -155,14 +155,14 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Registration & Application Pipeline
 
-- [ ] Multi-step registration form (Server Actions for submission)
-  - [ ] Step 1: Basic Info (Full Name, University Email, Academic Year, Department)
-  - [ ] Step 2: Screening Questions (dynamic short-answer fields per event)
-  - [ ] Step 3: CV/Resume upload (client-side to Supabase Storage bucket)
-- [ ] Client-side form validation (zod or native)
-- [ ] Server Action: insert registration row into `registrations` table
-- [ ] Server Action: upload CV to Supabase Storage, store file path in row
-- [ ] Registration confirmation page / toast
+- [x] Multi-step registration form (Server Actions for submission)
+  - [x] Step 1: Basic Info (Full Name, University Email, Academic Year, Department)
+  - [x] Step 2: Screening Questions (dynamic short-answer fields per event)
+  - [x] Step 3: CV/Resume upload (client-side to Supabase Storage bucket)
+- [x] Client-side form validation (zod or native)
+- [x] Server Action: insert registration row into `registrations` table
+- [x] Server Action: upload CV to Supabase Storage, store file path in row
+- [x] Registration confirmation page / toast
 
 ---
 
@@ -170,13 +170,13 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Authentication (Supabase Auth)
 
-- [ ] Configure Supabase Auth with email/password provider
-- [ ] Create `@supabase/ssr` middleware for session refresh on every request
-- [ ] Create login page with Supabase `signInWithPassword`
-- [ ] Create signup page with Supabase `signUp`
-- [ ] Protect routes with middleware (redirect unauthenticated users)
-- [ ] Create logout Server Action (`signOut`)
-- [ ] Sync new auth users to `profiles` table via database trigger
+- [x] Configure Supabase Auth with email/password provider
+- [x] Create `@supabase/ssr` middleware for session refresh on every request
+- [x] Create login page with Supabase `signInWithPassword`
+- [x] Create signup page with Supabase `signUp`
+- [x] Protect routes with middleware (redirect unauthenticated users)
+- [x] Create logout Server Action (`signOut`)
+- [x] Sync new auth users to `profiles` table via database trigger
 
 ### Member Dashboard
 

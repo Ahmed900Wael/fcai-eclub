@@ -10,6 +10,11 @@
     --font-sans: var(--font-sans);
     --font-mono: var(--font-geist-mono);
     --font-heading: var(--font-heading);
+    --font-montserrat: var(--font-montserrat), sans-serif;
+    --font-hanken: var(--font-hanken-grotesk), sans-serif;
+    --font-space: var(--font-space-grotesk), sans-serif;
+    --font-mono: var(--font-jetbrains-mono), monospace;
+    --font-ethnocentric: var(--font-ethnocentric), sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -182,16 +187,34 @@
 @layer base {
     * {
         @apply border-border outline-ring/50;
+        scrollbar-color: var(--primary-container) #000000; /* thumb color | track color */
     }
+
     body {
         @apply bg-background text-foreground;
+        font-family: var(--font-montserrat);
     }
+
     html {
         @apply font-sans;
     }
 }
 
 /* ─── Design System: FCAI E-Club (Nebula Forge) ─── */
+
+/* ── Container ── */
+.ds-container {
+    @apply mx-auto w-full max-w-360;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+@media (min-width: 768px) {
+    .ds-container {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
 
 /* ── Section ── */
 .ds-section {
@@ -201,8 +224,17 @@
 /* ── Cards ── */
 .ds-card {
     @apply rounded-lg border p-6 backdrop-blur-sm;
-    border-color: var(--outline-variant);
-    background: var(--elevation-1);
+    border-color: hsla(203, 13%, 27%, 0.45);
+    background: hsla(218, 58%, 16%, 0.6);
+}
+
+.ds-card-about {
+    @apply relative overflow-hidden;
+}
+
+.ds-card-about::before {
+    content: "";
+    @apply absolute top-0 right-0 w-48 h-48 rounded-3xl bg-primary-container opacity-10 blur-2xl;
 }
 
 .ds-card-elevated {
@@ -250,15 +282,13 @@
 .ds-section-subtitle {
     @apply mt-4 max-w-2xl text-lg;
     color: var(--on-surface-variant);
-    font-family: "Hanken Grotesk", sans-serif;
 }
 
 /* ── Buttons ── */
 .ds-btn {
-    @apply inline-flex items-center gap-2 rounded px-6 py-3 text-sm font-semibold transition-all;
+    @apply inline-flex items-center gap-2 rounded p-6 text-sm font-semibold transition-all;
     background: var(--primary-container);
     color: var(--on-primary);
-    font-family: "Hanken Grotesk", sans-serif;
 }
 
 .ds-btn:hover {
@@ -266,7 +296,7 @@
 }
 
 .ds-btn-outline {
-    @apply inline-flex items-center gap-2 rounded border px-6 py-3 text-sm font-semibold transition-all;
+    @apply inline-flex items-center gap-2 rounded p-6 text-sm font-semibold transition-all;
     border-color: var(--primary-container);
     color: var(--primary-container);
     background: transparent;
@@ -294,15 +324,15 @@
 /* ── Badges / Pills ── */
 .ds-badge {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest;
-    font-family: "JetBrains Mono", monospace;
-    border: 1px solid rgba(44, 194, 255, 0.3);
-    background: rgba(44, 194, 255, 0.1);
-    color: var(--primary-fixed-dim);
+    font-family: var(--font-mono);
+    border: 1px solid hsla(210, 100%, 80%, 0.2);
+    background: hsla(210, 100%, 80%, 0.05);
+    color: #98cbff;
 }
 
 .ds-badge-outline {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-mono);
     border: 1px solid var(--outline-variant);
     color: var(--on-surface-variant);
 }
@@ -334,13 +364,15 @@
 }
 
 .ds-tab {
-    @apply rounded px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all;
-    font-family: "JetBrains Mono", monospace;
+    @apply rounded-full px-8 py-2 text-xs font-semibold uppercase tracking-wider transition-all border;
+    font-family: var(--font-mono);
     color: var(--on-surface-variant);
 }
 
 .ds-tab:hover {
     color: var(--on-surface);
+    border-color: var(--on-surface);
+    cursor: pointer;
 }
 
 .ds-tab-active {
@@ -367,21 +399,21 @@
 
 /* ── Stats ── */
 .ds-stat-number {
-    @apply text-5xl font-bold;
-    font-family: "Montserrat", sans-serif;
+    @apply text-5xl font-semibold;
+    font-family: var(--font-space);
     color: var(--on-surface);
 }
 
 .ds-stat-label {
-    @apply mt-2 text-xs font-bold uppercase tracking-widest;
-    font-family: "JetBrains Mono", monospace;
-    color: var(--on-surface-variant);
+    @apply text-3xl tracking-wider;
+    font-family: var(--font-mono);
+    color: var(--primary);
 }
 
 .ds-stat-card {
-    @apply flex flex-col items-center justify-center rounded-lg border p-6 text-center;
-    border-color: var(--outline-variant);
-    background: var(--elevation-1);
+    @apply flex flex-col justify-center rounded-lg border px-8 py-10;
+    border-color: hsla(203, 13%, 27%, 0.45);
+    background: hsla(218, 58%, 16%, 0.7);
 }
 
 .ds-stat-inline {
@@ -390,6 +422,10 @@
 
 .ds-stat-inline .ds-stat-number {
     @apply text-3xl;
+}
+
+.ds-stat-inline .ds-stat-label {
+    @apply text-sm;
 }
 
 /* ── Timeline ── */
@@ -537,40 +573,53 @@
 
 /* ── Nav ── */
 .ds-nav {
-    @apply flex items-center gap-8 text-sm font-medium;
-    color: var(--on-surface-variant);
+    @apply flex w-full items-center justify-between text-sm font-medium;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-.ds-nav a {
+@media (min-width: 768px) {
+    .ds-nav {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+.ds-nav-items {
+    @apply flex items-center gap-8;
+    font-family: var(--font-mono);
+}
+
+.ds-nav-items a {
     @apply transition-colors;
     color: var(--on-surface-variant);
 }
 
-.ds-nav a:hover {
-    color: var(--on-surface);
-}
-
+.ds-nav-items a:hover,
 .ds-nav-active {
-    color: var(--on-surface) !important;
+    color: var(--primary) !important;
 }
 
 /* ── Footer ── */
 .ds-footer {
-    @apply px-6 py-12 md:px-12 lg:px-24;
+    @apply px-6 pt-12 md:px-12 lg:px-24;
     border-top: 1px solid var(--outline-variant);
-    background: var(--surface-container-lowest);
+    background: #141f2f;
 }
 
 .ds-footer-heading {
-    @apply mb-4 text-[10px] font-bold uppercase tracking-widest;
+    @apply mb-4 text-lg font-bold uppercase tracking-widest;
     font-family: "JetBrains Mono", monospace;
     color: var(--on-surface-variant);
 }
 
 .ds-footer-link {
-    @apply block py-1 text-sm transition-colors;
+    @apply block py-1 text-sm transition-colors tracking-widest;
     color: var(--outline);
-    font-family: "Hanken Grotesk", sans-serif;
+    font-family: var(--font-mono), monospace;
 }
 
 .ds-footer-link:hover {
@@ -579,6 +628,7 @@
 
 .ds-footer-copy {
     @apply py-6 text-center text-xs;
+    font-family: var(--font-hanken), sans-serif;
     border-top: 1px solid var(--outline-variant);
     color: var(--outline);
 }
@@ -607,6 +657,10 @@
     @apply text-[10px] font-bold uppercase tracking-widest;
     font-family: "JetBrains Mono", monospace;
     color: var(--on-surface-variant);
+}
+
+.ds-text-ethnocentric {
+    font-family: var(--font-ethnocentric), sans-serif;
 }
 
 /* ── Hover Glow ── */

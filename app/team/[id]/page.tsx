@@ -120,7 +120,7 @@ const MemberProfile = () => {
                                 Core System Overhaul
                             </h4>
                             <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1] max-w-222.5">
-                                Led the migration of the club's internal project
+                                Led the migration of the club&apos;s internal project
                                 management tool to a microservices architecture,
                                 improving system uptime by 99.9% and reducing
                                 latency across the board.

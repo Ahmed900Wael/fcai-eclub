@@ -1,11 +1,10 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
-import { ArrowRight, Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import RegisterButton from "@/components/register-button";
 
 import "../style.css";
-import { Button } from "@/components/ui/button";
 
 interface EventPageProps {
     params: Promise<{ slug: string }>;

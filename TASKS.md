@@ -168,6 +168,8 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ## Phase 4: Authentication & Member Dashboards
 
+<!-- POSTPONED -->
+<!-- 
 ### Authentication (Supabase Auth)
 
 - [x] Configure Supabase Auth with email/password provider
@@ -176,21 +178,21 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 - [x] Create signup page with Supabase `signUp`
 - [x] Protect routes with middleware (redirect unauthenticated users)
 - [x] Create logout Server Action (`signOut`)
-- [x] Sync new auth users to `profiles` table via database trigger
+- [x] Sync new auth users to `profiles` table via database trigger -->
 
-### Member Dashboard
+### Member Profile
 
-- [ ] Personalized "Upcoming Missions" view
-- [ ] Registered events list
-- [ ] Uploaded resume management
-- [ ] Project contributions log
-- [ ] Profile editing (name, bio, avatar, social links)
+- [x] Profile (name, bio, avatar, social links)
+- [x] Personalized "Key Contributions" view
+- [x] Personalized "Work Documentation" Image Slider
 
 ---
 
 ## Phase 5: Admin Panel & Content Management
 
-### Admin Dashboard
+<!-- POSTPONED -->
+<!-- 
+### Admin Dashboard 
 
 - [ ] Secure admin-only routes with role-based access
 - [ ] Admin layout with sidebar navigation
@@ -200,7 +202,7 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 - [ ] Events management (Server Actions: insert, update, delete in `events` table)
 - [ ] Member management (Server Actions: update role, soft-delete in `profiles` table)
 - [ ] Registration review (Server Actions: update status, query Supabase Storage for CVs)
-- [ ] Contribution tracking (Server Actions: approve/edit in `contributions` table)
+- [ ] Contribution tracking (Server Actions: approve/edit in `contributions` table) -->
 
 ### Content Management
 

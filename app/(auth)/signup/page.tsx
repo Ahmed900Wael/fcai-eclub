@@ -38,15 +38,29 @@ export default async function SignupPage({
 
             <form action={signUp} className="flex w-full flex-col gap-5">
                 <div>
+                    <label className="ds-input-label" htmlFor="full_name">
+                        Full Name
+                    </label>
+                    <input
+                        className="ds-input"
+                        id="full_name"
+                        name="full_name"
+                        type="full_name"
+                        placeholder="Your Name"
+                        required
+                    />
+                </div>
+
+                <div>
                     <label className="ds-input-label" htmlFor="email">
-                        University Email
+                        Email
                     </label>
                     <input
                         className="ds-input"
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="you@university.edu"
+                        placeholder="you@university.edu.eg"
                         required
                     />
                 </div>

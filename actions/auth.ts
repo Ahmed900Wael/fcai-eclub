@@ -19,12 +19,13 @@ export async function signIn(formData: FormData) {
         return redirect(`/login?message=${encodeURIComponent(error.message)}`);
     }
 
-    return redirect("/dashboard");
+    return redirect("/");
 }
 
 export async function signUp(formData: FormData) {
     const supabase = await createClient();
 
+    const full_name = formData.get("full_name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
@@ -32,6 +33,7 @@ export async function signUp(formData: FormData) {
         email,
         password,
         options: {
+            data: { full_name },
             emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/callback`,
         },
     });

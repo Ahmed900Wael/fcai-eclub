@@ -56,7 +56,7 @@ const Navbar = ({ user }: NavbarProps) => {
 
                 {/* Auth CTA - Desktop */}
                 <div className="hidden md:flex items-center gap-3">
-                    {user ? (
+                    {/* {user ? (
                         <form action={signOut}>
                             <Button
                                 type="submit"
@@ -72,13 +72,13 @@ const Navbar = ({ user }: NavbarProps) => {
                                     Login
                                 </Button>
                             </Link>
-                            <Link href="/signup">
-                                <Button className="ds-btn font-mono">
-                                    Join the team
-                                </Button>
-                            </Link>
                         </>
-                    )}
+                    )} */}
+                    <Link href="/signup">
+                        <Button className="ds-btn font-mono">
+                            Join the team
+                        </Button>
+                    </Link>
                 </div>
 
                 {/* Mobile menu button */}
@@ -115,7 +115,7 @@ const Navbar = ({ user }: NavbarProps) => {
                             })}
                         </ul>
 
-                        {user ? (
+                        {/* {user ? (
                             <form action={signOut}>
                                 <Button
                                     type="submit"
@@ -137,7 +137,7 @@ const Navbar = ({ user }: NavbarProps) => {
                                     </Button>
                                 </Link>
                             </>
-                        )}
+                        )} */}
                     </div>
                 </div>
             )}

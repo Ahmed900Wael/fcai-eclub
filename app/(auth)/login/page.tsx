@@ -1,6 +1,6 @@
 import { signIn } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+import { LogIn, Send } from "lucide-react";
 import Link from "next/link";
 
 export default async function LoginPage({
@@ -37,76 +37,29 @@ export default async function LoginPage({
                 </div>
             )}
 
-            {/* <div className="ds-card p-10! col-span-7">
-                <form className="flex flex-col gap-8" action="">
-                    <div>
-                        <label className="ds-input-label" htmlFor="name">
-                            Company Name
-                        </label>
-                        <input
-                            type="text"
-                            className="ds-input"
-                            name="name"
-                            id="name"
-                            placeholder="e.g. Acme Aerospance"
-                        />
-                    </div>
-                    <div>
-                        <label className="ds-input-label" htmlFor="email">
-                            Contact Email
-                        </label>
-                        <input
-                            type="text"
-                            className="ds-input"
-                            name="email"
-                            id="email"
-                            placeholder="contact@company.com"
-                        />
-                    </div>
-                    <div>
-                        <label className="ds-input-label" htmlFor="reason">
-                            Partnership Interest
-                        </label>
-                        <select className="ds-select" name="reason" id="reason">
-                            <option value="None">
-                                Select an area of interest
-                            </option>
-                        </select>
-                    </div>
-                    <div>
-                        <Button
-                            type="submit"
-                            className="ds-btn-outline font-mono"
-                        >
-                            Submit Proposal <Send size={16} />
-                        </Button>
-                    </div>
-                </form>
-            </div> */}
-
             <form action={signIn} className="flex w-full flex-col gap-8">
                 <div>
-                    <label className="ds-input-label" htmlFor="name">
-                        Company Name
+                    <label className="ds-input-label" htmlFor="email">
+                        Email
                     </label>
                     <input
-                        type="text"
+                        type="email"
                         className="ds-input"
-                        name="name"
-                        id="name"
+                        name="email"
+                        id="email"
                         placeholder="e.g. Acme Aerospance"
                     />
                 </div>
                 <div>
-                    <label className="ds-input-label" htmlFor="email">
-                        Contact Email
+                    <label className="ds-input-label" htmlFor="password">
+                        Password
                     </label>
                     <input
-                        type="text"
+                        type="password"
                         className="ds-input"
-                        name="email"
-                        id="email"
-                        placeholder="contact@company.com"
+                        name="password"
+                        id="password"
+                        placeholder="university@edu.eg"
                     />
                 </div>
                 <div>
@@ -114,7 +67,7 @@ export default async function LoginPage({
                         type="submit"
                         className="ds-btn-outline w-full cursor-pointer font-mono"
                     >
-                        Submit Proposal <Send size={16} />
+                        Login <LogIn size={16} />
                     </Button>
                 </div>
             </form>

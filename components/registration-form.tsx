@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { submitRegistration } from "@/actions/registration";
+// import { submitRegistration } from "@/actions/registration";
 import { Upload, ArrowRight, ArrowLeft, CheckCircle, X } from "lucide-react";
 
 interface RegistrationFormProps {
@@ -69,13 +69,14 @@ export default function RegistrationForm({
     }
 
     async function handleSubmit() {
-        setSubmitting(true);
-        const res = await submitRegistration(eventId, {
-            ...formData,
-            cv_file: cvFile,
-        });
-        setResult(res);
-        setSubmitting(false);
+        // setSubmitting(true);
+        // const res = await submitRegistration(eventId, {
+        //     ...formData,
+        //     cv_file: cvFile,
+        // });
+        // setResult(res);
+        // setSubmitting(false);
+        return;
     }
 
     if (result?.success) {

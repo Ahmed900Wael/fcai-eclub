@@ -1,9 +1,27 @@
 import { Briefcase, Code, Mail } from "lucide-react";
+import { BiLogoLinkedin } from "react-icons/bi";
 import Image from "next/image";
 
 import "./style.css";
+import {
+    getAvatarUrl,
+    getContributionsById,
+    getProfileById,
+} from "@/services/profiles";
+import Link from "next/link";
+import { getYearlyQuarter } from "@/lib/utils";
 
-const MemberProfile = () => {
+interface ProfilePageProps {
+    params: Promise<{ id: string }>;
+}
+
+const MemberProfile = async ({ params }: ProfilePageProps) => {
+    const { id } = await params;
+    const profile = await getProfileById(id);
+    const contributions = await getContributionsById(id);
+
+    console.log(contributions);
+
     return (
         <div className="bg-[#0D1B2A]">
             {/* Hero */}
@@ -11,67 +29,79 @@ const MemberProfile = () => {
                 <div className="flex-1 py-10 min-h-120 grid grid-cols-12 gap-6">
                     <div className="col-span-4">
                         <div className="ds-card p-10! h-full">
-                            <Image
-                                src={"/member.png"}
-                                width={192}
-                                height={192}
-                                className="rounded-[12px] overflow-hidden block mx-auto"
-                                alt="Member"
-                            />
-                            <div className="flex flex-col gap-2 text-center mb-10">
+                            {profile?.avatar_url ? (
+                                <Image
+                                    src={getAvatarUrl(profile?.avatar_url)}
+                                    width={192}
+                                    height={192}
+                                    className="rounded-[12px] overflow-hidden block mx-auto"
+                                    alt="Member"
+                                />
+                            ) : (
+                                <div className="w-46 h-46 rounded-[12px] bg-[#1e201e] border flex items-center justify-center font-space font-bold text-6xl text-primary mx-auto">
+                                    {profile?.full_name.charAt(0)}
+                                </div>
+                            )}
+                            <div className="flex flex-col gap-2 text-center mb-10 mt-6">
                                 <h3 className="font-space font-bold text-[38px] leading-10">
-                                    Alex Chen
+                                    {profile?.full_name}
                                 </h3>
-                                <span className="uppercase block font-mono font-light text-[16px] leading-5 tracking-wide text-primary mt-4">
-                                    Technical Lead
-                                </span>
-                                <p className="font-mono font-light text-[12px] leading-4">
-                                    Technical Committee
-                                </p>
+                                {profile?.committees?.name && (
+                                    <p className="font-hanken text-sm text-[#BEC7D4] mt-1">
+                                        {profile.committees.name} Committee
+                                    </p>
+                                )}
+                                {profile?.role && (
+                                    <span className="font-mono font-medium text-[12px] text-primary uppercase tracking-widest">
+                                        {profile?.role}
+                                    </span>
+                                )}
                             </div>
                             <ul className="flex gap-4 justify-center">
-                                <li className="p-2 border-primary border-2 cursor-pointer rounded-3xl">
+                                <li className="p-2 border-primary border-2 rounded-3xl opacity-45 pointer-events-none cursor-not-allowed">
                                     <Code size={28} className="text-primary" />
                                 </li>
                                 <li className="p-2 border-primary border-2 cursor-pointer rounded-3xl">
-                                    <Briefcase
-                                        size={28}
-                                        className="text-primary"
-                                    />
+                                    <Link
+                                        href={
+                                            ("https://" +
+                                                profile?.linkedin_url) as string
+                                        }
+                                        target="_blank"
+                                    >
+                                        <BiLogoLinkedin
+                                            size={28}
+                                            className="text-primary"
+                                        />
+                                    </Link>
                                 </li>
                                 <li className="p-2 border-primary border-2 cursor-pointer rounded-3xl">
-                                    <Mail size={28} className="text-primary" />
+                                    <Link
+                                        href={`mailto:${profile?.email as string}`}
+                                        target="_blank"
+                                    >
+                                        <Mail
+                                            size={28}
+                                            className="text-primary"
+                                        />
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className="col-span-8 flex flex-col gap-6 h-full">
                         <div className="ds-card p-10! flex-1">
-                            <h3 className="font-space font-bold text-2xl text-primary leading-8 mb-4">
+                            <h3 className="font-space font-bold text-xl text-primary leading-8 mb-4">
                                 About Me
                             </h3>
                             <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
-                                Passionate about building scalable architectures
-                                and exploring the frontiers of artificial
-                                intelligence. At FCAI E-club, I focus on
-                                integrating machine learning models into
-                                high-velocity web applications, ensuring
-                                seamless user experiences backed by robust
-                                computational power.
-                            </p>
-                            <br />
-                            <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
-                                My approach combines rigorous engineering
-                                principles with a design-first mindset, aiming
-                                to create interfaces that feel like a true
-                                extension of human capability. Always learning,
-                                always iterating.
+                                No Bio yet.
                             </p>
                         </div>
                         <div className="flex flex-wrap gap-6">
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    24
+                                    --
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
                                     Projects Shipped
@@ -79,7 +109,7 @@ const MemberProfile = () => {
                             </div>
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    12K
+                                    --
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
                                     Lines of Code
@@ -87,7 +117,7 @@ const MemberProfile = () => {
                             </div>
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    17
+                                    --
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
                                     Workshops Led
@@ -95,7 +125,7 @@ const MemberProfile = () => {
                             </div>
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    3
+                                    --
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
                                     Years Active
@@ -112,34 +142,24 @@ const MemberProfile = () => {
                 </span>
                 <div className="ds-card p-10!">
                     <div className="flex flex-col gap-10 justify-center border-l">
-                        <div className="flex flex-col gap-2 row row-active">
-                            <span className="font-mono font-light text-[12px] leading-4">
-                                Q3 2023
-                            </span>
-                            <h4 className="font-space font-bold text-2xl leading-8">
-                                Core System Overhaul
-                            </h4>
-                            <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1] max-w-222.5">
-                                Led the migration of the club&apos;s internal project
-                                management tool to a microservices architecture,
-                                improving system uptime by 99.9% and reducing
-                                latency across the board.
-                            </p>
-                        </div>
-                        <div className="flex flex-col gap-2 row">
-                            <span className="font-mono font-light text-[12px] leading-4">
-                                Q1 2024
-                            </span>
-                            <h4 className="font-space font-bold text-2xl leading-8">
-                                AI-Driven UI Workshop
-                            </h4>
-                            <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1] max-w-222.5">
-                                Designed and delivered a comprehensive workshop
-                                series on generative AI for UI design, attended
-                                by over 200 students across the engineering
-                                faculty.
-                            </p>
-                        </div>
+                        {contributions &&
+                            contributions.map((c) => (
+                                <div
+                                    key={c.title}
+                                    className="flex flex-col gap-2 row row-active"
+                                >
+                                    <span className="font-mono font-light text-[12px] leading-4">
+                                        {getYearlyQuarter(c.date)}{" "}
+                                        {c.date.split("-")[0]}
+                                    </span>
+                                    <h4 className="font-space font-bold text-2xl leading-8">
+                                        {c.title}
+                                    </h4>
+                                    <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1] max-w-222.5">
+                                        {c.description}
+                                    </p>
+                                </div>
+                            ))}
                     </div>
                 </div>
             </section>
@@ -148,7 +168,7 @@ const MemberProfile = () => {
                 <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase block mb-10">
                     ⸺ Work Documentation
                 </span>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div>
                         <Image
                             src="/work-1.png"

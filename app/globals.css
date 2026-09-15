@@ -364,7 +364,7 @@
 }
 
 .ds-tab {
-    @apply rounded-full px-8 py-2 text-xs font-semibold uppercase tracking-wider transition-all border;
+    @apply rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider transition-all border;
     font-family: var(--font-mono);
     color: var(--on-surface-variant);
 }
@@ -376,7 +376,7 @@
 }
 
 .ds-tab-active {
-    @apply rounded px-4 py-2 text-xs font-semibold uppercase tracking-wider;
+    @apply rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider;
     font-family: "JetBrains Mono", monospace;
     background: rgba(44, 194, 255, 0.15);
     color: var(--primary-fixed-dim);
@@ -678,4 +678,13 @@
 
 .ds-glow-accent:hover {
     box-shadow: 0 0 20px rgba(44, 194, 255, 0.3);
+}
+
+/* ── Scrollbar Hide ── */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
 }

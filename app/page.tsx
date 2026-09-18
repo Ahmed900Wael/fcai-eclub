@@ -27,11 +27,11 @@ export default function Home() {
                         loading="eager"
                         alt="banner"
                     />
-                    <p className="text-[#BEC7D4] text-xl font-hanken max-w-[68ch] text-center">
+                    <p className="text-[#BEC7D4] text-sm md:text-xl font-hanken max-w-[80%] lg:max-w-[68ch] text-center">
                         A student-led community at FCAI-CU where students learn,
                         build, collaborate, and turn ideas into real experience.
                     </p>
-                    <Button className="ds-btn-outline font-mono">
+                    <Button size={"sm"} className="ds-btn-outline font-mono">
                         <Link href="/events">
                             Explore Events <ArrowRight className="inline" />
                         </Link>
@@ -39,9 +39,9 @@ export default function Home() {
                 </div>
             </main>
 
-            <section className="container mx-auto py-24">
-                <div className="grid grid-cols-4 grid-rows-2 gap-6">
-                    <div className="col-span-2 row-span-2 ds-stat-card gap-2 justify-center">
+            <section className="ds-container mx-auto py-24">
+                <div className="grid grid-cols-4 grid-rows-3 lg:grid-rows-2 gap-6">
+                    <div className="col-span-4 lg:col-span-2 row-span-1 md:row-span-2 ds-stat-card gap-2 justify-center">
                         <span className="ds-stat-number text-6xl!">40+</span>
                         <h3 className="ds-stat-label mb-2">Active Members</h3>
                         <p className="text-sm max-w-120">
@@ -49,15 +49,15 @@ export default function Home() {
                             visionaries collaborating on future-forward tech.
                         </p>
                     </div>
-                    <div className="ds-stat-card ds-stat-inline gap-2 justify-center">
+                    <div className="ds-stat-card ds-stat-inline gap-2 col-span-2 sm:col-span-1 justify-center">
                         <span className="ds-stat-number font-bold">5+</span>
                         <h3 className="ds-stat-label">Shipped Projects</h3>
                     </div>
-                    <div className="ds-stat-card ds-stat-inline gap-2 justify-center bg-[#16212A]!">
+                    <div className="ds-stat-card ds-stat-inline gap-2 col-span-2 sm:col-span-1 justify-center bg-[#16212A]!">
                         <span className="ds-stat-number">4</span>
                         <h3 className="ds-stat-label">Major Events Hosted</h3>
                     </div>
-                    <div className="row-span-1 col-span-2 col-start-3 relative ds-stat-card gap-2 justify-center py-12!">
+                    <div className="row-span-1 col-span-4 sm:col-span-2 sm:col-start-3 col-start-1 relative ds-stat-card gap-2 justify-center py-12!">
                         <Rocket
                             className="absolute right-8 opacity-10"
                             size={120}
@@ -70,9 +70,9 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="container mx-auto py-24">
+            <section className="ds-container mx-auto py-24">
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="ds-card ds-card-about col-span-5 flex flex-col gap-6 p-10!">
+                    <div className="ds-card ds-card-about col-span-12 sm:col-span-5 flex flex-col gap-6 p-10!">
                         <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase">
                             ⸺ About us
                         </span>
@@ -95,7 +95,7 @@ export default function Home() {
                             <ArrowRight className="inline" size={16} />
                         </Link>
                     </div>
-                    <div className="col-span-7 flex flex-col gap-6">
+                    <div className="col-span-12 sm:col-span-7 flex flex-col gap-6">
                         <div className="flex justify-between">
                             <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase">
                                 ⸺ Upcoming Events
@@ -117,14 +117,14 @@ export default function Home() {
                                         {e.month}
                                     </p>
                                 </div>
-                                <div className="flex flex-col flex-1 gap-3">
+                                <div className="flex flex-col sm:flex-row flex-1 gap-3">
                                     <h3 className="font-space text-2xl leading-8 text-on-surface">
                                         {e.title}
                                     </h3>
                                     <p className="text-[16px] font-hanken font-light max-w-112.5 leading-6 text-on-surface-variant">
                                         {e.description}
                                     </p>
-                                    <ul className="flex gap-4">
+                                    <ul className="flex flex-col sm:flex-row gap-4">
                                         <li className="font-mono text-sm leading-4 text-outline flex items-center gap-1">
                                             <MapPin size={16} /> {e.location}
                                         </li>
@@ -142,11 +142,11 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="container mx-auto py-24">
+            <section className="ds-container mx-auto py-24">
                 <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase block mb-6">
                     ⸺ Testimonials
                 </span>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {TESTIMONIALS.map((t) => (
                         <div className="ds-card space-y-6" key={t.name}>
                             <Quote className="text-primary" />
@@ -176,7 +176,7 @@ export default function Home() {
                 <span className="block text-center mb-10 text-[12px] text-on-surface-variant font-medium font-mono tracking-widest uppercase">
                     Our Partners & Collaborations
                 </span>
-                <div className="grid grid-cols-6 gap-10">
+                <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10">
                     {PARTNERS.slice(0, 6).map((p, i) => (
                         <Image
                             src={p}

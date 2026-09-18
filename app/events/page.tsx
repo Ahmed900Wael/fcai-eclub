@@ -8,7 +8,7 @@ const Events = async () => {
 
     return (
         <div className="bg-[#0D1B2A]">
-            <main className="min-h-[75vh] relative flex flex-col items-start justify-center text-start container mx-auto">
+            <main className="min-h-[75vh] relative flex flex-col items-start justify-center text-start sm:container mx-auto">
                 <span className="ds-badge w-fit mb-4" data-animate="hero-badge">
                     ● Upcoming Sessions
                 </span>
@@ -22,14 +22,14 @@ const Events = async () => {
                 </p>
             </main>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase block mb-10">
                     ⸺ Upcoming Events
                 </span>
                 <TrendingEvents events={trendingEvents} />
             </section>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <EventsGrid events={events} />
             </section>
         </div>

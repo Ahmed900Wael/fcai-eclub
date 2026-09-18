@@ -23,9 +23,9 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
     return (
         <div className="bg-[#0D1B2A]">
             {/* Hero */}
-            <main className="min-h-[75vh] relative flex items-center justify-center text-start container mx-auto py-24">
+            <main className="min-h-[75vh] relative flex items-center justify-center text-start ds-container mx-auto py-24">
                 <div className="flex-1 py-10 min-h-120 grid grid-cols-12 gap-6">
-                    <div className="col-span-4">
+                    <div className="col-span-12 md:col-span-4">
                         <div className="ds-card p-10! h-full">
                             {profile?.avatar_url ? (
                                 <div className="w-48 h-48 mx-auto rounded-[12px] border-4 border-primary overflow-hidden">
@@ -113,7 +113,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-span-8 flex flex-col gap-6 h-full">
+                    <div className="col-span-12 md:col-span-8 flex flex-col gap-6 h-full">
                         <div className="ds-card p-10! flex-1">
                             <h3 className="font-space font-bold text-xl text-primary leading-8 mb-4">
                                 About
@@ -165,7 +165,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                 </div>
             </main>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase block mb-10">
                     ⸺ Key Contributions
                 </span>
@@ -193,7 +193,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                 </div>
             </section>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase block mb-10">
                     ⸺ Work Documentation
                 </span>

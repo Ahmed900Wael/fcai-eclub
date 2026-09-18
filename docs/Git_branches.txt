@@ -1,7 +1,5 @@
 Feature Blocks
 
----
-
 Block 0: Supabase Client Library
 
 Branch: feature/supabase-client
@@ -15,8 +13,6 @@ Deliverables:
 
 Why first: Every data-driven feature needs this. 30 minutes of work that unblocks everything else.
 
----
-
 Block 1: Global Layout (Navbar + Footer)
 
 Branch: feature/global-layout
@@ -29,8 +25,6 @@ Deliverables:
 - Routes: /about, /partnerships, /team, /events wired up
 
 Why separate: Every page depends on these. Build once, use everywhere.
-
----
 
 Block 2: Landing Page
 
@@ -48,8 +42,6 @@ Deliverables:
 
 Why separate: Self-contained, high-visibility page. Good first deliverable to show progress.
 
----
-
 Block 3: About Page
 
 Branch: feature/about-page
@@ -61,8 +53,6 @@ Deliverables:
 - Operation Log timeline (fetches from timeline_events table)
 
 Why separate: Simple data-fetching from one table. Quick win.
-
----
 
 Block 4: Team Page
 
@@ -78,8 +68,6 @@ Deliverables:
 
 Why separate: Self-contained page with one table query + client-side filtering.
 
----
-
 Block 5: Partnerships Page
 
 Branch: feature/partnerships-page
@@ -94,8 +82,6 @@ Deliverables:
 
 Why separate: First form interaction. Tests Server Actions + validation.
 
----
-
 Block 6: Events Catalog
 
 Branch: feature/events-catalog
@@ -108,8 +94,6 @@ Deliverables:
 - Status badges, date formatting, track tags
 
 Why separate: Depends only on global layout. Pairs with Block 7.
-
----
 
 Block 7: Event Detail + Registration
 
@@ -127,8 +111,6 @@ Deliverables:
 
 Why separate: Most complex form in the app. File upload + multi-step + validation.
 
----
-
 Block 8: Auth System
 
 Branch: feature/auth
@@ -142,8 +124,6 @@ Deliverables:
 - Auth state in navbar (show login/logout)
 
 Why separate: Foundation for all user-specific features. Clean boundary.
-
----
 
 Block 9: Member Dashboard
 
@@ -159,8 +139,6 @@ Deliverables:
 
 Why separate: User-specific, depends on auth. Independent from admin.
 
----
-
 Block 10: Admin Panel
 
 Branch: feature/admin
@@ -175,8 +153,6 @@ Deliverables:
 - Admin role check in middleware
 
 Why separate: Largest block. Only works for admin users. Can be built last.
-
----
 
 Dependency Graph
 

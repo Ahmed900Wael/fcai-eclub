@@ -78,7 +78,7 @@ const EventsGrid = ({ events }: { events: Event[] | null }) => {
                     filteredEvents.map((e) => (
                         <div
                             key={e.title}
-                            className="ds-card col-span-4 flex flex-col p-0!"
+                            className="ds-card col-span-12 md:col-span-6 lg:col-span-4 flex flex-col p-0!"
                         >
                             <div className="p-7">
                                 <div className="flex item-center justify-between mb-5">

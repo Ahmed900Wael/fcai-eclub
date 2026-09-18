@@ -10,24 +10,24 @@ const Team = async () => {
     return (
         <div className="bg-[#09141E]">
             <main className="min-h-[75vh] relative grid gap-5.5 place-content-center text-center">
-                <div className="absolute top-0 left-0 w-lg h-120 blur-3xl bg-primary/10 rounded-full"></div>
+                <div className="absolute top-0 left-0 w-lg hidden sm:block h-120 blur-3xl bg-primary/10 rounded-full"></div>
                 <span
                     className="ds-badge w-fit mx-auto"
                     data-animate="hero-badge"
                 >
                     ● Engineering the future
                 </span>
-                <h1 className="font-space font-bold text-[64px] leading-17.5 tracking-tighter">
+                <h1 className="font-space font-bold text-4xl md:text-[64px] leading-17.5 tracking-tighter">
                     Meet the <span className="text-primary">Visionaries</span>
                 </h1>
-                <p className="text-lg text-[#BEC7D4] leading-7 font-hanken max-w-160">
+                <p className="text-sm md:text-lg opacity-85 leading-5 sm:leading-7 font-hanken max-w-[80%] sm:max-w-4xl mx-auto text-[#BEC7D4] md:max-w-160">
                     The architects of tomorrow&apos;s solutions. The students
                     bringing their skills, ideas, and creativity together to
                     shape the E-Club experience.
                 </p>
             </main>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <h2 className="font-space font-semibold text-[32px] leading-10.5 text-[#D9E4F1] ps-4 mb-12 border-s-4 border-primary">
                     All Committees
                 </h2>
@@ -58,7 +58,7 @@ const Team = async () => {
                 </div>
             </section>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <h2 className="font-space font-semibold text-[32px] leading-10.5 text-[#D9E4F1] ps-4 mb-12 border-s-4 border-primary">
                     Team Members
                 </h2>

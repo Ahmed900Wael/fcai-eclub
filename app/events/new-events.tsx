@@ -11,7 +11,7 @@ const TrendingEvents = ({ events }: { events: Event[] | null }) => {
     return (
         <div className="grid grid-rows-2 grid-cols-12 gap-6">
             {events[0] && (
-                <div className="col-span-8 ds-card flex flex-col justify-between p-7!">
+                <div className="col-span-12 sm:col-span-6 md:col-span-8 ds-card flex flex-col justify-between p-7!">
                     <div className="flex item-center justify-between mb-6">
                         <span className="ds-badge">{events[0].type}</span>
                         <span className="ds-badge-outline">
@@ -40,7 +40,7 @@ const TrendingEvents = ({ events }: { events: Event[] | null }) => {
                 </div>
             )}
             {events[1] && (
-                <div className="col-span-4 ds-card flex flex-col p-7!">
+                <div className="col-span-12 sm:col-span-6 md:col-span-4 ds-card flex flex-col p-7!">
                     <span className="ds-badge w-fit mb-4">
                         {events[1].type}
                     </span>
@@ -65,7 +65,7 @@ const TrendingEvents = ({ events }: { events: Event[] | null }) => {
                 </div>
             )}
             {events[2] && (
-                <div className="col-span-4 ds-card flex flex-col justify-center p-7!">
+                <div className="col-span-12 sm:col-span-6 md:col-span-4 ds-card flex flex-col justify-center p-7!">
                     <span className="ds-badge w-fit mb-4">
                         {events[2].type}
                     </span>
@@ -90,7 +90,7 @@ const TrendingEvents = ({ events }: { events: Event[] | null }) => {
                 </div>
             )}
             {events[3] && (
-                <div className="col-span-8 ds-card flex flex-col justify-between p-7!">
+                <div className="col-span-12 sm:col-span-6 md:col-span-8 ds-card flex flex-col justify-between p-7!">
                     <div className="flex item-center justify-between mb-6">
                         <span className="ds-badge">{events[3].type}</span>
                         <span className="ds-badge-outline">

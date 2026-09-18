@@ -7,24 +7,24 @@ const Partnerships = () => {
     return (
         <div className="bg-[#09141E]">
             <main className="min-h-[75vh] relative grid gap-5.5 place-content-center text-center">
-                <div className="absolute top-0 left-0 w-lg h-120 blur-3xl bg-primary/10 rounded-full"></div>
+                <div className="absolute top-0 left-0 hidden sm:block w-lg h-120 blur-3xl bg-primary/10 rounded-full"></div>
                 <span
                     className="ds-badge w-fit mx-auto"
                     data-animate="hero-badge"
                 >
                     ● Engineering the future
                 </span>
-                <h1 className="font-space font-bold text-[64px] leading-17.5 tracking-tight">
+                <h1 className="font-space font-bold text-4xl md:text-[64px] leading-17.5 tracking-tight">
                     Our Success <span className="text-primary">Partners</span>
                 </h1>
-                <p className="text-lg text-[#BEC7D4] leading-7 font-hanken max-w-160">
+                <p className="text-sm md:text-lg opacity-85 leading-5 sm:leading-7 font-hanken max-w-[80%] sm:max-w-4xl mx-auto text-[#BEC7D4] md:max-w-160">
                     Collaborating with industry leaders to engineer the future
                     of technology and entrepreneurship.
                 </p>
             </main>
 
-            <section className="container py-24 mx-auto">
-                <div className="grid grid-cols-4 gap-6">
+            <section className="ds-container py-24 mx-auto">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {PARTNERS.map((p, i) => (
                         <div
                             key={i}
@@ -42,9 +42,9 @@ const Partnerships = () => {
                 </div>
             </section>
 
-            <section className="container py-24 mx-auto">
+            <section className="ds-container py-24 mx-auto">
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="ds-card ds-card-about col-span-5 flex flex-col justify-start gap-6 p-10!">
+                    <div className="ds-card ds-card-about col-span-12 md:col-span-5 flex flex-col justify-start gap-6 p-10!">
                         <h3 className="font-space font-semibold text-primary text-[32px] leading-10.5">
                             Join Our Network
                         </h3>
@@ -78,7 +78,7 @@ const Partnerships = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="ds-card p-10! col-span-7">
+                    <div className="ds-card p-10! col-span-12 md:col-span-7">
                         <PartnerForm />
                     </div>
                 </div>

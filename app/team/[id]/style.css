@@ -16,11 +16,11 @@
     border-color: var(--color-primary);
 }
 
-.row-active::before {
+.row:first-child:before {
     box-shadow: 0 0 15px rgba(44, 194, 255, 0.4);
     background: var(--color-primary);
 }
 
-.row-active span {
+.row:first-child span {
     color: var(--color-primary);
 }

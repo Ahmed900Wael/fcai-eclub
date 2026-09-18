@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { CheckCircle, Send, User } from "lucide-react";
+import { CheckCircle, User } from "lucide-react";
+import PartnerForm from "./partner-form";
+import Image from "next/image";
+import { PARTNERS } from "@/constants";
 
 const Partnerships = () => {
     return (
@@ -23,9 +25,18 @@ const Partnerships = () => {
 
             <section className="container py-24 mx-auto">
                 <div className="grid grid-cols-4 gap-6">
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => (
-                        <div key={i} className="ds-card min-h-50 grid place-content-center">
-                            <User size={64} />
+                    {PARTNERS.map((p, i) => (
+                        <div
+                            key={i}
+                            className="ds-card min-h-50 grid place-content-center"
+                        >
+                            <Image
+                                src={p}
+                                alt="Partner"
+                                width={64}
+                                height={64}
+                                className="block w-24 h-24"
+                            />
                         </div>
                     ))}
                 </div>
@@ -33,15 +44,15 @@ const Partnerships = () => {
 
             <section className="container py-24 mx-auto">
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="ds-card ds-card-about col-span-5 flex flex-col justify-center gap-6 p-10!">
+                    <div className="ds-card ds-card-about col-span-5 flex flex-col justify-start gap-6 p-10!">
                         <h3 className="font-space font-semibold text-primary text-[32px] leading-10.5">
                             Join Our Network
                         </h3>
                         <p className="opacity-75 text-[16px] font-hanken font-light leading-6 max-w-100">
-                            Partner with the FCAI Entrepreneurship Club to
-                            access top-tier engineering talent, collaborate on
-                            cutting-edge research, and integrate with our
-                            vibrant startup ecosystem.
+                            Partner with FCAI E-Club to connect with talented
+                            students, collaborate on meaningful initiatives, and
+                            create opportunities that bring students closer to
+                            industry.
                         </p>
                         <ul className="flex flex-col gap-4">
                             <li className="flex items-center gap-2 font-hanken text-sm leading-5.25">
@@ -68,63 +79,7 @@ const Partnerships = () => {
                         </ul>
                     </div>
                     <div className="ds-card p-10! col-span-7">
-                        <form className="flex flex-col gap-8" action="">
-                            <div>
-                                <label
-                                    className="ds-input-label"
-                                    htmlFor="name"
-                                >
-                                    Company Name
-                                </label>
-                                <input
-                                    type="text"
-                                    className="ds-input"
-                                    name="name"
-                                    id="name"
-                                    placeholder="e.g. Acme Aerospance"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    className="ds-input-label"
-                                    htmlFor="email"
-                                >
-                                    Contact Email
-                                </label>
-                                <input
-                                    type="text"
-                                    className="ds-input"
-                                    name="email"
-                                    id="email"
-                                    placeholder="contact@company.com"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    className="ds-input-label"
-                                    htmlFor="reason"
-                                >
-                                    Partnership Interest
-                                </label>
-                                <select
-                                    className="ds-select"
-                                    name="reason"
-                                    id="reason"
-                                >
-                                    <option value="None">
-                                        Select an area of interest
-                                    </option>
-                                </select>
-                            </div>
-                            <div>
-                                <Button
-                                    type="submit"
-                                    className="ds-btn-outline font-mono"
-                                >
-                                    Submit Proposal <Send size={16} />
-                                </Button>
-                            </div>
-                        </form>
+                        <PartnerForm />
                     </div>
                 </div>
             </section>

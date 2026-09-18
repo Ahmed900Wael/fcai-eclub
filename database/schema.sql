@@ -124,3 +124,8 @@ $$ language plpgsql security definer;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function handle_new_user();
+
+create or replace function get_event_registration_count(p_event_id uuid)
+returns int as $$
+  select count(*)::int from registrations where event_id = p_event_id;
+$$ language sql security definer stable;

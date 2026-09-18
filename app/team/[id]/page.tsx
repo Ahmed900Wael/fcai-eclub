@@ -9,7 +9,7 @@ import {
     getProfileById,
 } from "@/services/profiles";
 import Link from "next/link";
-import { getYearlyQuarter } from "@/lib/utils";
+import { cn, getYearlyQuarter } from "@/lib/utils";
 
 interface ProfilePageProps {
     params: Promise<{ id: string }>;
@@ -20,23 +20,23 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
     const profile = await getProfileById(id);
     const contributions = await getContributionsById(id);
 
-    console.log(contributions);
-
     return (
         <div className="bg-[#0D1B2A]">
             {/* Hero */}
-            <main className="min-h-[75vh] relative flex items-center justify-center text-start container mx-auto">
+            <main className="min-h-[75vh] relative flex items-center justify-center text-start container mx-auto py-24">
                 <div className="flex-1 py-10 min-h-120 grid grid-cols-12 gap-6">
                     <div className="col-span-4">
                         <div className="ds-card p-10! h-full">
                             {profile?.avatar_url ? (
-                                <Image
-                                    src={getAvatarUrl(profile?.avatar_url)}
-                                    width={192}
-                                    height={192}
-                                    className="rounded-[12px] overflow-hidden block mx-auto"
-                                    alt="Member"
-                                />
+                                <div className="w-48 h-48 mx-auto rounded-[12px] border-4 border-primary overflow-hidden">
+                                    <Image
+                                        src={getAvatarUrl(profile?.avatar_url)}
+                                        width={192}
+                                        height={192}
+                                        className="block max-w-full h-full"
+                                        alt="Member"
+                                    />
+                                </div>
                             ) : (
                                 <div className="w-46 h-46 rounded-[12px] bg-[#1e201e] border flex items-center justify-center font-space font-bold text-6xl text-primary mx-auto">
                                     {profile?.full_name.charAt(0)}
@@ -46,9 +46,16 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                                 <h3 className="font-space font-bold text-[38px] leading-10">
                                     {profile?.full_name}
                                 </h3>
-                                {profile?.committees?.name && (
+                                {profile?.committees?.name ? (
                                     <p className="font-hanken text-sm text-[#BEC7D4] mt-1">
                                         {profile.committees.name} Committee
+                                    </p>
+                                ) : (
+                                    <p className="font-hanken text-sm text-[#BEC7D4] mt-1">
+                                        {profile?.role?.includes("Founder")
+                                            ? "All Committees"
+                                            : (profile?.committees?.name ??
+                                              "General")}
                                     </p>
                                 )}
                                 {profile?.role && (
@@ -58,8 +65,25 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                                 )}
                             </div>
                             <ul className="flex gap-4 justify-center">
-                                <li className="p-2 border-primary border-2 rounded-3xl opacity-45 pointer-events-none cursor-not-allowed">
-                                    <Code size={28} className="text-primary" />
+                                <li
+                                    className={cn(
+                                        "p-2 border-primary border-2 rounded-3xl",
+                                        !profile?.github_url &&
+                                            "opacity-45 pointer-events-none cursor-not-allowed",
+                                    )}
+                                >
+                                    <Link
+                                        href={
+                                            profile?.github_url ??
+                                            ("" as string)
+                                        }
+                                        target="_blank"
+                                    >
+                                        <Code
+                                            size={28}
+                                            className="text-primary"
+                                        />
+                                    </Link>
                                 </li>
                                 <li className="p-2 border-primary border-2 cursor-pointer rounded-3xl">
                                     <Link
@@ -92,16 +116,19 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                     <div className="col-span-8 flex flex-col gap-6 h-full">
                         <div className="ds-card p-10! flex-1">
                             <h3 className="font-space font-bold text-xl text-primary leading-8 mb-4">
-                                About Me
+                                About
                             </h3>
-                            <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
-                                No Bio yet.
-                            </p>
+                            <p
+                                dangerouslySetInnerHTML={{
+                                    __html: profile?.bio ?? "No bio yet",
+                                }}
+                                className="font-hanken text-[16px] leading-6 text-[#BDC8D1]"
+                            />
                         </div>
                         <div className="flex flex-wrap gap-6">
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    --
+                                    {profile?.projects ?? "--"}
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
                                     Projects Shipped
@@ -109,15 +136,15 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                             </div>
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    --
+                                    {contributions?.length ?? 0}
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
-                                    Lines of Code
+                                    Contributions
                                 </h4>
                             </div>
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    --
+                                    {profile?.workshops ?? "--"}
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
                                     Workshops Led
@@ -125,10 +152,12 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                             </div>
                             <div className="ds-card p-8! flex-1">
                                 <span className="font-space font-bold text-6xl leading-16 tracking-tight text-primary text-center block">
-                                    --
+                                    {new Date(
+                                        profile?.created_at ?? "",
+                                    ).getFullYear()}
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
-                                    Years Active
+                                    Years Since
                                 </h4>
                             </div>
                         </div>
@@ -146,7 +175,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                             contributions.map((c) => (
                                 <div
                                     key={c.title}
-                                    className="flex flex-col gap-2 row row-active"
+                                    className="flex flex-col gap-2 row"
                                 >
                                     <span className="font-mono font-light text-[12px] leading-4">
                                         {getYearlyQuarter(c.date)}{" "}

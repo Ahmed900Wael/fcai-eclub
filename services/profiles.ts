@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 20;
 
 export async function getProfileById(
     id: string,
@@ -77,7 +77,8 @@ export async function getContributionsById(
     const { data, error } = await supabase
         .from("contributions")
         .select("*")
-        .eq("member_id", id);
+        .eq("member_id", id)
+        .order("date", { ascending: false });
 
     if (error) {
         console.error("getContributionsById error:", error.message);

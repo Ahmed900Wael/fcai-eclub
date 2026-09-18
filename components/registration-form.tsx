@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 // import { submitRegistration } from "@/actions/registration";
 import { Upload, ArrowRight, ArrowLeft, CheckCircle, X } from "lucide-react";
+import { submitRegistration } from "@/actions/registration";
 
 interface RegistrationFormProps {
     eventId: string;
@@ -19,7 +20,10 @@ export default function RegistrationForm({
 }: RegistrationFormProps) {
     const [step, setStep] = useState(1);
     const [submitting, setSubmitting] = useState(false);
-    const [result, setResult] = useState<{ success: boolean; error: string | null } | null>(null);
+    const [result, setResult] = useState<{
+        success: boolean;
+        error: string | null;
+    } | null>(null);
     const [cvFile, setCvFile] = useState<File | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -51,11 +55,17 @@ export default function RegistrationForm({
 
     function validateStep1(): boolean {
         const newErrors: Record<string, string> = {};
-        if (!formData.full_name.trim()) newErrors.full_name = "Full name is required";
-        if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+        if (!formData.full_name.trim())
+            newErrors.full_name = "Full name is required";
+        if (
+            !formData.email.trim() ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+        )
             newErrors.email = "Valid email is required";
-        if (!formData.academic_year) newErrors.academic_year = "Academic year is required";
-        if (!formData.department.trim()) newErrors.department = "Department is required";
+        if (!formData.academic_year)
+            newErrors.academic_year = "Academic year is required";
+        if (!formData.department.trim())
+            newErrors.department = "Department is required";
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
@@ -69,13 +79,14 @@ export default function RegistrationForm({
     }
 
     async function handleSubmit() {
-        // setSubmitting(true);
-        // const res = await submitRegistration(eventId, {
-        //     ...formData,
-        //     cv_file: cvFile,
-        // });
-        // setResult(res);
-        // setSubmitting(false);
+        setSubmitting(true);
+        const res = await submitRegistration(eventId, {
+            ...formData,
+            cv_file: cvFile,
+        });
+        setResult(res);
+        setSubmitting(false);
+        window.location.reload();
         return;
     }
 
@@ -108,7 +119,10 @@ export default function RegistrationForm({
                         Step {step} of 3
                     </span>
                 </div>
-                <button onClick={onClose} className="text-[#BEC7D4] hover:text-[#E2E3DF] transition-colors">
+                <button
+                    onClick={onClose}
+                    className="text-[#BEC7D4] hover:text-[#E2E3DF] transition-colors"
+                >
                     <X size={20} />
                 </button>
             </div>
@@ -120,7 +134,10 @@ export default function RegistrationForm({
                         key={s}
                         className="h-1 flex-1 rounded-full transition-colors"
                         style={{
-                            background: s <= step ? "var(--color-primary)" : "var(--outline-variant)",
+                            background:
+                                s <= step
+                                    ? "var(--color-primary)"
+                                    : "var(--outline-variant)",
                         }}
                     />
                 ))}
@@ -143,7 +160,10 @@ export default function RegistrationForm({
             {step === 1 && (
                 <div className="flex flex-col gap-4">
                     <div>
-                        <label className="ds-input-label font-mono" htmlFor="reg-name">
+                        <label
+                            className="ds-input-label font-mono"
+                            htmlFor="reg-name"
+                        >
                             Full Name
                         </label>
                         <input
@@ -151,14 +171,21 @@ export default function RegistrationForm({
                             className="ds-input font-hanken"
                             placeholder="e.g. Ahmed Ali"
                             value={formData.full_name}
-                            onChange={(e) => updateField("full_name", e.target.value)}
+                            onChange={(e) =>
+                                updateField("full_name", e.target.value)
+                            }
                         />
                         {errors.full_name && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">{errors.full_name}</p>
+                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                                {errors.full_name}
+                            </p>
                         )}
                     </div>
                     <div>
-                        <label className="ds-input-label font-mono" htmlFor="reg-email">
+                        <label
+                            className="ds-input-label font-mono"
+                            htmlFor="reg-email"
+                        >
                             University Email
                         </label>
                         <input
@@ -167,21 +194,30 @@ export default function RegistrationForm({
                             type="email"
                             placeholder="you@university.edu"
                             value={formData.email}
-                            onChange={(e) => updateField("email", e.target.value)}
+                            onChange={(e) =>
+                                updateField("email", e.target.value)
+                            }
                         />
                         {errors.email && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">{errors.email}</p>
+                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                                {errors.email}
+                            </p>
                         )}
                     </div>
                     <div>
-                        <label className="ds-input-label font-mono" htmlFor="reg-year">
+                        <label
+                            className="ds-input-label font-mono"
+                            htmlFor="reg-year"
+                        >
                             Academic Year
                         </label>
                         <select
                             id="reg-year"
                             className="ds-select font-hanken"
                             value={formData.academic_year}
-                            onChange={(e) => updateField("academic_year", e.target.value)}
+                            onChange={(e) =>
+                                updateField("academic_year", e.target.value)
+                            }
                         >
                             <option value="">Select year</option>
                             <option value="1st">1st Year</option>
@@ -192,11 +228,16 @@ export default function RegistrationForm({
                             <option value="graduate">Graduate</option>
                         </select>
                         {errors.academic_year && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">{errors.academic_year}</p>
+                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                                {errors.academic_year}
+                            </p>
                         )}
                     </div>
                     <div>
-                        <label className="ds-input-label font-mono" htmlFor="reg-dept">
+                        <label
+                            className="ds-input-label font-mono"
+                            htmlFor="reg-dept"
+                        >
                             Department
                         </label>
                         <input
@@ -204,10 +245,14 @@ export default function RegistrationForm({
                             className="ds-input font-hanken"
                             placeholder="e.g. Computer Science"
                             value={formData.department}
-                            onChange={(e) => updateField("department", e.target.value)}
+                            onChange={(e) =>
+                                updateField("department", e.target.value)
+                            }
                         />
                         {errors.department && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">{errors.department}</p>
+                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                                {errors.department}
+                            </p>
                         )}
                     </div>
                 </div>
@@ -223,12 +268,16 @@ export default function RegistrationForm({
                     ) : (
                         screeningQuestions.map((q, i) => (
                             <div key={i}>
-                                <label className="ds-input-label font-mono">{q}</label>
+                                <label className="ds-input-label font-mono">
+                                    {q}
+                                </label>
                                 <input
                                     className="ds-input font-hanken"
                                     placeholder="Your answer"
                                     value={formData.screening_answers[q] || ""}
-                                    onChange={(e) => updateScreening(q, e.target.value)}
+                                    onChange={(e) =>
+                                        updateScreening(q, e.target.value)
+                                    }
                                 />
                             </div>
                         ))

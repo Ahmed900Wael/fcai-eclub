@@ -51,7 +51,14 @@ const Navbar = () => {
 
                 {/* CTA Button */}
                 <Button className="hidden! md:flex! ds-btn font-mono">
-                    Join the team
+                    <Link
+                        href={
+                            "https://docs.google.com/forms/d/e/1FAIpQLScZJ2j-gheZG5KSVSbAJUxvXjH_UIY7ovGhyYMcgO6BdDFGGg/viewform"
+                        }
+                        target="_blank"
+                    >
+                        Join the team
+                    </Link>
                 </Button>
 
                 {/* Mobile menu button */}

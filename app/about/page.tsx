@@ -23,12 +23,9 @@ const About = () => {
                             Our Mission
                         </h2>
                         <p className="font-hanken text-on-surface-variant text-[16px] leading-6">
-                            To architect an immersive environment where
-                            theoretical computer science meets rapid
-                            prototyping. We empower students to build scalable
-                            solutions, cultivate entrepreneurial mindsets, and
-                            deploy real-world applications that challenge the
-                            status quo.
+                            To give students the skills, experience, and
+                            connections they need to learn, build, collaborate,
+                            and explore entrepreneurship beyond the classroom.
                         </p>
                     </div>
                     <div className="col-span-5">
@@ -54,12 +51,10 @@ const About = () => {
                             Our Vision
                         </h2>
                         <p className="font-hanken text-on-surface-variant text-[16px] leading-6">
-                            To be the premier technical incubator in the region,
-                            recognized for outputting elite engineering talent
-                            and ground-breaking start-ups. We envision a network
-                            where every member is equipped with the exact
-                            technical stack and leadership skills to dominate
-                            tomorrow&apos;s tech landscape.
+                            To create a community where students can learn from
+                            each other, connect with industry, bring their ideas
+                            to life, and grow into confident professionals and
+                            entrepreneurs.
                         </p>
                     </div>
                 </div>
@@ -67,91 +62,119 @@ const About = () => {
 
             <section className="container py-24 pb-48 mx-auto">
                 <h2 className="text-center font-space font-bold text-5xl mb-12 py-4">
-                    Operation <span className="text-primary">Log</span>
+                    How the Story <span className="text-primary">Began</span>
                 </h2>
                 <div className="timeline">
                     <div className="grid grid-cols-2 gap-20 mx-50 time-row">
                         <div className="flex flex-col justify-center">
                             <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
-                                Q1 2021
+                                Q3 2025
                             </span>
                             <h3 className="font-montserrat font-semibold text-2xl leading-8">
-                                System Initialization
+                                Presentation Skills Bootcamp
                             </h3>
                         </div>
                         <div className="ds-card p-6!">
                             <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
-                                The founding members established the core
-                                architecture of the club, setting the
-                                foundational vision for technical excellence.
+                                Building stronger presentation and communication
+                                skills.
                             </p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-20 mx-50 time-row">
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-col justify-center">
                             <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
-                                Q2 2022
+                                Q1 2026
                             </span>
                             <h3 className="font-montserrat font-semibold text-2xl leading-8">
-                                Bootcamp Alpha
+                                MindShift: Adapt to Lead
                             </h3>
                         </div>
                         <div className="ds-card p-6!">
                             <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
-                                Launched the first iteration of practical
-                                bootcamps focusing on modern web stacks and data
-                                science pipelines.
+                                Exploring new perspectives, ideas, and
+                                opportunities.
                             </p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-20 mx-50 time-row">
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-col justify-center">
                             <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
-                                Q3 2023
+                                Q1 2026
                             </span>
                             <h3 className="font-montserrat font-semibold text-2xl leading-8">
-                                System Initialization
+                                Ideation Camp
                             </h3>
                         </div>
                         <div className="ds-card p-6!">
                             <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
-                                The founding members established the core
-                                architecture of the club, setting the
-                                foundational vision for technical excellence.
+                                Turning ideas into concepts through teamwork and
+                                mentorship.
                             </p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-20 mx-50 time-row">
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-col justify-center">
                             <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
-                                Q4 2024
+                                Q2 2026
                             </span>
                             <h3 className="font-montserrat font-semibold text-2xl leading-8">
-                                Bootcamp Alpha
+                                E-Talks x Flat6Labs
                             </h3>
                         </div>
                         <div className="ds-card p-6!">
                             <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
-                                Launched the first iteration of practical
-                                bootcamps focusing on modern web stacks and data
-                                science pipelines.
+                                Connecting students with entrepreneurship and
+                                industry insights.
                             </p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-20 mx-50 time-row">
-                        <div className="flex flex-col gap-2 justify-center">
+                        <div className="flex flex-col justify-center">
                             <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
-                                Present
+                                Q2 2026
                             </span>
                             <h3 className="font-montserrat font-semibold text-2xl leading-8">
-                                Ecosystem Expansion
+                                Demo Day
                             </h3>
                         </div>
                         <div className="ds-card p-6!">
                             <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
-                                Scaling operations to include specialized
-                                hardware tracks, AI research units, and national
-                                hackathon deployments.
+                                Showcasing student ideas and projects to mentors
+                                and judges.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-20 mx-50 time-row">
+                        <div className="flex flex-col justify-center">
+                            <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
+                                Q3 2026
+                            </span>
+                            <h3 className="font-montserrat font-semibold text-2xl leading-8">
+                                Presentation Skills Bootcamp (R2)
+                            </h3>
+                        </div>
+                        <div className="ds-card p-6!">
+                            <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
+                                Building stronger presentation and communication
+                                skills.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-20 mx-50 time-row">
+                        <div className="flex flex-col justify-center">
+                            <span className="font-mono font-medium text-sm leading-4 tracking-widest text-primary uppercase">
+                                Q4 2026
+                            </span>
+                            <h3 className="font-montserrat font-semibold text-2xl leading-8">
+                                Tech Program 2026
+                            </h3>
+                        </div>
+                        <div className="ds-card p-6!">
+                            <p className="font-hanken text-[16px] leading-6 text-on-surface-variant max-w-93.75">
+                                Leveraging the technical skills of our members
+                                by active learning and technical workshops and
+                                activities.
                             </p>
                         </div>
                     </div>

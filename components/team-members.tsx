@@ -83,13 +83,15 @@ export default function TeamMembers({
                         >
                             <div className="w-fit mb-4 p-1 mx-auto border border-white/20 rounded-[12px]">
                                 {p.avatar_url ? (
-                                    <Image
-                                        src={getAvatarUrl(p.avatar_url)}
-                                        alt={p.full_name}
-                                        width={85}
-                                        height={85}
-                                        className="rounded-[12px] object-cover"
-                                    />
+                                    <div className="w-21.25 h-21.25">
+                                        <Image
+                                            src={getAvatarUrl(p.avatar_url)}
+                                            alt={p.full_name}
+                                            width={85}
+                                            height={85}
+                                            className="rounded-[12px] block max-w-full h-full"
+                                        />
+                                    </div>
                                 ) : (
                                     <div className="w-21.25 h-21.25 rounded-[12px] bg-[#1e201e] flex items-center justify-center font-space font-bold text-3xl text-primary">
                                         {p.full_name.charAt(0)}
@@ -100,14 +102,16 @@ export default function TeamMembers({
                                 <h3 className="font-montserrat font-semibold text-lg leading-7">
                                     {p.full_name}
                                 </h3>
-                                <p className="font-mono text-[12px] leading-4 text-on-surface-variant">
-                                    {p.committees?.name ?? "Member"}
-                                </p>
                                 {p.role && (
-                                    <span className="uppercase block mt-4 font-mono font-light text-[12px] leading-4 tracking-wide text-primary">
+                                    <span className="uppercase block font-mono font-light text-[12px] leading-4 tracking-wide text-primary">
                                         {p.role}
                                     </span>
                                 )}
+                                <p className="font-mono text-[12px] leading-4 mt-4 text-on-surface-variant">
+                                    {p.role?.includes("Founder")
+                                        ? "All"
+                                        : (p.committees?.name ?? "General")}
+                                </p>
                             </div>
                         </Link>
                     ))}

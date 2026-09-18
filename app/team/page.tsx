@@ -21,9 +21,9 @@ const Team = async () => {
                     Meet the <span className="text-primary">Visionaries</span>
                 </h1>
                 <p className="text-lg text-[#BEC7D4] leading-7 font-hanken max-w-160">
-                    The architects of tomorrow&apos;s solutions. A collective of
-                    engineers, designers, and strategists building the ecosystem
-                    of innovation at FCAI.
+                    The architects of tomorrow&apos;s solutions. The students
+                    bringing their skills, ideas, and creativity together to
+                    shape the E-Club experience.
                 </p>
             </main>
 
@@ -37,7 +37,7 @@ const Team = async () => {
                         return (
                             <div
                                 key={c.id}
-                                className="ds-card min-w-100 p-10! shrink-0 w-80"
+                                className="ds-card min-w-100 p-10! shrink-0 w-80 flex flex-col"
                             >
                                 <div className="p-4 text-primary border-[hsla(210,100%,80%,0.2)] rounded-sm bg-[#303A45] w-fit mb-8">
                                     <Icon />
@@ -45,7 +45,7 @@ const Team = async () => {
                                 <h3 className="font-space font-semibold text-2xl leading-8 text-[#D9E4F1] mb-2">
                                     {c.name}
                                 </h3>
-                                <p className="font-hanken text-sm leading-5 text-[#BEC7D4] max-w-112.5 mb-6">
+                                <p className="font-hanken text-sm leading-5 flex-1 text-[#BEC7D4] max-w-112.5 mb-6">
                                     {c.description}
                                 </p>
                                 <span className="font-mono text-sm leading-3.5 tracking-wider text-[#B6C6ED]">

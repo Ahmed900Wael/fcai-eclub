@@ -13,7 +13,7 @@ const Committees = async () => {
                 All Committees
             </h2>
 
-            <div className="flex gap-10 overflow-x-auto scrollbar-hide px-4 py-2">
+            <div className="flex gap-10 overflow-x-auto px-4 py-6">
                 {committees.map((c) => {
                     const Icon = getIcon(c.icon);
 

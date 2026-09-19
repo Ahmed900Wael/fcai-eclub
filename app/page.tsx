@@ -185,6 +185,7 @@ export default function Home() {
                     {PARTNERS.map((p) => (
                         <Image
                             src={p.link}
+                            key={p.title}
                             alt="Partner"
                             width={64}
                             height={64}

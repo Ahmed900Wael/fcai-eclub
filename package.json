@@ -33,7 +33,7 @@
     },
     "devDependencies": {
         "@playwright/test": "^1.48.0",
-        "@sentry/nextjs": "^8.34.0",
+        "@sentry/nextjs": "^10.75.0",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19",

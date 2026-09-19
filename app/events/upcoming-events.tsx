@@ -12,7 +12,7 @@ const UpcomingEvents = ({ events }: { events: Event[] | null }) => {
         <div className="grid gap-6">
             {events &&
                 events.map((e) => (
-                    <div className="ds-card flex flex-col justify-between p-7!">
+                    <div className="ds-card flex flex-col justify-between p-7!" key={e.title}>
                         <div className="flex item-center justify-between mb-6">
                             <span className="ds-badge">{e.type}</span>
                             <span className="ds-badge-outline">

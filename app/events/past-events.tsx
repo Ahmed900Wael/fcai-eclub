@@ -17,7 +17,7 @@ const EVENTS_TRACK_ICONS = {
     Business: <BriefcaseBusiness size={16} />,
 };
 
-const EventsGrid = ({ events }: { events: Event[] | null }) => {
+const PastEvents = ({ events }: { events: Event[] | null }) => {
     const [selectedTab, setSelectedTab] = useState<
         "All" | "Technical" | "Business" | "Soft Skills"
     >("All");
@@ -31,7 +31,7 @@ const EventsGrid = ({ events }: { events: Event[] | null }) => {
 
     return (
         <>
-            <ul className="border-b border-b-[#303A45] flex mb-10">
+            <ul className="border-b border-b-[#303A45] flex mb-10 justify-end">
                 <li
                     onClick={() => setSelectedTab("All")}
                     className={cn(
@@ -80,7 +80,7 @@ const EventsGrid = ({ events }: { events: Event[] | null }) => {
                             key={e.title}
                             className="ds-card col-span-12 md:col-span-6 lg:col-span-4 flex flex-col p-0!"
                         >
-                            <div className="p-7">
+                            <div className="p-7 flex-1 flex flex-col">
                                 <div className="flex item-center justify-between mb-5">
                                     <span className="ds-badge-outline">
                                         <Calendar size={16} />
@@ -106,7 +106,7 @@ const EventsGrid = ({ events }: { events: Event[] | null }) => {
                                 <div className="flex justify-start items-center font-mono text-[12px] leading-3 tracking-widest mb-2 text-primary gap-2 uppercase">
                                     {EVENTS_TRACK_ICONS[e.track]} {e.track}
                                 </div>
-                                <h4 className="font-space text-2xl leading-8 mb-4">
+                                <h4 className="font-space text-2xl leading-8 mb-4 line-clamp-1">
                                     {e.title}
                                 </h4>
                                 <p className="font-hanken flex-1 text-sm leading-5 mb-16 text-[#BEC7D4] line-clamp-3">
@@ -130,4 +130,4 @@ const EventsGrid = ({ events }: { events: Event[] | null }) => {
     );
 };
 
-export default EventsGrid;
+export default PastEvents;

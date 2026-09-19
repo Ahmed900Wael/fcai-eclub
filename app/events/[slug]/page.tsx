@@ -15,8 +15,6 @@ export default async function EventDetailPage({ params }: EventPageProps) {
     const { slug } = await params;
     const event: EventWithRegistration | null = await getEventDetails(slug);
 
-    console.log(event);
-
     if (!event) return;
 
     const formattedDate = new Date(event.from_date).toLocaleDateString(
@@ -35,43 +33,33 @@ export default async function EventDetailPage({ params }: EventPageProps) {
     return (
         <div className="bg-[#0D1B2A]">
             {/* Hero */}
-            <main className="min-h-[75vh] relative flex items-center justify-center text-start container mx-auto">
+            <main className="min-h-[80vh] pb-16 flex flex-col gap-8 text-start mx-auto">
                 <div
                     style={{
-                        backgroundImage: `url('${event.event_banner ? getEventImageUrl(event.event_banner) : "/event-1.png"}')`,
-                        backgroundSize: "cover",
+                        backgroundImage: `url('${event.event_banner && getEventImageUrl(event.event_banner)}')`,
+                        backgroundSize: "100% 100%",
+                        backgroundPositionY: "center",
                     }}
-                    className="flex-1 px-12 py-10 min-h-120 flex flex-col justify-between"
+                    className="flex-1 p-10 min-h-120 grid place-content-center event-banner"
                 >
-                    <span
-                        className="ds-badge w-fit mb-4"
-                        data-animate="hero-badge"
-                    >
-                        Upcoming {event.type}
-                    </span>
-                    {!event.event_banner && (
-                        <div>
-                            <h1 className="max-w-260 font-space font-bold text-6xl leading-14 tracking-tight text-[#E2E3DF] mb-4">
+                    {event.type == "bootcamp" && (
+                        <div className="ds-container relative">
+                            <h1 className="max-w-260 font-space font-bold text-7xl text-center leading-18 tracking-tight text-[#E2E3DF] mb-4">
                                 {event.title}
                             </h1>
-                            {event.description && (
-                                <p className="max-w-[80%] font-hanken text-lg leading-7 text-[#BDC8D1] line-clamp-3">
-                                    {event.description}
-                                </p>
-                            )}
                         </div>
                     )}
                 </div>
             </main>
 
             {/* Content */}
-            <section className="container mx-auto grid grid-cols-12 gap-6 pb-24">
+            <section className="ds-container mx-auto grid grid-cols-12 gap-6 pb-24">
                 {/* Left column */}
-                <section className="col-span-8 space-y-6">
+                <section className="col-span-12 lg:col-span-9 space-y-6 order-2 lg:order-1">
                     {/* About */}
                     {event.description && (
                         <div className="ds-card p-10!">
-                            <h3 className="font-space font-bold text-2xl leading-8 mb-4">
+                            <h3 className="font-space font-bold text-3xl leading-9 mb-4">
                                 About
                             </h3>
                             <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
@@ -83,12 +71,15 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                     {/* Instructor */}
                     {event.instructors && (
                         <div className="ds-card p-10!">
-                            <h3 className="font-space font-bold text-2xl leading-8 mb-5">
+                            <h3 className="font-space font-bold text-3xl leading-9 mb-5">
                                 Instructor
                             </h3>
                             <div className="flex flex-col gap-6">
                                 {event.instructors.map((ins) => (
-                                    <div className="flex gap-4 items-center">
+                                    <div
+                                        key={ins.name}
+                                        className="flex gap-4 items-center"
+                                    >
                                         {ins.avatar ? (
                                             <Image
                                                 src={getAvatarUrl(ins.avatar)}
@@ -120,7 +111,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
 
                     {/* Timeline */}
                     <div className="ds-card p-10!">
-                        <h3 className="font-space font-bold text-2xl leading-8 mb-8">
+                        <h3 className="font-space font-bold text-3xl leading-9 mb-8">
                             Timeline
                         </h3>
                         {/* <div className="flex flex-col gap-10 justify-center border-l"> */}
@@ -144,7 +135,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 </section>
 
                 {/* Right sidebar */}
-                <aside className="col-span-4 space-y-6">
+                <aside className="col-span-12 lg:col-span-3 space-y-6 order-1 lg:order-2">
                     {/* Info card */}
                     <div className="ds-card p-10!">
                         <ul className="flex flex-col gap-4">

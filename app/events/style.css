@@ -20,3 +20,14 @@
     border-color: var(--color-primary);
     box-shadow: 0 0 15px rgba(44, 194, 255, 0.4);
 }
+
+.event-banner {
+    position: relative;
+}
+
+.event-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+}

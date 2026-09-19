@@ -19,22 +19,21 @@ export const NAVLINKS = [
 
 export const EVENTS = [
     {
-        day: "24",
-        month: "Oct",
-        title: "Intro to WebGL Shaders",
+        date: "May 16, 2026",
+        title: "The Demo Day",
         description:
-            "Learn the fundamentals of writing fragment shaders to create stunning visual effects.",
-        location: "Main Campus Lab",
-        time: "18:00 - 20:00",
+            "The culminating pitch event for a hands-on startup acceleration program hosted at the Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU), in partnership with Divenore. It marks the final showcase where student teams present tech-driven business solutions developed through intensive mentorship and training to a panel of industry judges and academic leaders.",
+        location: "FCAI-CU Campus",
+        time: "12:00 PM",
+        slug: "the-demo-day",
     },
     {
-        day: "02",
-        month: "Nov",
-        title: "Startup Pitch Night",
+        date: "Apr 15, 2026",
+        title: "E-Talk",
         description:
-            "Watch club members pitch their tech startup ideas to a panel of industry judges.",
-        location: "Virtual Hall",
-        time: "19:00 EST",
+            "E-Talk is an interactive event series designed to bridge the gap between technology and entrepreneurship by encouraging tech talent to think like business builders. Rather than focusing solely on technical skills, E-Talk emphasizes real-world problem solving, market opportunity identification, and transforming technical expertise into viable, impactful ventures through practical talks, discussions, and networking.",
+        location: "Creativa Innovation Hub (Giza)",
+        time: "02:00 PM",
     },
 ];
 

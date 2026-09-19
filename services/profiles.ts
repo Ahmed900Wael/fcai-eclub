@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 8;
 
 export async function getProfileById(
     id: string,

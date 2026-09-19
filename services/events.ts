@@ -1,29 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
 
-export async function getBootcamps(): Promise<Event[] | null> {
-    const supabase = await createClient();
-
-    const { data, error } = await supabase
-        .from("events")
-        .select("*")
-        .eq("type", "bootcamp");
-
-    if (error) {
-        console.error("Error occured:", error.message);
-        return null;
-    }
-
-    return data as Event[];
-}
-
 export async function getEvents(): Promise<Event[] | null> {
     const supabase = await createClient();
 
     const { data, error } = await supabase
         .from("events")
         .select("*")
-        .order("from_date", { ascending: false })
-        .not("type", "eq", "bootcamp");
+        .order("from_date", { ascending: false });
 
     if (error) {
         console.error("Error occured:", error.message);
@@ -51,5 +34,8 @@ export async function getEventDetails(slug: string) {
         p_event_id: event.id,
     });
 
-    return { ...event, registrationsCount: count ?? 0 } as EventWithRegistration;
+    return {
+        ...event,
+        registrationsCount: count ?? 0,
+    } as EventWithRegistration;
 }

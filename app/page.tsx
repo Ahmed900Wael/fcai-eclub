@@ -2,10 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import { EVENTS, PARTNERS, TESTIMONIALS } from "@/constants";
-import { ArrowRight, Clock, MapPin, Quote, Rocket, User } from "lucide-react";
+import {
+    ArrowRight,
+    Calendar,
+    Clock,
+    MapPin,
+    Quote,
+    Rocket,
+    User,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import GsapAnimations from "@/components/gsap-provider";
 
 export default function Home() {
     return (
@@ -40,7 +47,7 @@ export default function Home() {
             </main>
 
             <section className="ds-container mx-auto py-24">
-                <div className="grid grid-cols-4 grid-rows-3 lg:grid-rows-2 gap-6">
+                <div className="grid grid-cols-4 grid-rows-2 gap-6">
                     <div className="col-span-4 lg:col-span-2 row-span-1 md:row-span-2 ds-stat-card gap-2 justify-center">
                         <span className="ds-stat-number text-6xl!">40+</span>
                         <h3 className="ds-stat-label mb-2">Active Members</h3>
@@ -72,7 +79,7 @@ export default function Home() {
 
             <section className="ds-container mx-auto py-24">
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="ds-card ds-card-about col-span-12 sm:col-span-5 flex flex-col gap-6 p-10!">
+                    <div className="ds-card ds-card-about col-span-12 md:col-span-6 flex flex-col gap-6 p-10!">
                         <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase">
                             ⸺ About us
                         </span>
@@ -95,36 +102,32 @@ export default function Home() {
                             <ArrowRight className="inline" size={16} />
                         </Link>
                     </div>
-                    <div className="col-span-12 sm:col-span-7 flex flex-col gap-6">
+                    <div className="col-span-12 md:col-span-6 flex flex-col gap-6">
                         <div className="flex justify-between">
                             <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase">
                                 ⸺ Upcoming Events
                             </span>
-                            <span className="text-[12px] text-on-surface-variant font-medium font-mono tracking-widest uppercase hover:underline cursor-pointer">
-                                View All Events
+                            <span className="text-[12px] text-on-surface-variant text-end font-medium font-mono tracking-widest uppercase hover:underline cursor-pointer">
+                                <Link href={"/events"}>View All Events</Link>
                             </span>
                         </div>
                         {EVENTS.map((e) => (
                             <div
-                                className="ds-card flex gap-6 p-6!"
+                                className="ds-card flex flex-wrap gap-6 p-6!"
                                 key={e.title}
                             >
-                                <div className="ds-card-accent bg-[#0D1B2A]! h-fit text-center aspect-square">
-                                    <span className="font-montserrat font-semibold text-2xl text-primary mb-1 block">
-                                        {e.day}
+                                <div className="flex flex-col flex-1 gap-3">
+                                    <span className="ds-badge-outline w-fit mb-2">
+                                        <Calendar size={16} />
+                                        {e.date}
                                     </span>
-                                    <p className="text-on-surface-variant uppercase font-mono text-sm leading-4">
-                                        {e.month}
-                                    </p>
-                                </div>
-                                <div className="flex flex-col sm:flex-row flex-1 gap-3">
                                     <h3 className="font-space text-2xl leading-8 text-on-surface">
                                         {e.title}
                                     </h3>
-                                    <p className="text-[16px] font-hanken font-light max-w-112.5 leading-6 text-on-surface-variant">
+                                    <p className="text-[16px] font-hanken font-light max-w-112.5 leading-6 text-on-surface-variant line-clamp-3">
                                         {e.description}
                                     </p>
-                                    <ul className="flex flex-col sm:flex-row gap-4">
+                                    <ul className="flex flex-col gap-4 mt-4">
                                         <li className="font-mono text-sm leading-4 text-outline flex items-center gap-1">
                                             <MapPin size={16} /> {e.location}
                                         </li>
@@ -134,7 +137,9 @@ export default function Home() {
                                     </ul>
                                 </div>
                                 <div className="rounded-3xl cursor-pointer hover:-translate-y-1 transition-all self-center text-primary border-primary border h-fit p-2">
-                                    <ArrowRight size={24} />
+                                    <Link href={"/events/slug"}>
+                                        <ArrowRight size={24} />
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -172,11 +177,11 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="container mx-auto py-24 pb-48">
+            <section className="ds-container mx-auto py-24 pb-48">
                 <span className="block text-center mb-10 text-[12px] text-on-surface-variant font-medium font-mono tracking-widest uppercase">
                     Our Partners & Collaborations
                 </span>
-                <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10">
+                <div className="flex overflow-x-auto scrollbar-hide gap-10">
                     {PARTNERS.slice(0, 6).map((p, i) => (
                         <Image
                             src={p}

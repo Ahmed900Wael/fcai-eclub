@@ -32,8 +32,8 @@ const About = () => {
                         <Image
                             width={450}
                             height={300}
+                            src="/WhatsApp Image 2026-09-15 at 19.59.01.jpeg"
                             className="min-w-full grayscale-100"
-                            src="/about-demo-1.png"
                             alt="Mission"
                         />
                     </div>
@@ -41,7 +41,7 @@ const About = () => {
                         <Image
                             width={450}
                             height={300}
-                            src="/about-demo-2.png"
+                            src="/1779383511006.jpg"
                             className="min-w-full grayscale-100"
                             alt="Vision"
                         />

@@ -73,7 +73,7 @@ export default function TeamMembers({
                     </button>
                 ))}
             </div>
-            {!loading && (
+            {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 my-16">
                     {profiles.map((p) => (
                         <Link
@@ -116,7 +116,7 @@ export default function TeamMembers({
                         </Link>
                     ))}
                 </div>
-            )}
+            }
             {loading && (
                 <p className="text-center font-mono text-sm text-[#BEC7D4] mt-16">
                     Loading...

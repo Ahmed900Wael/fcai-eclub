@@ -182,9 +182,9 @@ export default function Home() {
                     Our Partners & Collaborations
                 </span>
                 <div className="flex overflow-x-auto scrollbar-hide gap-10">
-                    {PARTNERS.slice(0, 6).map((p, i) => (
+                    {PARTNERS.map((p) => (
                         <Image
-                            src={p}
+                            src={p.link}
                             alt="Partner"
                             width={64}
                             height={64}

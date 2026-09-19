@@ -28,15 +28,16 @@ const Partnerships = () => {
                     {PARTNERS.map((p, i) => (
                         <div
                             key={i}
-                            className="ds-card min-h-50 grid place-content-center"
+                            className="ds-card min-h-50 grid gap-4 place-content-center"
                         >
                             <Image
-                                src={p}
+                                src={p.link}
                                 alt="Partner"
                                 width={64}
                                 height={64}
-                                className="block w-24 h-24"
+                                className="block w-24 h-24 mx-auto"
                             />
+                            <h4 className="text-center">{p.title}</h4>
                         </div>
                     ))}
                 </div>

@@ -40,7 +40,7 @@ export async function getProfiles(
     let dataQuery = supabase
         .from("profiles")
         .select("*, committees(name, icon)")
-        .order("full_name", { ascending: true });
+        .order("sort_order", { ascending: true });
 
     if (committeeId) {
         countQuery = countQuery.eq("committee_id", committeeId);

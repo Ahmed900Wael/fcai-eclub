@@ -57,10 +57,28 @@ export const TESTIMONIALS = [
 ];
 
 export const PARTNERS = [
-    "/partner_details/creativa _innovation_hubs.png",
-    "/partner_details/data_skool.png",
-    "/partner_details/divenore.png",
-    "/partner_details/fcai.png",
-    "/partner_details/kayfa.svg",
-    "/partner_details/novera.jpg",
+    {
+        title: "Creativa Innovation Hubs",
+        link: "/partner_details/creativa _innovation_hubs.png",
+    },
+    {
+        title: "Data Skool",
+        link: "/partner_details/data_skool.png",
+    },
+    {
+        title: "Divenore",
+        link: "/partner_details/divenore.png",
+    },
+    {
+        title: "FCAI-CU",
+        link: "/partner_details/fcai.png",
+    },
+    {
+        title: "Kayfa",
+        link: "/partner_details/kayfa.svg",
+    },
+    {
+        title: "Novera",
+        link: "/partner_details/novera.jpg",
+    },
 ];

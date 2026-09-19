@@ -21,7 +21,7 @@ const Footer = () => {
                     </p>
                 </div>
                 <div>
-                    <h3 className="ds-footer-heading">Navigation</h3>
+                    <h3 className="ds-footer-heading">Quick Links</h3>
                     <ul className="flex flex-col gap-2">
                         <li>
                             <Link href="/privacy" className="ds-footer-link">

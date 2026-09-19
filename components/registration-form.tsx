@@ -296,7 +296,45 @@ export default function RegistrationForm({
                         type="file"
                         accept=".pdf,.doc,.docx"
                         className="hidden"
-                        onChange={(e) => setCvFile(e.target.files?.[0] || null)}
+                        onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) {
+                                setCvFile(null);
+                                return;
+                            }
+
+                            // Client-side validation
+                            const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                            if (file.size > MAX_FILE_SIZE) {
+                                alert(
+                                    "File size exceeds 5MB limit. Please upload a smaller file.",
+                                );
+                                setCvFile(null);
+                                if (fileInputRef.current)
+                                    fileInputRef.current.value = "";
+                                return;
+                            }
+
+                            const allowedExtensions = ["pdf", "doc", "docx"];
+                            const fileExt = file.name
+                                .split(".")
+                                .pop()
+                                ?.toLowerCase();
+                            if (
+                                !fileExt ||
+                                !allowedExtensions.includes(fileExt)
+                            ) {
+                                alert(
+                                    "Invalid file type. Only PDF, DOC, and DOCX files are allowed.",
+                                );
+                                setCvFile(null);
+                                if (fileInputRef.current)
+                                    fileInputRef.current.value = "";
+                                return;
+                            }
+
+                            setCvFile(file);
+                        }}
                     />
                     <button
                         type="button"

@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 // Layout
 import Navbar from "@/components/navbar";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 {children}
 
                 <Footer />
+                <Analytics />
             </body>
         </html>
     );

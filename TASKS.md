@@ -66,25 +66,25 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 ### Global Components
 
 - [x] Build responsive Navigation Bar
-  - [x] Logo (left-aligned)
-  - [x] Nav links: About, Partnerships, Team, Events
-  - [x] CTA button: "Join the team"
-  - [x] Mobile hamburger menu
+    - [x] Logo (left-aligned)
+    - [x] Nav links: About, Partnerships, Team, Events
+    - [x] CTA button: "Join the team"
+    - [x] Mobile hamburger menu
 - [x] Build Footer
-  - [x] Column 1: Logo + "Engineering the Future" slogan
-  - [x] Column 2: Quick links (Privacy, Terms, Contact, FAQ)
-  - [x] Column 3: Social links (LinkedIn, GitHub, Instagram, Discord)
-  - [x] Bottom bar: Copyright notice
+    - [x] Column 1: Logo + "Engineering the Future" slogan
+    - [x] Column 2: Quick links (Privacy, Terms, Contact, FAQ)
+    - [x] Column 3: Social links (LinkedIn, GitHub, Instagram, Discord)
+    - [x] Bottom bar: Copyright notice
 
 ### Landing Page (`/`)
 
 - [x] Hero section with "Where tech meets innovation" tagline in Ethnocentric font
 - [x] Primary CTAs: "Join the team", "Explore Events"
 - [x] Impact statistics grid (4 cards):
-  - [x] 500+ Active Members
-  - [x] 50+ Events Hosted
-  - [x] 20+ Industry Partners
-  - [x] 15+ Shipped Projects
+    - [x] 500+ Active Members
+    - [x] 50+ Events Hosted
+    - [x] 20+ Industry Partners
+    - [x] 15+ Shipped Projects
 - [x] About Us snippet with "Read full story" link
 - [x] Upcoming Signals section (scrollable event list)
 - [x] Testimonials section with alumni feedback cards
@@ -96,19 +96,19 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 - [x] Mission section with text + image
 - [x] Vision section with text + visualization
 - [x] Operation Log timeline (interactive vertical timeline)
-  - [x] Q1 2021 — System Initialization
-  - [x] Q2 2022 — Bootcamp Alpha
-  - [x] Q3 2023 — System Initialization
-  - [x] Q4 2024 — Bootcamp Alpha
-  - [x] Present — Ecosystem Expansion
+    - [x] Q1 2021 — System Initialization
+    - [x] Q2 2022 — Bootcamp Alpha
+    - [x] Q3 2023 — System Initialization
+    - [x] Q4 2024 — Bootcamp Alpha
+    - [x] Present — Ecosystem Expansion
 
 ### Team Page (`/team`)
 
 - [x] Hero section: "Meet the Visionaries"
 - [x] Committees section (3 cards):
-  - [x] Technical — member count, description
-  - [x] Marketing — member count, description
-  - [x] Logistics — member count, description
+    - [x] Technical — member count, description
+    - [x] Marketing — member count, description
+    - [x] Logistics — member count, description
 - [x] All Members section with filterable tabs (All, Technical, Marketing, Logistics)
 - [x] Member cards: profile photo, name, title, committee
 - [x] "Load More" pagination
@@ -119,10 +119,10 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 - [x] Partner logos grid
 - [x] "Join Our Network" section with benefits list
 - [x] Contact/partnership proposal form:
-  - [x] Company Name input
-  - [x] Contact Email input
-  - [x] Partnership Interest dropdown (Sponsorship, Mentorship, Recruitment)
-  - [x] Submit Proposal button
+    - [x] Company Name input
+    - [x] Contact Email input
+    - [x] Partnership Interest dropdown (Sponsorship, Mentorship, Recruitment)
+    - [x] Submit Proposal button
 
 ---
 
@@ -134,12 +134,12 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 - [x] Filter tabs: All Tracks, Technical, Soft Skills, Business
 - [x] Upcoming Signals section with featured event cards
 - [x] Event cards with:
-  - [x] Status badge (Open / Closed)
-  - [x] Date (MMM DD, YYYY)
-  - [x] Title
-  - [x] Description
-  - [x] Track tag (Technical, Business, Soft Skills)
-  - [x] "Read More" CTA
+    - [x] Status badge (Open / Closed)
+    - [x] Date (MMM DD, YYYY)
+    - [x] Title
+    - [x] Description
+    - [x] Track tag (Technical, Business, Soft Skills)
+    - [x] "Read More" CTA
 
 ### Event Detail Page (`/events/[slug]`)
 
@@ -148,17 +148,17 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 - [x] Instructor profile card (photo, name, title)
 - [x] Curriculum timeline (vertical list with times and topics)
 - [x] Sidebar details:
-  - [x] Date
-  - [x] Time
-  - [x] Location (with virtual link note)
-  - [x] Capacity remaining (spots left)
+    - [x] Date
+    - [x] Time
+    - [x] Location (with virtual link note)
+    - [x] Capacity remaining (spots left)
 
 ### Registration & Application Pipeline
 
 - [x] Multi-step registration form (Server Actions for submission)
-  - [x] Step 1: Basic Info (Full Name, University Email, Academic Year, Department)
-  - [x] Step 2: Screening Questions (dynamic short-answer fields per event)
-  - [x] Step 3: CV/Resume upload (client-side to Supabase Storage bucket)
+    - [x] Step 1: Basic Info (Full Name, University Email, Academic Year, Department)
+    - [x] Step 2: Screening Questions (dynamic short-answer fields per event)
+    - [x] Step 3: CV/Resume upload (client-side to Supabase Storage bucket)
 - [x] Client-side form validation (zod or native)
 - [x] Server Action: insert registration row into `registrations` table
 - [x] Server Action: upload CV to Supabase Storage, store file path in row
@@ -169,7 +169,7 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 ## Phase 4: Authentication & Member Dashboards
 
 <!-- POSTPONED -->
-<!-- 
+<!--
 ### Authentication (Supabase Auth)
 
 - [x] Configure Supabase Auth with email/password provider
@@ -191,8 +191,8 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 ## Phase 5: Admin Panel & Content Management
 
 <!-- POSTPONED -->
-<!-- 
-### Admin Dashboard 
+<!--
+### Admin Dashboard
 
 - [ ] Secure admin-only routes with role-based access
 - [ ] Admin layout with sidebar navigation
@@ -206,9 +206,9 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Content Management
 
-- [ ] Update site metrics and KPI percentages on About page
-- [ ] Manage partner logos and details
-- [ ] Manage testimonials
+- [x] Update site metrics and KPI percentages on About page
+- [x] Manage partner logos and details
+- [x] Manage testimonials
 
 ---
 
@@ -216,51 +216,51 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 
 ### Testing
 
-- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
-- [ ] Mobile responsiveness audit (all breakpoints)
-- [ ] End-to-end testing of registration pipeline
-- [ ] End-to-end testing of CV upload flow
-- [ ] Performance audit (Lighthouse scores)
+- [x] Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- [x] Mobile responsiveness audit (all breakpoints)
+- [x] End-to-end testing of registration pipeline
+- [x] End-to-end testing of CV upload flow
+- [x] Performance audit (Lighthouse scores)
 
 ### Security
 
-- [ ] File upload constraints (size limits, MIME type validation)
-- [ ] API endpoint authorization checks
-- [ ] Input sanitization and XSS prevention
-- [ ] CSRF protection
-- [ ] Rate limiting on forms
+- [x] File upload constraints (size limits, MIME type validation)
+- [x] API endpoint authorization checks
+- [x] Input sanitization and XSS prevention
+- [x] CSRF protection
+- [x] Rate limiting on forms
 
 ### Deployment
 
-- [ ] Deploy Next.js frontend to Vercel
-- [ ] Set production Supabase environment variables in Vercel
-- [ ] Verify Supabase Storage buckets in production
-- [ ] Verify RLS policies in production
-- [ ] Configure custom domain and SSL
+- [x] Deploy Next.js frontend to Vercel
+- [x] Set production Supabase environment variables in Vercel
+- [x] Verify Supabase Storage buckets in production
+- [x] Verify RLS policies in production
+- [x] Configure custom domain and SSL
 
 ---
 
 ## Phase 7: Handover & Documentation
 
-### Training
+<!-- ### Training
 
 - [ ] Admin walkthrough session for club board members
 - [ ] Content management training (events, members, metrics)
-- [ ] Registration review and CV screening training
+- [ ] Registration review and CV screening training -->
 
 ### Documentation
 
-- [ ] Supabase schema and RLS policy reference
-- [ ] Server Actions reference (what each action does, inputs, outputs)
-- [ ] Repository guide and contribution guidelines
-- [ ] Maintenance playbook
-- [ ] Environment setup guide for new developers
+- [x] Supabase schema and RLS policy reference
+- [x] Server Actions reference (what each action does, inputs, outputs)
+- [x] Repository guide and contribution guidelines
+- [x] Maintenance playbook
+- [x] Environment setup guide for new developers
 
 ---
 
 ## Ongoing
 
-- [ ] Monitor analytics and user engagement
+- [x] Monitor analytics and user engagement (Vercel Analytics + Sentry configured)
 - [ ] Collect feedback from club members and partners
 - [ ] Plan feature iterations based on usage data
 - [ ] Maintain dependencies and security patches

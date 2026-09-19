@@ -55,7 +55,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                                         {profile?.role?.includes("Founder")
                                             ? "All Committees"
                                             : (profile?.committees?.name ??
-                                              "General")}
+                                            "General")}
                                     </p>
                                 )}
                                 {profile?.role && (
@@ -190,6 +190,11 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                                 </div>
                             ))}
                     </div>
+                    {contributions?.length == 0 && (
+                        <p className="text-center">
+                            No Contributions Added yet.
+                        </p>
+                    )}
                 </div>
             </section>
 
@@ -197,27 +202,15 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                 <span className="text-sm text-primary font-medium font-mono tracking-widest uppercase block mb-10">
                     ⸺ Work Documentation
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div>
-                        <Image
-                            src="/work-1.png"
-                            loading="eager"
-                            alt="Work 1"
-                            width={600}
-                            height={400}
-                            className="block max-w-full aspect-3/2"
-                        />
-                    </div>
-                    <div>
-                        <Image
-                            src="/work-2.png"
-                            loading="eager"
-                            alt="Work 2"
-                            width={600}
-                            height={400}
-                            className="block max-w-full aspect-3/2"
-                        />
-                    </div>
+                {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <p>No Work Added yet.</p>
+                </div> */}
+                <div className="ds-card p-10!">
+                    {contributions?.length == 0 && (
+                        <p className="text-center">
+                            No Work Added yet.
+                        </p>
+                    )}
                 </div>
             </section>
         </div>

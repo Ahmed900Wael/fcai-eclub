@@ -61,6 +61,5 @@ export const PARTNERS = [
     "/partner_details/divenore.png",
     "/partner_details/fcai.png",
     "/partner_details/kayfa.svg",
-    "/partner_details/ministry_youth_sport_egypt.png",
     "/partner_details/novera.jpg",
 ];

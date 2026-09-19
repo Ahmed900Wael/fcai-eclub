@@ -31,11 +31,11 @@ const PastEvents = ({ events }: { events: Event[] | null }) => {
 
     return (
         <>
-            <ul className="border-b border-b-[#303A45] flex mb-10 justify-end">
+            <ul className="border-b border-b-[#303A45] flex mb-10 overflow-x-auto scrollbar-hide">
                 <li
                     onClick={() => setSelectedTab("All")}
                     className={cn(
-                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer hover:text-primary hover:border-b hover:border-b-primary",
+                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer shrink-0 hover:text-primary hover:border-b hover:border-b-primary",
                         selectedTab == "All" &&
                             "text-primary border-b border-b-primary",
                     )}
@@ -45,7 +45,7 @@ const PastEvents = ({ events }: { events: Event[] | null }) => {
                 <li
                     onClick={() => setSelectedTab("Technical")}
                     className={cn(
-                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer hover:text-primary hover:border-b hover:border-b-primary",
+                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer shrink-0 hover:text-primary hover:border-b hover:border-b-primary",
                         selectedTab == "Technical" &&
                             "text-primary border-b border-b-primary",
                     )}
@@ -55,7 +55,7 @@ const PastEvents = ({ events }: { events: Event[] | null }) => {
                 <li
                     onClick={() => setSelectedTab("Business")}
                     className={cn(
-                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer hover:text-primary hover:border-b hover:border-b-primary",
+                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer shrink-0 hover:text-primary hover:border-b hover:border-b-primary",
                         selectedTab == "Business" &&
                             "text-primary border-b border-b-primary",
                     )}
@@ -65,7 +65,7 @@ const PastEvents = ({ events }: { events: Event[] | null }) => {
                 <li
                     onClick={() => setSelectedTab("Soft Skills")}
                     className={cn(
-                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer hover:text-primary hover:border-b hover:border-b-primary",
+                        "font-mono text-sm leading-3.5 text-[#BEC7D4] py-6 px-5 cursor-pointer shrink-0 hover:text-primary hover:border-b hover:border-b-primary",
                         selectedTab == "Soft Skills" &&
                             "text-primary border-b border-b-primary",
                     )}

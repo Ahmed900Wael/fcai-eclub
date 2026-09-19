@@ -34,6 +34,7 @@ export const EVENTS = [
             "E-Talk is an interactive event series designed to bridge the gap between technology and entrepreneurship by encouraging tech talent to think like business builders. Rather than focusing solely on technical skills, E-Talk emphasizes real-world problem solving, market opportunity identification, and transforming technical expertise into viable, impactful ventures through practical talks, discussions, and networking.",
         location: "Creativa Innovation Hub (Giza)",
         time: "02:00 PM",
+        slug: "e-talk",
     },
 ];
 

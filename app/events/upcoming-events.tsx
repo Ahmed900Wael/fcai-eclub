@@ -17,7 +17,7 @@ const UpcomingEvents = ({ events }: { events: Event[] | null }) => {
                             <span className="ds-badge">{e.type}</span>
                             <span className="ds-badge-outline">
                                 <Calendar size={16} />
-                                {new Date(e.to_date ?? "").toLocaleDateString(
+                                {new Date(e.from_date ?? "").toLocaleDateString(
                                     "en-US",
                                     {
                                         month: "short",

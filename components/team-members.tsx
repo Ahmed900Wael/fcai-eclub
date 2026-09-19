@@ -109,7 +109,7 @@ export default function TeamMembers({
                                 )}
                                 <p className="font-mono text-[12px] leading-4 mt-4 text-on-surface-variant">
                                     {p.role?.includes("Founder")
-                                        ? "All"
+                                        ? "President"
                                         : (p.committees?.name ?? "General")}
                                 </p>
                             </div>

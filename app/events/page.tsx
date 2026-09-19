@@ -10,7 +10,7 @@ const Events = async () => {
             <main className="min-h-[75vh] flex flex-col justify-center text-center ds-container mx-auto">
                 <div className="absolute top-0 left-0 w-lg hidden sm:block h-120 blur-3xl bg-primary/10 rounded-full"></div>
                 <h1 className="font-space text-6xl font-bold capitalize mb-8">
-                    Events & Bootcamps
+                    Events <span className="normal-case">and</span> Bootcamps
                 </h1>
                 <p className="text-lg opacity-85 leading-7 font-hanken max-w-3xl mx-auto">
                     From technical workshops to entrepreneurship and

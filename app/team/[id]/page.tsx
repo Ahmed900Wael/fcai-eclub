@@ -55,7 +55,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                                         {profile?.role?.includes("Founder")
                                             ? "All Committees"
                                             : (profile?.committees?.name ??
-                                            "General")}
+                                              "General")}
                                     </p>
                                 )}
                                 {profile?.role && (
@@ -157,7 +157,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                                     ).getFullYear()}
                                 </span>
                                 <h4 className="mt-4 uppercase font-mono font-light text-[12px] leading-4 tracking-wider text-center">
-                                    Years Since
+                                    Member Since
                                 </h4>
                             </div>
                         </div>
@@ -207,9 +207,7 @@ const MemberProfile = async ({ params }: ProfilePageProps) => {
                 </div> */}
                 <div className="ds-card p-10!">
                     {contributions?.length == 0 && (
-                        <p className="text-center">
-                            No Work Added yet.
-                        </p>
+                        <p className="text-center">No Work Added yet.</p>
                     )}
                 </div>
             </section>

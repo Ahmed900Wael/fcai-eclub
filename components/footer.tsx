@@ -24,23 +24,21 @@ const Footer = () => {
                     <h3 className="ds-footer-heading">Navigation</h3>
                     <ul className="flex flex-col gap-2">
                         <li>
-                            <Link href="" className="ds-footer-link">
+                            <Link href="/privacy" className="ds-footer-link">
                                 Privacy
                             </Link>
                         </li>
                         <li>
-                            <Link href="" className="ds-footer-link">
+                            <Link href="/terms" className="ds-footer-link">
                                 Terms
                             </Link>
                         </li>
                         <li>
-                            <Link href="" className="ds-footer-link">
+                            <Link
+                                href="mailto:fcaieclub@gmail.com"
+                                className="ds-footer-link"
+                            >
                                 Contact
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="" className="ds-footer-link">
-                                FAQ
                             </Link>
                         </li>
                     </ul>

@@ -55,7 +55,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             {/* Content */}
             <section className="ds-container mx-auto grid grid-cols-12 gap-6 pb-24">
                 {/* Left column */}
-                <section className="col-span-12 lg:col-span-9 space-y-6 order-2 lg:order-1">
+                <section className="col-span-12 lg:col-span-8 space-y-6 order-2 lg:order-1">
                     {/* About */}
                     {event.description && (
                         <div className="ds-card p-10!">
@@ -135,7 +135,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 </section>
 
                 {/* Right sidebar */}
-                <aside className="col-span-12 lg:col-span-3 space-y-6 order-1 lg:order-2">
+                <aside className="col-span-12 lg:col-span-4 space-y-6 order-1 lg:order-2">
                     {/* Info card */}
                     <div className="ds-card p-10!">
                         <ul className="flex flex-col gap-4">

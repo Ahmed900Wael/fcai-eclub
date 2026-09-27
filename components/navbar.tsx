@@ -50,16 +50,14 @@ const Navbar = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <Button className="hidden! md:flex! ds-btn font-mono">
-                    <Link
-                        href={
-                            "https://docs.google.com/forms/d/e/1FAIpQLScZJ2j-gheZG5KSVSbAJUxvXjH_UIY7ovGhyYMcgO6BdDFGGg/viewform"
-                        }
-                        target="_blank"
-                    >
+                <Link
+                    href={"https://chat.whatsapp.com/JFsFchkMd664L2zpqMNSaJ"}
+                    target="_blank"
+                >
+                    <Button className="hidden! md:flex! ds-btn font-mono">
                         Join the team
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
 
                 {/* Mobile menu button */}
                 <Button
@@ -94,12 +92,20 @@ const Navbar = () => {
                             })}
                         </ul>
 
-                        <Button
-                            className="ds-btn w-full text-center font-mono"
-                            onClick={() => setIsOpen(false)}
+                        <Link
+                            href={
+                                "https://chat.whatsapp.com/JFsFchkMd664L2zpqMNSaJ"
+                            }
+                            target="_blank"
+                            className="md:hidden! flex! flex-1"
                         >
-                            Join the team
-                        </Button>
+                            <Button
+                                className="ds-btn font-mono w-full"
+                                onClick={() => setIsOpen(!open)}
+                            >
+                                Join the team
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             )}

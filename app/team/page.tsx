@@ -14,33 +14,30 @@ const Committees = async () => {
             </h2>
 
             <div className="flex gap-10 overflow-x-auto px-4 py-6">
-                {committees.map((c) => {
-                    const Icon = getIcon(c.icon);
+                {committees
+                    ?.filter((c) => !c.is_management)
+                    .map((c) => {
+                        const Icon = getIcon(c.icon);
 
-                    return (
-                        <div
-                            key={c.id}
-                            className="ds-card min-w-100 p-10! shrink-0 w-80 flex flex-col"
-                        >
-                            <div className="p-4 text-primary border-[hsla(210,100%,80%,0.2)] rounded-sm bg-[#303A45] w-fit mb-8">
-                                <Icon />
+                        return (
+                            <div
+                                key={c.id}
+                                className="ds-card min-w-100 p-10! shrink-0 w-80 flex flex-col"
+                            >
+                                <div className="p-4 text-primary border-[hsla(210,100%,80%,0.2)] rounded-sm bg-[#303A45] w-fit mb-8">
+                                    <Icon />
+                                </div>
+
+                                <h3 className="font-space font-semibold text-2xl leading-8 text-[#D9E4F1] mb-2">
+                                    {c.name}
+                                </h3>
+
+                                <p className="font-hanken text-sm leading-5 flex-1 text-[#BEC7D4] max-w-112.5 mb-6">
+                                    {c.description}
+                                </p>
                             </div>
-
-                            <h3 className="font-space font-semibold text-2xl leading-8 text-[#D9E4F1] mb-2">
-                                {c.name}
-                            </h3>
-
-                            <p className="font-hanken text-sm leading-5 flex-1 text-[#BEC7D4] max-w-112.5 mb-6">
-                                {c.description}
-                            </p>
-
-                            <span className="font-mono text-sm leading-3.5 tracking-wider text-[#B6C6ED]">
-                                {c.member_count} Member
-                                {c.member_count !== 1 && "s"}
-                            </span>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
             </div>
         </section>
     );
@@ -48,19 +45,15 @@ const Committees = async () => {
 
 const TeamMembersSection = async () => {
     const committees = await getCommittees();
-    const { profiles, hasMore } = await getProfiles(1);
+    const profiles = await getProfiles();
 
     return (
         <section className="ds-container py-24 mx-auto">
-            <h2 className="font-space font-semibold text-[32px] leading-10.5 text-[#D9E4F1] ps-4 mb-12 border-s-4 border-primary">
+            <h2 className="font-space font-semibold text-[32px] leading-10.5 text-[#D9E4F1] ps-4 mb-24 border-s-4 border-primary">
                 Team Members
             </h2>
 
-            <TeamMembers
-                initialProfiles={profiles}
-                initialHasMore={hasMore}
-                committees={committees}
-            />
+            <TeamMembers profiles={profiles ?? []} committees={committees} />
         </section>
     );
 };

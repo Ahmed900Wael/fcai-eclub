@@ -9,7 +9,7 @@ import RegistrationForm from "./registration-form";
 interface RegisterButtonProps {
     eventId: string;
     eventTitle: string;
-    screeningQuestions: string[];
+    screeningQuestions: ScreeningQuestion[];
     disabled?: boolean;
 }
 

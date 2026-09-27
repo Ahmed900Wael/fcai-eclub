@@ -74,6 +74,15 @@ declare interface Event {
     created_at: string;
 }
 
+declare interface ScreeningQuestion {
+    type: "mcq" | "answer";
+    question_text: string;
+    answer?: string;
+    options?: string[];
+    is_required: boolean;
+}
+
 declare interface EventWithRegistration extends Event {
     registrationsCount: number;
+    screening_questions: ScreeningQuestion[];
 }

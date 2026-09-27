@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getYearlyQuarter(date: string): string {
-    let month = parseInt(date.split("-")[1] ?? 0);
+    const month = parseInt(date.split("-")[1] ?? 0);
 
     switch (month) {
         case 1:

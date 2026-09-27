@@ -114,12 +114,18 @@ const PastEvents = ({ events }: { events: Event[] | null }) => {
                                 </p>
                                 <hr />
                                 <div className="flex font-mono hover:text-primary text-sm leading-3.5 tracking-widest font-extralight capitalize items-center justify-between mt-4">
-                                    <Link
-                                        href={`/events/${e.slug}`}
-                                        className="flex-1"
-                                    >
-                                        Read More
-                                    </Link>
+                                    {e.slug ? (
+                                        <Link
+                                            href={`/events/${e.slug}`}
+                                            className="flex-1"
+                                        >
+                                            Read More
+                                        </Link>
+                                    ) : (
+                                        <span className="flex-1">
+                                            {e.title}
+                                        </span>
+                                    )}
                                     <ArrowRight size={24} />
                                 </div>
                             </div>

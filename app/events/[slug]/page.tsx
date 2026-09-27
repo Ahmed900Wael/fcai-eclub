@@ -128,7 +128,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                                 </p>
                             </div> */}
                             <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
-                                We're waiting for schedule to be announced.
+                                We&apos;re waiting for schedule to be announced.
                             </p>
                         </div>
                     </div>
@@ -188,8 +188,8 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                         <RegisterButton
                             eventId={event.id}
                             eventTitle={event.title}
-                            screeningQuestions={[]}
-                            disabled={spotsRemaining == 0}
+                            screeningQuestions={event.screening_questions}
+                            disabled={spotsRemaining == 0 || event.status == "pending"}
                         />
                     </div>
                 </aside>

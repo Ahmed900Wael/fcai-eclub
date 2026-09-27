@@ -10,7 +10,7 @@ function getAvatarUrl(path: string): string {
 
 export default function TeamMembers({
     profiles,
-    committees,
+    committees: _committees,
 }: TeamMembersProps) {
     return (
         <div className="flex flex-col gap-40">

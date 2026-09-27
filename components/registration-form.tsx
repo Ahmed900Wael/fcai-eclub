@@ -1,15 +1,131 @@
 "use client";
 
-import { useState, useRef } from "react";
-// import { submitRegistration } from "@/actions/registration";
+import { useState, useRef, useMemo } from "react";
 import { Upload, ArrowRight, ArrowLeft, CheckCircle, X } from "lucide-react";
 import { submitRegistration } from "@/actions/registration";
+import { Button } from "./ui/button";
+
+type FieldType = "text" | "email" | "select";
+
+interface FieldConfig {
+    key: string;
+    label: string;
+    placeholder: string;
+    type: FieldType;
+    required: boolean;
+    options?: { value: string; label: string }[];
+    validate?: (value: string) => string | null;
+}
 
 interface RegistrationFormProps {
     eventId: string;
     eventTitle: string;
-    screeningQuestions: string[];
+    screeningQuestions: ScreeningQuestion[];
     onClose: () => void;
+}
+
+const FIELDS_PER_STEP = 3;
+
+function validateEmail(value: string): string | null {
+    if (!value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+        return "Valid email is required";
+    return null;
+}
+
+function validateRequired(key: string, label: string) {
+    return (value: string): string | null => {
+        if (!value.trim()) return `${label} is required`;
+        return null;
+    };
+}
+
+const FIELD_CONFIG: FieldConfig[] = [
+    {
+        key: "full_name",
+        label: "Full Name",
+        placeholder: "e.g. Ahmed Ali",
+        type: "text",
+        required: true,
+        validate: validateRequired("full_name", "Full Name"),
+    },
+    {
+        key: "email",
+        label: "Email Address",
+        placeholder: "you@mail.com",
+        type: "email",
+        required: true,
+        validate: validateEmail,
+    },
+    {
+        key: "phone_number",
+        label: "Phone Number",
+        placeholder: "01*********",
+        type: "text",
+        required: true,
+        validate: validateRequired("phone_number", "Phone Number"),
+    },
+    {
+        key: "university",
+        label: "University",
+        placeholder: "e.g. Fayoum University",
+        type: "text",
+        required: true,
+        validate: validateRequired("university", "University"),
+    },
+    {
+        key: "faculty",
+        label: "Faculty",
+        placeholder: "e.g. Computer Science and Engineering",
+        type: "text",
+        required: true,
+        validate: validateRequired("faculty", "Faculty"),
+    },
+    {
+        key: "department",
+        label: "Department",
+        placeholder: "e.g. Computer Science",
+        type: "text",
+        required: true,
+        validate: validateRequired("department", "Department"),
+    },
+    {
+        key: "academic_year",
+        label: "Academic Year",
+        placeholder: "Select year",
+        type: "select",
+        required: true,
+        options: [
+            { value: "1st", label: "1st Year" },
+            { value: "2nd", label: "2nd Year" },
+            { value: "3rd", label: "3rd Year" },
+            { value: "4th", label: "4th Year" },
+            { value: "5th", label: "5th Year" },
+            { value: "graduate", label: "Graduate" },
+        ],
+        validate: (v) => (!v ? "Academic year is required" : null),
+    },
+    {
+        key: "facebook_profile",
+        label: "Facebook Profile",
+        placeholder: "e.g. facebook.com/username",
+        type: "text",
+        required: false,
+    },
+    {
+        key: "linkedin_profile",
+        label: "LinkedIn Profile",
+        placeholder: "e.g. linkedin.com/in/username",
+        type: "text",
+        required: false,
+    },
+];
+
+function chunk<T>(arr: T[], size: number): T[][] {
+    const chunks: T[][] = [];
+    for (let i = 0; i < arr.length; i += size) {
+        chunks.push(arr.slice(i, i + size));
+    }
+    return chunks;
 }
 
 export default function RegistrationForm({
@@ -18,6 +134,13 @@ export default function RegistrationForm({
     screeningQuestions,
     onClose,
 }: RegistrationFormProps) {
+    const fieldChunks = useMemo(() => chunk(FIELD_CONFIG, FIELDS_PER_STEP), []);
+
+    const totalSteps =
+        fieldChunks.length + (screeningQuestions.length > 0 ? 1 : 0) + 1;
+    const screeningStepIndex = fieldChunks.length;
+    const cvStepIndex = totalSteps;
+
     const [step, setStep] = useState(1);
     const [submitting, setSubmitting] = useState(false);
     const [result, setResult] = useState<{
@@ -27,12 +150,17 @@ export default function RegistrationForm({
     const [cvFile, setCvFile] = useState<File | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const [formData, setFormData] = useState({
-        full_name: "",
-        email: "",
-        academic_year: "",
-        department: "",
-        screening_answers: {} as Record<string, string>,
+    interface FormState {
+        [key: string]: string | Record<string, string>;
+        screening_answers: Record<string, string>;
+    }
+
+    const [formData, setFormData] = useState<FormState>(() => {
+        const initial: Record<string, string> = {};
+        for (const f of FIELD_CONFIG) {
+            initial[f.key] = "";
+        }
+        return { ...initial, screening_answers: {} as Record<string, string> };
     });
 
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -53,41 +181,134 @@ export default function RegistrationForm({
         }));
     }
 
-    function validateStep1(): boolean {
-        const newErrors: Record<string, string> = {};
-        if (!formData.full_name.trim())
-            newErrors.full_name = "Full name is required";
-        if (
-            !formData.email.trim() ||
-            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-        )
-            newErrors.email = "Valid email is required";
-        if (!formData.academic_year)
-            newErrors.academic_year = "Academic year is required";
-        if (!formData.department.trim())
-            newErrors.department = "Department is required";
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+    function validateCurrentStep(): boolean {
+        if (step <= fieldChunks.length) {
+            const fields = fieldChunks[step - 1];
+            const newErrors: Record<string, string> = {};
+            for (const field of fields) {
+                if (field.validate) {
+                    const err = field.validate(
+                        (formData as Record<string, string>)[field.key],
+                    );
+                    if (err) newErrors[field.key] = err;
+                }
+            }
+            setErrors(newErrors);
+            return Object.keys(newErrors).length === 0;
+        }
+
+        if (step === screeningStepIndex + 1 && screeningQuestions.length > 0) {
+            const newErrors: Record<string, string> = {};
+            for (const q of screeningQuestions) {
+                if (
+                    q.is_required &&
+                    !(formData.screening_answers[q.question_text] || "").trim()
+                ) {
+                    newErrors[q.question_text] = "This answer is required";
+                }
+            }
+            setErrors(newErrors);
+            return Object.keys(newErrors).length === 0;
+        }
+
+        return true;
     }
 
     function handleNext() {
-        if (step === 1 && validateStep1()) {
-            setStep(2);
-        } else if (step === 2) {
-            setStep(3);
+        if (validateCurrentStep()) {
+            setStep((s) => Math.min(s + 1, totalSteps));
         }
+    }
+
+    function handleBack() {
+        setErrors({});
+        setStep((s) => Math.max(s - 1, 1));
     }
 
     async function handleSubmit() {
         setSubmitting(true);
         const res = await submitRegistration(eventId, {
-            ...formData,
+            full_name: formData.full_name as string,
+            email: formData.email as string,
+            academic_year: formData.academic_year as string,
+            department: formData.department as string,
+            phone_number: (formData.phone_number as string) || undefined,
+            university: (formData.university as string) || undefined,
+            faculty: (formData.faculty as string) || undefined,
+            facebook_profile:
+                (formData.facebook_profile as string) || undefined,
+            linkedin_profile: (formData.linkedin_profile as string) || undefined,
+            screening_answers: formData.screening_answers,
             cv_file: cvFile,
         });
         setResult(res);
         setSubmitting(false);
         window.location.reload();
-        return;
+    }
+
+    function renderField(field: FieldConfig) {
+        const value = formData[field.key] as string;
+
+        if (field.type === "select") {
+            return (
+                <div key={field.key}>
+                    <label
+                        className="ds-input-label font-mono"
+                        htmlFor={`reg-${field.key}`}
+                    >
+                        {field.label}
+                        {field.required && (
+                            <span className="text-[var(--destructive)]">*</span>
+                        )}
+                    </label>
+                    <select
+                        id={`reg-${field.key}`}
+                        className="ds-select font-hanken"
+                        value={value}
+                        onChange={(e) => updateField(field.key, e.target.value)}
+                    >
+                        <option value="">{field.placeholder}</option>
+                        {field.options?.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                                {opt.label}
+                            </option>
+                        ))}
+                    </select>
+                    {errors[field.key] && (
+                        <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                            {errors[field.key]}
+                        </p>
+                    )}
+                </div>
+            );
+        }
+
+        return (
+            <div key={field.key}>
+                <label
+                    className="ds-input-label font-mono"
+                    htmlFor={`reg-${field.key}`}
+                >
+                    {field.label}
+                    {field.required && (
+                        <span className="text-[var(--destructive)]">*</span>
+                    )}
+                </label>
+                <input
+                    id={`reg-${field.key}`}
+                    className="ds-input font-hanken"
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    value={value}
+                    onChange={(e) => updateField(field.key, e.target.value)}
+                />
+                {errors[field.key] && (
+                    <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                        {errors[field.key]}
+                    </p>
+                )}
+            </div>
+        );
     }
 
     if (result?.success) {
@@ -116,7 +337,7 @@ export default function RegistrationForm({
                         Register
                     </h3>
                     <span className="font-mono text-[12px] leading-3 tracking-widest text-[#BEC7D4] uppercase">
-                        Step {step} of 3
+                        Step {step} of {totalSteps}
                     </span>
                 </div>
                 <button
@@ -129,18 +350,20 @@ export default function RegistrationForm({
 
             {/* Progress bar */}
             <div className="flex gap-1">
-                {[1, 2, 3].map((s) => (
-                    <div
-                        key={s}
-                        className="h-1 flex-1 rounded-full transition-colors"
-                        style={{
-                            background:
-                                s <= step
-                                    ? "var(--color-primary)"
-                                    : "var(--outline-variant)",
-                        }}
-                    />
-                ))}
+                {Array.from({ length: totalSteps }, (_, i) => i + 1).map(
+                    (s) => (
+                        <div
+                            key={s}
+                            className="h-1 flex-1 rounded-full transition-colors"
+                            style={{
+                                background:
+                                    s <= step
+                                        ? "var(--color-primary)"
+                                        : "var(--outline-variant)",
+                            }}
+                        />
+                    ),
+                )}
             </div>
 
             {result?.error && (
@@ -156,137 +379,80 @@ export default function RegistrationForm({
                 </div>
             )}
 
-            {/* Step 1: Basic Info */}
-            {step === 1 && (
+            {/* Field steps */}
+            {step <= fieldChunks.length && (
                 <div className="flex flex-col gap-4">
-                    <div>
-                        <label
-                            className="ds-input-label font-mono"
-                            htmlFor="reg-name"
-                        >
-                            Full Name
-                        </label>
-                        <input
-                            id="reg-name"
-                            className="ds-input font-hanken"
-                            placeholder="e.g. Ahmed Ali"
-                            value={formData.full_name}
-                            onChange={(e) =>
-                                updateField("full_name", e.target.value)
-                            }
-                        />
-                        {errors.full_name && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
-                                {errors.full_name}
-                            </p>
-                        )}
-                    </div>
-                    <div>
-                        <label
-                            className="ds-input-label font-mono"
-                            htmlFor="reg-email"
-                        >
-                            University Email
-                        </label>
-                        <input
-                            id="reg-email"
-                            className="ds-input font-hanken"
-                            type="email"
-                            placeholder="you@university.edu"
-                            value={formData.email}
-                            onChange={(e) =>
-                                updateField("email", e.target.value)
-                            }
-                        />
-                        {errors.email && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
-                                {errors.email}
-                            </p>
-                        )}
-                    </div>
-                    <div>
-                        <label
-                            className="ds-input-label font-mono"
-                            htmlFor="reg-year"
-                        >
-                            Academic Year
-                        </label>
-                        <select
-                            id="reg-year"
-                            className="ds-select font-hanken"
-                            value={formData.academic_year}
-                            onChange={(e) =>
-                                updateField("academic_year", e.target.value)
-                            }
-                        >
-                            <option value="">Select year</option>
-                            <option value="1st">1st Year</option>
-                            <option value="2nd">2nd Year</option>
-                            <option value="3rd">3rd Year</option>
-                            <option value="4th">4th Year</option>
-                            <option value="5th">5th Year</option>
-                            <option value="graduate">Graduate</option>
-                        </select>
-                        {errors.academic_year && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
-                                {errors.academic_year}
-                            </p>
-                        )}
-                    </div>
-                    <div>
-                        <label
-                            className="ds-input-label font-mono"
-                            htmlFor="reg-dept"
-                        >
-                            Department
-                        </label>
-                        <input
-                            id="reg-dept"
-                            className="ds-input font-hanken"
-                            placeholder="e.g. Computer Science"
-                            value={formData.department}
-                            onChange={(e) =>
-                                updateField("department", e.target.value)
-                            }
-                        />
-                        {errors.department && (
-                            <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
-                                {errors.department}
-                            </p>
-                        )}
-                    </div>
+                    {fieldChunks[step - 1].map((field) => renderField(field))}
                 </div>
             )}
 
-            {/* Step 2: Screening Questions */}
-            {step === 2 && (
-                <div className="flex flex-col gap-4">
-                    {screeningQuestions.length === 0 ? (
-                        <p className="font-hanken text-sm text-[#BDC8D1]">
-                            No screening questions for this event.
-                        </p>
-                    ) : (
-                        screeningQuestions.map((q, i) => (
+            {/* Screening questions step */}
+            {step === screeningStepIndex + 1 &&
+                screeningQuestions.length > 0 && (
+                    <div className="flex flex-col gap-4">
+                        {screeningQuestions.map((q, i) => (
                             <div key={i}>
-                                <label className="ds-input-label font-mono">
-                                    {q}
+                                <label className="ds-input-label font-mono leading-6!">
+                                    {q.question_text}
+                                    {q.is_required && (
+                                        <span className="text-[var(--destructive)]">
+                                            *
+                                        </span>
+                                    )}
                                 </label>
-                                <input
-                                    className="ds-input font-hanken"
-                                    placeholder="Your answer"
-                                    value={formData.screening_answers[q] || ""}
-                                    onChange={(e) =>
-                                        updateScreening(q, e.target.value)
-                                    }
-                                />
+                                {q.type === "mcq" ? (
+                                    <select
+                                        className="ds-select font-hanken"
+                                        value={
+                                            formData.screening_answers[
+                                                q.question_text
+                                            ] || ""
+                                        }
+                                        onChange={(e) =>
+                                            updateScreening(
+                                                q.question_text,
+                                                e.target.value,
+                                            )
+                                        }
+                                    >
+                                        <option value="">
+                                            Select an option
+                                        </option>
+                                        {q.options?.map((opt) => (
+                                            <option key={opt} value={opt}>
+                                                {opt}
+                                            </option>
+                                        ))}
+                                    </select>
+                                ) : (
+                                    <input
+                                        className="ds-input font-hanken placeholder:text-sm!"
+                                        placeholder="Your answer"
+                                        value={
+                                            formData.screening_answers[
+                                                q.question_text
+                                            ] || ""
+                                        }
+                                        onChange={(e) =>
+                                            updateScreening(
+                                                q.question_text,
+                                                e.target.value,
+                                            )
+                                        }
+                                    />
+                                )}
+                                {errors[q.question_text] && (
+                                    <p className="mt-1 font-mono text-[11px] text-[#ffb4ab]">
+                                        {errors[q.question_text]}
+                                    </p>
+                                )}
                             </div>
-                        ))
-                    )}
-                </div>
-            )}
+                        ))}
+                    </div>
+                )}
 
-            {/* Step 3: CV Upload */}
-            {step === 3 && (
+            {/* CV upload step */}
+            {step === cvStepIndex && (
                 <div className="flex flex-col gap-4">
                     <p className="font-hanken text-sm leading-5 text-[#BDC8D1]">
                         Upload your CV/Resume (PDF, DOC, or DOCX). Max 5MB.
@@ -303,8 +469,7 @@ export default function RegistrationForm({
                                 return;
                             }
 
-                            // Client-side validation
-                            const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                            const MAX_FILE_SIZE = 5 * 1024 * 1024;
                             if (file.size > MAX_FILE_SIZE) {
                                 alert(
                                     "File size exceeds 5MB limit. Please upload a smaller file.",
@@ -362,28 +527,28 @@ export default function RegistrationForm({
             {/* Navigation */}
             <div className="flex gap-3 pt-2">
                 {step > 1 && (
-                    <button
+                    <Button
                         className="ds-btn-outline flex-1 justify-center font-mono"
-                        onClick={() => setStep((s) => s - 1)}
+                        onClick={handleBack}
                     >
                         <ArrowLeft size={16} /> Back
-                    </button>
+                    </Button>
                 )}
-                {step < 3 ? (
-                    <button
+                {step < totalSteps ? (
+                    <Button
                         className="ds-btn flex-1 justify-center font-mono"
                         onClick={handleNext}
                     >
                         Next <ArrowRight size={16} />
-                    </button>
+                    </Button>
                 ) : (
-                    <button
+                    <Button
                         className="ds-btn flex-1 justify-center font-mono"
                         onClick={handleSubmit}
                         disabled={submitting}
                     >
                         {submitting ? "Submitting..." : "Submit"}
-                    </button>
+                    </Button>
                 )}
             </div>
         </div>

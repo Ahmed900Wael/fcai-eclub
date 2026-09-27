@@ -3,19 +3,19 @@
 import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
 
-const step1Schema = z.object({
+const _step1Schema = z.object({
     full_name: z.string().min(1, "Full name is required"),
     email: z.string().email("Valid email is required"),
     academic_year: z.string().min(1, "Academic year is required"),
     department: z.string().min(1, "Department is required"),
 });
 
-const step2Schema = z.object({
+const _step2Schema = z.object({
     screening_answers: z.record(z.string(), z.string()),
 });
 
-export type Step1Data = z.infer<typeof step1Schema>;
-export type Step2Data = z.infer<typeof step2Schema>;
+export type Step1Data = z.infer<typeof _step1Schema>;
+export type Step2Data = z.infer<typeof _step2Schema>;
 
 export async function submitRegistration(
     eventId: string,
@@ -24,6 +24,11 @@ export async function submitRegistration(
         email: string;
         academic_year: string;
         department: string;
+        phone_number?: string;
+        university?: string;
+        faculty?: string;
+        facebook_profile?: string;
+        linkedin_profile?: string;
         screening_answers: Record<string, string>;
         cv_file: File | null;
     },
@@ -49,6 +54,11 @@ export async function submitRegistration(
         email: sanitizeInput(formData.email).toLowerCase(),
         academic_year: sanitizeInput(formData.academic_year),
         department: sanitizeInput(formData.department),
+        phone_number: sanitizeInput(formData.phone_number ?? ""),
+        university: sanitizeInput(formData.university ?? ""),
+        faculty: sanitizeInput(formData.faculty ?? ""),
+        facebook_profile: sanitizeInput(formData.facebook_profile ?? ""),
+        linkedin_profile: sanitizeInput(formData.linkedin_profile ?? ""),
         screening_answers: Object.fromEntries(
             Object.entries(formData.screening_answers).map(([key, value]) => [
                 sanitizeInput(key),
@@ -135,6 +145,11 @@ export async function submitRegistration(
         email: sanitizedData.email,
         academic_year: sanitizedData.academic_year,
         department: sanitizedData.department,
+        phone_number: sanitizedData.phone_number,
+        university: sanitizedData.university,
+        faculty: sanitizedData.faculty,
+        facebook_profile: sanitizedData.facebook_profile,
+        linkedin_profile: sanitizedData.linkedin_profile,
         screening_answers: sanitizedData.screening_answers,
         cv_file_path: cvFilePath,
     });

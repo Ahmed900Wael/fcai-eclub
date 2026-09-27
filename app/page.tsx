@@ -137,9 +137,11 @@ export default function Home() {
                                     </ul>
                                 </div>
                                 <div className="rounded-3xl cursor-pointer hover:-translate-y-1 transition-all self-center text-primary border-primary border h-fit p-2">
-                                    <Link href={`/events/${e.slug}`}>
-                                        <ArrowRight size={24} />
-                                    </Link>
+                                    {e.slug && (
+                                        <Link href={`/events/${e.slug}`}>
+                                            <ArrowRight size={24} />
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                         ))}

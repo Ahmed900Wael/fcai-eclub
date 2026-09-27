@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { getEventImageUrl } from "@/services/events-images";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 import "./style.css";
 import Link from "next/link";
@@ -34,11 +33,20 @@ const UpcomingEvents = ({ events }: { events: Event[] | null }) => {
                         <p className="font-hanken text-[16px] leading-6 font-light text-[#BDC8D1] max-w-[80%] mb-8 line-clamp-2">
                             {e.description}
                         </p>
-                        <Button className="ds-btn w-fit font-mono">
-                            <Link href={`/events/${e.slug}`}>
-                                Register Now →
-                            </Link>
-                        </Button>
+                        {e.slug ? (
+                            <Button className="ds-btn w-fit font-mono">
+                                <Link href={`/events/${e.slug}`}>
+                                    Register Now →
+                                </Link>
+                            </Button>
+                        ) : (
+                            <Button
+                                className="ds-btn w-fit font-mono"
+                                disabled
+                            >
+                                Coming Soon →
+                            </Button>
+                        )}
                     </div>
                 ))}
         </div>

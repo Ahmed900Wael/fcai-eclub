@@ -23,12 +23,14 @@ export async function getEventDetails(slug: string) {
         .from("events")
         .select("*")
         .eq("slug", slug)
-        .single();
+        .maybeSingle();
 
     if (error) {
         console.error("Error occured:", error.message);
         return null;
     }
+
+    if (!event) return null;
 
     const { data: count } = await supabase.rpc("get_event_registration_count", {
         p_event_id: event.id,

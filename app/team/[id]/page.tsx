@@ -1,4 +1,4 @@
-import { Briefcase, Code, Mail } from "lucide-react";
+import { Code, Mail } from "lucide-react";
 import { BiLogoLinkedin } from "react-icons/bi";
 import Image from "next/image";
 

@@ -1,4 +1,4 @@
-import { CheckCircle, User } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import PartnerForm from "./partner-form";
 import Image from "next/image";
 import { PARTNERS } from "@/constants";

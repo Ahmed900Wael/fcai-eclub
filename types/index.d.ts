@@ -17,6 +17,7 @@ declare interface Profile {
 
 declare interface ProfileWithCommittee extends Profile {
     committees: { name: string; icon: string | null } | null;
+    section: string;
 }
 
 declare interface Committee {
@@ -25,6 +26,7 @@ declare interface Committee {
     description: string | null;
     icon: string | null;
     created_at: string;
+    is_management: boolean;
 }
 
 declare interface CommitteeWithMembers extends Committee {
@@ -37,8 +39,7 @@ declare interface Committee {
 }
 
 declare interface TeamMembersProps {
-    initialProfiles: ProfileWithCommittee[];
-    initialHasMore: boolean;
+    profiles: ProfileWithCommittee[];
     committees: Committee[];
 }
 

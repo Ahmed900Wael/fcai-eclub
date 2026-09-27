@@ -261,6 +261,6 @@ No separate backend server. All logic runs inside Next.js Server Components, Ser
 ## Ongoing
 
 - [x] Monitor analytics and user engagement (Vercel Analytics + Sentry configured)
-- [ ] Collect feedback from club members and partners
-- [ ] Plan feature iterations based on usage data
-- [ ] Maintain dependencies and security patches
+- [x] Collect feedback from club members and partners
+- [x] Plan feature iterations based on usage data
+- [x] Maintain dependencies and security patches

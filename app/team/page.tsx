@@ -32,7 +32,7 @@ const Committees = async () => {
                                     {c.name}
                                 </h3>
 
-                                <p className="font-hanken text-sm leading-5 flex-1 text-[#BEC7D4] max-w-112.5 mb-6">
+                                <p className="font-hanken text-sm leading-5 flex-1 text-[#BEC7D4] max-w-112.5 mb-4">
                                     {c.description}
                                 </p>
                             </div>

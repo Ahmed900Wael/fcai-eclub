@@ -5,6 +5,7 @@ import {
     Users,
     GraduationCap,
     Video,
+    Brain,
     Palette,
     UserCog,
     Handshake,
@@ -23,6 +24,7 @@ const iconMap: Record<string, LucideIcon> = {
     UserCog,
     Handshake,
     Film,
+    Brain,
 };
 
 export function getIcon(name: string | null): LucideIcon {

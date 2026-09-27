@@ -44,7 +44,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 >
                     {event.type == "bootcamp" && (
                         <div className="ds-container relative">
-                            <h1 className="max-w-260 font-space font-bold text-7xl text-center leading-18 tracking-tight text-[#E2E3DF] mb-4">
+                            <h1 className="max-w-260 mx-auto font-space font-bold text-center text-5xl sm:text-7xl leading-14 sm:leading-18 tracking-tight text-[#E2E3DF] mb-4">
                                 {event.title}
                             </h1>
                         </div>
@@ -189,7 +189,9 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                             eventId={event.id}
                             eventTitle={event.title}
                             screeningQuestions={event.screening_questions}
-                            disabled={spotsRemaining == 0 || event.status == "pending"}
+                            disabled={
+                                spotsRemaining == 0 || event.status == "pending"
+                            }
                         />
                     </div>
                 </aside>

@@ -82,6 +82,12 @@ declare interface ScreeningQuestion {
     is_required: boolean;
 }
 
+declare interface Timeline {
+    title: string;
+    data_label: string;
+    description: string;
+}
+
 declare interface EventWithRegistration extends Event {
     registrationsCount: number;
     screening_questions: ScreeningQuestion[];

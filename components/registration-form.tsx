@@ -237,7 +237,8 @@ export default function RegistrationForm({
             faculty: (formData.faculty as string) || undefined,
             facebook_profile:
                 (formData.facebook_profile as string) || undefined,
-            linkedin_profile: (formData.linkedin_profile as string) || undefined,
+            linkedin_profile:
+                (formData.linkedin_profile as string) || undefined,
             screening_answers: formData.screening_answers,
             cv_file: cvFile,
         });
@@ -258,7 +259,7 @@ export default function RegistrationForm({
                     >
                         {field.label}
                         {field.required && (
-                            <span className="text-[var(--destructive)]">*</span>
+                            <span className="text-destructive">{" "}*</span>
                         )}
                     </label>
                     <select
@@ -291,7 +292,7 @@ export default function RegistrationForm({
                 >
                     {field.label}
                     {field.required && (
-                        <span className="text-[var(--destructive)]">*</span>
+                        <span className="text-destructive">{" "}*</span>
                     )}
                 </label>
                 <input

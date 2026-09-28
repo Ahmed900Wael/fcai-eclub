@@ -1,21 +1,41 @@
-import { getEventDetails } from "@/services/events";
+import { Suspense } from "react";
+import { notFound } from "next/navigation";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
-import RegisterButton from "@/components/register-button";
 
 import "../style.css";
+import { getEventBySlug, getEventRegistrationCount } from "@/services/events";
 import { getEventImageUrl } from "@/services/events-images";
 import { getAvatarUrl } from "@/services/profiles";
+import EventCapacity from "./event-capacity";
 
 interface EventPageProps {
     params: Promise<{ slug: string }>;
 }
 
+function CapacityFallback() {
+    return (
+        <>
+            <div className="ds-card p-10! flex flex-col gap-2 animate-pulse">
+                <div className="h-18 w-32 bg-white/10 rounded mx-auto" />
+                <div className="h-4 w-40 bg-white/10 rounded mx-auto" />
+                <div className="h-2.5 w-full rounded-full bg-black" />
+            </div>
+            <div className="ds-card p-10! flex flex-col gap-4 animate-pulse">
+                <div className="h-4 w-36 bg-white/10 rounded" />
+                <div className="h-9 w-40 bg-white/10 rounded" />
+            </div>
+        </>
+    );
+}
+
 export default async function EventDetailPage({ params }: EventPageProps) {
     const { slug } = await params;
-    const event: EventWithRegistration | null = await getEventDetails(slug);
+    const event = await getEventBySlug(slug);
 
-    if (!event) return;
+    if (!event) notFound();
+
+    const countPromise = getEventRegistrationCount(event.id);
 
     const formattedDate = new Date(event.from_date).toLocaleDateString(
         "en-US",
@@ -26,9 +46,6 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             timeZone: "UTC",
         },
     );
-
-    const spotsRemaining =
-        Number(event.capacity) - Number(event.registrationsCount);
 
     return (
         <div className="bg-[#0D1B2A]">
@@ -114,23 +131,28 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                         <h3 className="font-space font-bold text-3xl leading-9 mb-8">
                             Timeline
                         </h3>
-                        {/* <div className="flex flex-col gap-10 justify-center border-l"> */}
-                        <div className="flex flex-col gap-10 justify-center">
-                            {/* <div
-                                key={i}
-                                className={`flex flex-col gap-2 row ${i === 0 ? "row-active" : ""}`}
-                            >
-                                <h4 className="font-mono text-[16px] leading-3 tracking-widest text-primary">
-                                    {item.time} - {item.title}
-                                </h4>
+                        {event.timeline && (
+                            <div className="flex flex-col gap-10 justify-center border-l">
+                                {event.timeline.map((t) => (
+                                    <div className="flex flex-col gap-2 row row-active">
+                                        <h4 className="font-mono text-[16px] leading-3 tracking-widest text-primary">
+                                            {t.title}
+                                        </h4>
+                                        <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
+                                            {t.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {!event.timeline && (
+                            <div className="flex flex-col gap-10 justify-center">
                                 <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
-                                    {item.desc}
+                                    We&apos;re waiting for schedule to be
+                                    announced.
                                 </p>
-                            </div> */}
-                            <p className="font-hanken text-[16px] leading-6 text-[#BDC8D1]">
-                                We&apos;re waiting for schedule to be announced.
-                            </p>
-                        </div>
+                            </div>
+                        )}
                     </div>
                 </section>
 
@@ -160,40 +182,13 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                         </ul>
                     </div>
 
-                    {/* Capacity */}
-                    {spotsRemaining > 0 && (
-                        <div className="ds-card p-10! flex flex-col gap-2">
-                            <span className="font-space font-bold text-7xl leading-16 tracking-tight text-primary text-center">
-                                {spotsRemaining ?? 0}
-                            </span>
-                            <h4 className="text-center font-mono text-sm leading-4 tracking-widest uppercase font-extralight mb-2">
-                                Spots Remaining
-                            </h4>
-                            <div className="h-2.5 w-full rounded-full bg-black">
-                                <div
-                                    style={{
-                                        width: `${Math.max(0, (spotsRemaining / (event.capacity || 1)) * 100)}%`,
-                                    }}
-                                    className="h-2.5 bg-primary rounded-full transition-all"
-                                ></div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Register CTA */}
-                    <div className="ds-card p-10! flex flex-col gap-2">
-                        <h4 className="font-mono text-sm leading-4 tracking-widest uppercase font-extralight mb-2">
-                            Secure Your Spot
-                        </h4>
-                        <RegisterButton
-                            eventId={event.id}
-                            eventTitle={event.title}
-                            screeningQuestions={event.screening_questions}
-                            disabled={
-                                spotsRemaining == 0 || event.status == "pending"
-                            }
+                    {/* Capacity + Register CTA (streams when the count resolves) */}
+                    <Suspense fallback={<CapacityFallback />}>
+                        <EventCapacity
+                            event={event}
+                            countPromise={countPromise}
                         />
-                    </div>
+                    </Suspense>
                 </aside>
             </section>
         </div>

@@ -4,7 +4,7 @@ export const NAVLINKS = [
         path: "/about",
     },
     {
-        title: "Partnerships",
+        title: "Partners",
         path: "/partnerships",
     },
     {
@@ -12,7 +12,7 @@ export const NAVLINKS = [
         path: "/team",
     },
     {
-        title: "Activity",
+        title: "Activities",
         path: "/events",
     },
 ];
@@ -59,7 +59,7 @@ export const TESTIMONIALS = [
 export const PARTNERS = [
     {
         title: "Creativa Innovation Hubs",
-        link: "/partner_details/creativa _innovation_hubs.png",
+        link: "/partner_details/creativa.jpg",
     },
     {
         title: "Data Skool",
@@ -71,7 +71,7 @@ export const PARTNERS = [
     },
     {
         title: "FCAI-CU",
-        link: "/partner_details/fcai.png",
+        link: "/partner_details/fcai.jpg",
     },
     {
         title: "Kayfa",
@@ -80,5 +80,9 @@ export const PARTNERS = [
     {
         title: "Novera",
         link: "/partner_details/novera.jpg",
+    },
+    {
+        title: "Flat6Labs",
+        link: "/partner_details/flat6labs.png",
     },
 ];

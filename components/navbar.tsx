@@ -55,7 +55,7 @@ const Navbar = () => {
                     target="_blank"
                 >
                     <Button className="hidden! md:flex! ds-btn font-mono">
-                        Join the team
+                        Join us
                     </Button>
                 </Link>
 
@@ -71,7 +71,7 @@ const Navbar = () => {
             </nav>
             {/* Mobile navigation */}
             {isOpen && (
-                <div className="absolute w-full border-t border-border px-6 py-4 md:hidden bg-[#09141E] opacity-85">
+                <div className="absolute w-full border-t border-border px-6 py-4 md:hidden bg-[#09141E] opacity-90">
                     <div className="flex flex-col gap-6">
                         <ul className="flex flex-col md:hidden gap-6">
                             {NAVLINKS.map(({ title, path }) => {

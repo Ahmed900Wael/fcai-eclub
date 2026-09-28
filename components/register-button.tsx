@@ -2,9 +2,20 @@
 
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { ArrowRight } from "lucide-react";
+import dynamic from "next/dynamic";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
-import RegistrationForm from "./registration-form";
+
+const RegistrationForm = dynamic(() => import("./registration-form"), {
+    loading: () => (
+        <div className="flex flex-col items-center justify-center gap-3 py-24">
+            <Loader2 size={32} className="animate-spin text-primary" />
+            <p className="font-mono text-xs tracking-widest uppercase text-[#BEC7D4]">
+                Loading form…
+            </p>
+        </div>
+    ),
+});
 
 interface RegisterButtonProps {
     eventId: string;

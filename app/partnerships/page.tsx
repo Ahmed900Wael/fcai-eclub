@@ -24,11 +24,14 @@ const Partnerships = () => {
             </main>
 
             <section className="ds-container py-24 mx-auto">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4">
                     {PARTNERS.map((p, i) => (
                         <div
                             key={i}
                             className="ds-card min-h-50 grid gap-4 place-content-center"
+                            style={{
+                                background: "black",
+                            }}
                         >
                             <Image
                                 src={p.link}

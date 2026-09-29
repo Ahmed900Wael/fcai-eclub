@@ -137,7 +137,7 @@ export default function RegistrationForm({
     const fieldChunks = useMemo(() => chunk(FIELD_CONFIG, FIELDS_PER_STEP), []);
 
     const totalSteps =
-        fieldChunks.length + (screeningQuestions.length > 0 ? 1 : 0) + 1;
+        fieldChunks.length + (screeningQuestions?.length > 0 ? 1 : 0) + 1;
     const screeningStepIndex = fieldChunks.length;
     const cvStepIndex = totalSteps;
 
